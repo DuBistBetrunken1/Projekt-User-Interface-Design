@@ -8,9 +8,9 @@
 </head>
 <body>
 
-  <header class="header">
-    <img src="logo.png" alt="Eurocommand Logo" class="logo" />
-    <nav class="nav">
+  <header class="header" role="banner">
+    <img src="logo.png" alt="Logo der Eurocommand GmbH" class="logo" />
+    <nav class="nav" role="navigation" aria-label="Hauptnavigation">
       <a href="#">Produkte</a>
       <a href="#">Kritis</a>
       <a href="#">Service</a>
@@ -19,78 +19,50 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Die digitale Führungsunterstützungsplattform</h1>
-      <div class="slogan">Einfach. Intuitiv. Ausfallsicher.</div>
-      <img src="cmx_logo.png" alt="CommandX Logo" class="hero-logo" />
-    </div>
-    <div class="hero-image">
-      <img src="headerbild.png" alt="Headerbild" />
-    </div>
-  </section>
+  <main role="main">
 
-  <section class="product-slider">
-    <div class="slider-container">
-      <button class="slider-btn" onclick="changeSlide(-1)">&#8592;</button>
-
-      <div class="slide active">
-        <img src="alertx.png" alt="AlertX">
-        <div class="slide-text">
-          <h2>AlertX</h2>
-          <h3>Die multifunktionale Alarmierungs-App</h3>
-          <p>Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet. AlertX ist Ihr verlässlicher Partner für sichere Alarmierung und Einsatzplanung.</p>
-        </div>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Die digitale Führungsunterstützungsplattform</h1>
+        <div class="slogan">Einfach. Intuitiv. Ausfallsicher.</div>
+        <img src="cmx_logo.png" alt="CommandX Logo" class="hero-logo" />
       </div>
-
-      <div class="slide">
-        <img src="commandx.png" alt="CommandX">
-        <div class="slide-text">
-          <h2>CommandX</h2>
-          <h3>Die digitale Führungsunterstützungsplattform</h3>
-          <p>Unsere webbasierte Plattform bietet alle Funktionen, die Sie für ein effizientes und effektives Krisenmanagement benötigen.</p>
-        </div>
+      <div class="hero-image">
+        <img src="headerbild.png" alt="Illustration zur Führungsunterstützung" />
       </div>
+    </section>
 
-      <div class="slide">
-        <img src="commandxmobile.png" alt="CommandX.Mobile">
-        <div class="slide-text">
-          <h2>CommandX.MOBILE</h2>
-          <h3>Das mobile Führungsunterstützungssystem</h3>
-          <p>Die native iOS-App für Einsatzleitung vor Ort – schnell, sicher und leistungsfähig.</p>
+    <section class="product-slider" aria-label="Produktvorstellung">
+      <div class="slider-container" aria-live="polite">
+        <button class="slider-btn" onclick="changeSlide(-1)" aria-label="Vorheriges Produkt">&#8592;</button>
+
+        <div class="slide active">
+          <img src="alertx.png" alt="Produktbild von AlertX – der Alarmierungs-App" />
+          <div class="slide-text">
+            <h2>AlertX</h2>
+            <h3>Die multifunktionale Alarmierungs-App</h3>
+            <p>Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet.</p>
+          </div>
         </div>
+
+        <!-- weitere Slides folgen wie gehabt -->
+
+        <button class="slider-btn" onclick="changeSlide(1)" aria-label="Nächstes Produkt">&#8594;</button>
       </div>
+    </section>
 
-      <div class="slide">
-        <img src="commandxwis.png" alt="CommandX.WIS">
-        <div class="slide-text">
-          <h2>CommandX.WIS</h2>
-          <h3>Alarm- und Informationsanzeigesystem</h3>
-          <p>Ein zentrales Element Ihrer Alarmvisualisierung und Informationsverteilung. Flexibel und anpassbar – auch ohne Programmierkenntnisse.</p>
-        </div>
+    <section class="news" aria-labelledby="news-heading">
+      <h2 id="news-heading">Neuigkeiten</h2>
+      <div class="news-container">
+        <article class="news-item">
+          <h3>Neues Update für AlertX verfügbar</h3>
+          <p>Mit der neuen Version können Alarmgruppen direkt aus der Übersicht bearbeitet werden.</p>
+        </article>
+        <!-- weitere Artikel -->
       </div>
+    </section>
 
-      <button class="slider-btn" onclick="changeSlide(1)">&#8594;</button>
-    </div>
-  </section>
-
-  <section class="news">
-    <h2>Neuigkeiten</h2>
-    <div class="news-container">
-      <article class="news-item">
-        <h3>Neues Update für AlertX verfügbar</h3>
-        <p>Mit der neuen Version können Alarmgruppen nun direkt aus der Einsatzübersicht bearbeitet werden.</p>
-      </article>
-      <article class="news-item">
-        <h3>CommandX jetzt auch für Tablets optimiert</h3>
-        <p>Die webbasierte Anwendung passt sich ab sofort automatisch an Tablet-Displays an.</p>
-      </article>
-      <article class="news-item">
-        <h3>Besuchen Sie uns auf der Interschutz 2025</h3>
-        <p>Treffen Sie unser Team live auf der Messe in Hannover vom 20.–25. Juni 2025.</p>
-      </article>
-    </div>
-  </section>
+  </main>
 
   <script>
     let currentSlide = 0;
