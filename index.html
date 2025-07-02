@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eurocommand GmbH</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eurocommand</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
-    <img src="assets/eurocommand-logo.png" alt="Eurocommand Logo" class="logo" />
+    <img src="assets/eurocommand_logo.png" alt="Eurocommand Logo" class="logo">
     <nav class="nav">
       <a href="#">Produkte</a>
       <a href="#">Kritis</a>
@@ -22,95 +22,72 @@
     <div class="hero-text">
       <h1>Die digitale Führungsunterstützungsplattform</h1>
       <p class="slogan">Einfach. Intuitiv. Ausfallsicher.</p>
-      <img src="assets/cmx-logo.png" alt="CommandX Logo" class="hero-logo" />
+      <img src="assets/cmx_logo.png" alt="CommandX Logo" class="hero-logo">
     </div>
     <div class="hero-image">
-      <img src="assets/hero-header.png" alt="Headerbild" />
+      <img src="assets/headerbild.png" alt="Headerbild">
     </div>
   </section>
 
   <section class="product-slider">
     <div class="slider-container">
-      <button class="slider-btn left" onclick="changeSlide(-1)">&#8592;</button>
-
+      <button class="slider-btn" id="prevBtn">&#8592;</button>
       <div class="slide active">
-        <img src="assets/alertx.png" alt="AlertX" />
+        <img src="assets/alertx.png" alt="AlertX">
         <div class="slide-text">
           <h2>AlertX</h2>
           <h3>Die multifunktionale Alarmierungs-App</h3>
-          <p>
-            Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet.
-          </p>
+          <p>Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet. AlertX ist Ihr verlässlicher Partner für sichere Alarmierung und Einsatzplanung.</p>
         </div>
       </div>
-
       <div class="slide">
-        <img src="assets/commandx.png" alt="CommandX" />
+        <img src="assets/commandx.png" alt="CommandX">
         <div class="slide-text">
           <h2>CommandX</h2>
           <h3>Die digitale Führungsunterstützungsplattform</h3>
-          <p>
-            Unsere webbasierte Plattform bietet alle Funktionen für effizientes Krisenmanagement.
-          </p>
+          <p>Entdecken Sie unsere webbasierte Führungsunterstützungssoftware, die Ihnen alle Funktionen bietet, die Sie für ein effizientes und effektives Krisenmanagement benötigen.</p>
         </div>
       </div>
-
       <div class="slide">
-        <img src="assets/commandx_mobile.png" alt="CommandX.Mobile" />
+        <img src="assets/commandx_mobile.png" alt="CommandX.Mobile">
         <div class="slide-text">
           <h2>CommandX.MOBILE</h2>
           <h3>Das mobile Führungsunterstützungssystem</h3>
-          <p>
-            Die native iOS-App für Einsatzleitung vor Ort – schnell, sicher und leistungsfähig.
-          </p>
+          <p>Entdecken Sie unsere native iOS-App für Einsatzleitung vor Ort – schnell, sicher und leistungsfähig.</p>
         </div>
       </div>
-
       <div class="slide">
-        <img src="assets/commandx_wis.png" alt="CommandX.WIS" />
+        <img src="assets/commandx_wis.png" alt="CommandX.WIS">
         <div class="slide-text">
           <h2>CommandX.WIS</h2>
           <h3>Alarm- und Informationsanzeigesystem</h3>
-          <p>
-            Ihre zentrale Lösung für Alarmvisualisierung und Wachendisplay – flexibel und anpassbar.
-          </p>
+          <p>Entdecken Sie unser webbasiertes Wacheninformationssystem als zentrales Element Ihrer Alarmvisualisierung und Informationsmanagement.</p>
         </div>
       </div>
-
-      <button class="slider-btn right" onclick="changeSlide(1)">&#8594;</button>
+      <button class="slider-btn" id="nextBtn">&#8594;</button>
     </div>
   </section>
 
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    let currentSlide = 0;
 
-<script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll(".slide");
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove("active"));
+      slides[index].classList.add("active");
+    }
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove("active");
-      if (i === index) slide.classList.add("active");
-    });
-  }
-
-  function changeSlide(direction) {
-    currentSlide += direction;
-    if (currentSlide >= slides.length) currentSlide = 0;
-    if (currentSlide < 0) currentSlide = slides.length - 1;
-    showSlide(currentSlide);
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    showSlide(currentSlide);
-
-    document.querySelector(".prev-slide").addEventListener("click", () => {
-      changeSlide(-1);
+    prevBtn.addEventListener("click", () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
     });
 
-    document.querySelector(".next-slide").addEventListener("click", () => {
-      changeSlide(1);
+    nextBtn.addEventListener("click", () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
     });
-  });
-</script>
+  </script>
 </body>
 </html>
