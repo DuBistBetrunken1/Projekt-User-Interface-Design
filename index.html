@@ -1,141 +1,104 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eurocommand GmbH</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <!-- Header -->
   <header class="header">
-    <div class="container header-container">
-      <img src="assets/eurocommand.png" alt="Eurocommand Logo" class="logo">
-      <nav>
-        <ul class="nav">
-          <li><a href="#">Produkte</a></li>
-          <li><a href="#">Kritis</a></li>
-          <li><a href="#">Service</a></li>
-          <li><a href="#">Unternehmen</a></li>
-          <li><a href="#">Kontakt</a></li>
-        </ul>
-      </nav>
-    </div>
+    <img src="assets/eurocommand-logo.png" alt="Eurocommand Logo" class="logo" />
+    <nav class="nav">
+      <a href="#">Produkte</a>
+      <a href="#">Kritis</a>
+      <a href="#">Service</a>
+      <a href="#">Unternehmen</a>
+      <a href="#">Kontakt</a>
+    </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>Die digitale Führungsunterstützungsplattform</h1>
-        <p class="highlight">Einfach. Intuitiv. Ausfallsicher.</p>
-        <img src="assets/CmX_Logo_Web.png" alt="CommandX Logo" class="commandx-logo">
-      </div>
-      <div class="hero-image">
-        <img src="assets/EC_Headerbild_Startseite_35J.png" alt="Headerbild">
-      </div>
+    <div class="hero-text">
+      <h1>Die digitale Führungsunterstützungsplattform</h1>
+      <p class="slogan">Einfach. Intuitiv. Ausfallsicher.</p>
+      <img src="assets/cmx-logo.png" alt="CommandX Logo" class="hero-logo" />
+    </div>
+    <div class="hero-image">
+      <img src="assets/hero-header.png" alt="Headerbild" />
     </div>
   </section>
 
-  <!-- Produkt-Slider -->
   <section class="product-slider">
-    <div class="slider-wrapper">
-      <button class="slider-btn left" id="prevBtn">&#8592;</button>
-      <div class="slider-track" id="sliderTrack">
-        <div class="slide">
-          <img src="assets/AlertX.png" alt="AlertX">
-          <div class="slide-text">
-            <h2>AlertX</h2>
-            <h3 class="highlight">Die multifunktionale Alarmierungs-App</h3>
-            <p>Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet. AlertX ist Ihr verlässlicher Partner für sichere und effiziente Alarmierung und Einsatzplanung.</p>
-          </div>
-        </div>
-        <div class="slide">
-          <img src="assets/CommandX.png" alt="CommandX">
-          <div class="slide-text">
-            <h2>CommandX</h2>
-            <h3 class="highlight">Die digitale Führungsunterstützungsplattform</h3>
-            <p>Entdecken Sie unsere webbasierte Führungsunterstützungssoftware, die Ihnen alle Funktionen bietet, die Sie für ein effizientes und effektives Krisenmanagement benötigen.</p>
-          </div>
-        </div>
-        <div class="slide">
-          <img src="assets/CommandX_Mobile.png" alt="CommandX.Mobile">
-          <div class="slide-text">
-            <h2>CommandX.MOBILE</h2>
-            <h3 class="highlight">Das mobile Führungsunterstützungssystem</h3>
-            <p>Entdecken Sie unsere native iOS-App für Tablets – die perfekte Lösung für mobile Einheiten und die Einsatzleitung vor Ort.</p>
-          </div>
-        </div>
-        <div class="slide">
-          <img src="assets/CommandX_WIS.png" alt="CommandX.WIS">
-          <div class="slide-text">
-            <h2>CommandX.WIS</h2>
-            <h3 class="highlight">Alarm- und Informationsanzeigesystem</h3>
-            <p>Entdecken Sie unser webbasiertes Wacheninformationssystem als zentrales Element Ihrer Alarmvisualisierung und Informationsmanagement.</p>
-          </div>
+    <div class="slider-container">
+      <button class="slider-btn left" onclick="changeSlide(-1)">&#8592;</button>
+
+      <div class="slide active">
+        <img src="assets/alertx.png" alt="AlertX" />
+        <div class="slide-text">
+          <h2>AlertX</h2>
+          <h3>Die multifunktionale Alarmierungs-App</h3>
+          <p>
+            Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet.
+          </p>
         </div>
       </div>
-      <button class="slider-btn right" id="nextBtn">&#8594;</button>
-    </div>
-  </section>
 
-  <!-- News Section -->
-  <section class="news">
-    <div class="container">
-      <h2>Neuigkeiten</h2>
-      <div class="news-grid">
-        <div class="news-item">
-          <img src="assets/news1.png" alt="News 1">
-          <h3>Neue Funktionen für CommandX</h3>
-          <p>Unsere Software wurde erweitert – erfahren Sie mehr über die neuen Möglichkeiten.</p>
-        </div>
-        <div class="news-item">
-          <img src="assets/news2.png" alt="News 2">
-          <h3>AlertX jetzt mit Push-Funktionen</h3>
-          <p>Ab sofort noch schneller alarmieren – die neue Version ist verfügbar!</p>
-        </div>
-        <div class="news-item">
-          <img src="assets/news3.png" alt="News 3">
-          <h3>Neue Partnerschaft mit THW</h3>
-          <p>Eurocommand unterstützt zukünftig das Technische Hilfswerk bundesweit.</p>
+      <div class="slide">
+        <img src="assets/commandx.png" alt="CommandX" />
+        <div class="slide-text">
+          <h2>CommandX</h2>
+          <h3>Die digitale Führungsunterstützungsplattform</h3>
+          <p>
+            Unsere webbasierte Plattform bietet alle Funktionen für effizientes Krisenmanagement.
+          </p>
         </div>
       </div>
+
+      <div class="slide">
+        <img src="assets/commandx_mobile.png" alt="CommandX.Mobile" />
+        <div class="slide-text">
+          <h2>CommandX.MOBILE</h2>
+          <h3>Das mobile Führungsunterstützungssystem</h3>
+          <p>
+            Die native iOS-App für Einsatzleitung vor Ort – schnell, sicher und leistungsfähig.
+          </p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="assets/commandx_wis.png" alt="CommandX.WIS" />
+        <div class="slide-text">
+          <h2>CommandX.WIS</h2>
+          <h3>Alarm- und Informationsanzeigesystem</h3>
+          <p>
+            Ihre zentrale Lösung für Alarmvisualisierung und Wachendisplay – flexibel und anpassbar.
+          </p>
+        </div>
+      </div>
+
+      <button class="slider-btn right" onclick="changeSlide(1)">&#8594;</button>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Eurocommand GmbH – Alle Rechte vorbehalten</p>
-    </div>
-  </footer>
 
   <script>
-    const track = document.getElementById('sliderTrack');
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
 
-    let index = 0;
-
-    function updateSlider() {
-      track.style.transform = `translateX(-${index * 100}%)`;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
     }
 
-    prevBtn.addEventListener('click', () => {
-      index = (index - 1 + slides.length) % slides.length;
-      updateSlider();
-    });
+    function changeSlide(direction) {
+      currentSlide += direction;
+      if (currentSlide >= slides.length) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = slides.length - 1;
+      showSlide(currentSlide);
+    }
 
-    nextBtn.addEventListener('click', () => {
-      index = (index + 1) % slides.length;
-      updateSlider();
-    });
-
-    updateSlider();
+    showSlide(currentSlide);
   </script>
 </body>
-
 </html>
