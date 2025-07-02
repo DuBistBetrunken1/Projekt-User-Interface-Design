@@ -1,100 +1,75 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eurocommand GmbH</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo">
-      <img src="img/eurocommand.png" alt="Eurocommand Logo">
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#">Produkte</a></li>
-        <li><a href="#">Kritis</a></li>
-        <li><a href="#">Service</a></li>
-        <li><a href="#">Unternehmen</a></li>
-        <li><a href="#">Kontakt</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- ... vorheriger Inhalt (Header, Hero etc.) ... -->
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Die digitale Führungsunterstützungsplattform</h1>
-      <p class="highlight">Einfach. Intuitiv. Ausfallsicher.</p>
-      <img src="img/CmX_Logo_Web.png" alt="CommandX Logo" class="logo-commandx">
-    </div>
-    <div class="hero-image">
-      <img src="img/EC_Headerbild_Startseite_35J.png" alt="Headerbild">
-    </div>
-  </section>
-
+  <!-- Produkt-Slider -->
   <section class="product-slider">
-    <div class="slider-item active">
-      <img src="img/alertx.png" alt="AlertX">
-      <div class="slider-content">
-        <h2>AlertX</h2>
-        <h3>Die multifunktionale Alarmierungs-App</h3>
-        <p>Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet. AlertX ist Ihr verlässlicher Partner für sichere Alarmierung und Einsatzplanung.</p>
+    <div class="slider-container">
+      <button class="slider-btn left" onclick="prevSlide()">&#8592;</button>
+      <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slide">
+          <img src="img/alertx.png" alt="AlertX" />
+          <div class="text">
+            <h2>AlertX</h2>
+            <h3>Die multifunktionale Alarmierungs-App</h3>
+            <p>Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet. AlertX ist Ihr verlässlicher Partner für sichere Alarmierung und Einsatzplanung.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="img/commandx.png" alt="CommandX" />
+          <div class="text">
+            <h2>CommandX</h2>
+            <h3>Die digitale Führungsunterstützungsplattform</h3>
+            <p>Entdecken Sie unsere webbasierte Führungsunterstützungssoftware, die Ihnen alle Funktionen bietet, die Sie für ein effizientes und effektives Krisenmanagement benötigen.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="img/commandx_mobile.png" alt="CommandX.Mobile" />
+          <div class="text">
+            <h2>CommandX.MOBILE</h2>
+            <h3>Das mobile Führungsunterstützungssystem</h3>
+            <p>Entdecken Sie unsere native iOS-App für Tablets – die perfekte Lösung für mobile Einheiten und die Einsatzleitung vor Ort.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="img/commandx_wis.png" alt="CommandX.WIS" />
+          <div class="text">
+            <h2>CommandX.WIS</h2>
+            <h3>Alarm- und Informationsanzeigesystem</h3>
+            <p>Entdecken Sie unser webbasiertes Wacheninformationssystem als zentrales Element Ihrer Alarmvisualisierung und Informationsmanagement.</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="slider-item">
-      <img src="img/commandx.png" alt="CommandX">
-      <div class="slider-content">
-        <h2>CommandX</h2>
-        <h3>Die digitale Führungsunterstützungsplattform</h3>
-        <p>Entdecken Sie unsere webbasierte Führungsunterstützungssoftware, die Ihnen alle Funktionen bietet, die Sie für ein effizientes und effektives Krisenmanagement benötigen.</p>
-      </div>
-    </div>
-    <div class="slider-item">
-      <img src="img/commandxmobile.png" alt="CommandX.Mobile">
-      <div class="slider-content">
-        <h2>CommandX.MOBILE</h2>
-        <h3>Das mobile Führungsunterstützungssystem</h3>
-        <p>Entdecken Sie unsere native iOS-App für Tablets – die perfekte Lösung für mobile Einheiten und die Einsatzleitung vor Ort.</p>
-      </div>
-    </div>
-    <div class="slider-item">
-      <img src="img/commandxwis.png" alt="CommandX.WIS">
-      <div class="slider-content">
-        <h2>CommandX.WIS</h2>
-        <h3>Alarm- und Informationsanzeigesystem</h3>
-        <p>Entdecken Sie unser webbasiertes Wacheninformationssystem als zentrales Element Ihrer Alarmvisualisierung und Informationsmanagement.</p>
-      </div>
-    </div>
-    <button class="slider-prev">&#8592;</button>
-    <button class="slider-next">&#8594;</button>
-  </section>
-
-  <section class="news-section">
-    <div class="container">
-      <h2>Neuigkeiten</h2>
-      <div class="news-grid">
-        <article class="news-item">
-          <h3>CommandX erhält neues Update</h3>
-          <p>Mit Version 5.6.2 bringt Eurocommand zahlreiche Verbesserungen für die Einsatzplanung und eine optimierte Kartenansicht.</p>
-          <a href="#">Mehr erfahren →</a>
-        </article>
-        <article class="news-item">
-          <h3>AlertX jetzt für Android verfügbar</h3>
-          <p>Die beliebte Alarmierungs-App gibt es nun auch für Android-Geräte – inklusive Push-Benachrichtigungen und Offline-Funktion.</p>
-          <a href="#">Mehr erfahren →</a>
-        </article>
-        <article class="news-item">
-          <h3>Eurocommand auf der Interschutz 2025</h3>
-          <p>Besuchen Sie uns auf der Interschutz in Hannover vom 16. bis 21. Juni. Halle 12, Stand B34 – wir freuen uns auf Sie!</p>
-          <a href="#">Mehr erfahren →</a>
-        </article>
-      </div>
+      <button class="slider-btn right" onclick="nextSlide()">&#8594;</button>
     </div>
   </section>
 
-  <footer class="site-footer">
-    <p>&copy; 2025 Eurocommand GmbH – Alle Rechte vorbehalten.</p>
-  </footer>
+  <!-- ... weiterer Inhalt wie Neuigkeiten ... -->
+
+  <script>
+    const wrapper = document.getElementById("sliderWrapper");
+    let currentIndex = 0;
+
+    function updateSlide() {
+      wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + 4) % 4;
+      updateSlide();
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % 4;
+      updateSlide();
+    }
+  </script>
 </body>
 </html>
