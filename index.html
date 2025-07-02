@@ -81,24 +81,36 @@
     </div>
   </section>
 
-  <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll(".slide");
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-      });
-    }
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".slide");
 
-    function changeSlide(direction) {
-      currentSlide += direction;
-      if (currentSlide >= slides.length) currentSlide = 0;
-      if (currentSlide < 0) currentSlide = slides.length - 1;
-      showSlide(currentSlide);
-    }
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove("active");
+      if (i === index) slide.classList.add("active");
+    });
+  }
 
+  function changeSlide(direction) {
+    currentSlide += direction;
+    if (currentSlide >= slides.length) currentSlide = 0;
+    if (currentSlide < 0) currentSlide = slides.length - 1;
     showSlide(currentSlide);
-  </script>
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    showSlide(currentSlide);
+
+    document.querySelector(".prev-slide").addEventListener("click", () => {
+      changeSlide(-1);
+    });
+
+    document.querySelector(".next-slide").addEventListener("click", () => {
+      changeSlide(1);
+    });
+  });
+</script>
 </body>
 </html>
