@@ -1,171 +1,171 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #333;
+  margin: 0;
+  font-family: "Titillium Web", sans-serif;
+  background-color: #fefefe;
+  color: #1e1e1e;
 }
 
-/* Header */
-header {
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 0;
+}
+
+.header-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
+  justify-content: space-between;
 }
 
-header img {
+.logo {
   height: 40px;
 }
 
-nav a {
-  margin-left: 2rem;
+.nav {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav a {
   text-decoration: none;
-  color: #333;
+  color: #1e1e1e;
   font-weight: 500;
 }
 
-nav a:hover {
-  color: #c20f31;
-}
-
-/* Hero */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3rem 2rem;
-  background-color: #ffffff;
+  padding: 4rem 0;
+  background-color: white;
 }
 
-.hero-text {
-  flex: 1;
+.hero-content {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .hero-text h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
-.hero-text p {
-  font-size: 1.2rem;
-  color: #555;
+.hero-text .highlight {
+  color: #d00032;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.commandx-logo {
+  margin-top: 1rem;
+  height: 45px;
 }
 
 .hero-image img {
   max-width: 500px;
-  height: auto;
-  border-radius: 8px;
+  border-radius: 1rem;
 }
 
-/* Slider */
-.slider {
+.product-slider {
+  background-color: #dbeef0;
+  padding: 4rem 0;
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   position: relative;
-  padding: 4rem 2rem;
-  background-color: #d5e6e7;
   overflow: hidden;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
-.slide-container {
+.slider-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: 400%;
+  width: 100%;
 }
 
 .slide {
   min-width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex-shrink: 0;
+  gap: 3rem;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .slide img {
-  max-width: 350px;
+  max-width: 40%;
   height: auto;
-  margin-right: 2rem;
 }
 
-.slide-text {
-  max-width: 600px;
-}
-
-.slide h2 {
+.slide-text h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
-.slide h3 {
-  font-size: 1.3rem;
-  color: #c20f31;
+.slide-text .highlight {
+  color: #d00032;
   margin-bottom: 1rem;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
-.slider-nav {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-}
-
-.slider-nav button {
+.slider-btn {
   background: none;
   border: none;
   font-size: 2rem;
-  color: #333;
   cursor: pointer;
+  z-index: 2;
 }
 
-/* News */
-.news-section {
-  padding: 4rem 2rem;
-  background-color: #f4f4f4;
+.news {
+  padding: 4rem 0;
 }
 
-.news-section h2 {
+.news h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #222;
+  text-align: center;
 }
 
 .news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
   gap: 2rem;
+  justify-content: center;
 }
 
 .news-item {
-  background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-width: 300px;
+  background: #f2f2f2;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
-.news-item h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+.news-item img {
+  width: 100%;
+  border-radius: 0.5rem;
 }
 
-.news-item p {
-  font-size: 1rem;
-  color: #555;
-}
-
-/* Footer */
-footer {
-  padding: 2rem;
-  background-color: #333;
-  color: #fff;
+.footer {
+  background-color: #1e1e1e;
+  color: white;
   text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
 }
