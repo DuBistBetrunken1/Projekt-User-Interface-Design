@@ -1,4 +1,3 @@
-/* === Basisfarben für Theme-Switch === */
 :root {
   --bg-color: #e1f0f2;
   --text-color: #111;
@@ -15,7 +14,7 @@ body.dark-mode {
   --card-bg: #1f1f1f;
 }
 
-/* === Allgemeines Layout === */
+/* === Allgemein === */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -24,7 +23,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* === Scroll-Indikator === */
 .scroll-indicator {
   height: 4px;
   background-color: var(--accent-color);
@@ -67,7 +65,7 @@ body {
   outline-offset: 4px;
 }
 
-/* === Theme Toggle Button === */
+/* === Theme Switcher === */
 #theme-toggle {
   background: none;
   border: none;
@@ -122,6 +120,48 @@ body {
   transform: scale(1.05);
 }
 
+/* === News Bereich (oben) === */
+.news {
+  padding: 3rem 2rem;
+  background-color: var(--bg-color);
+}
+
+.news h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.news-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.news-card {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  flex: 1 1 300px;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.news-card h3 {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.news-card p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
 /* === Produktbereich === */
 .product-slider {
   background-color: #d0e2e4;
@@ -132,8 +172,8 @@ body {
 .product-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
   justify-content: center;
+  gap: 2rem;
 }
 
 .product-card {
@@ -170,44 +210,78 @@ body {
   font-size: 0.95rem;
 }
 
-/* === News Bereich === */
-.news {
-  padding: 3rem 2rem;
-  background-color: var(--bg-color);
+/* === Chatbot === */
+#chat-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent-color);
+  color: white;
+  font-size: 1.8rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.3s ease;
 }
 
-.news h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+#chat-icon:hover {
+  transform: scale(1.1);
 }
 
-.news-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.news-card {
+#chat-window {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
   background: var(--card-bg);
-  padding: 1rem;
+  border: 1px solid #ccc;
   border-radius: 10px;
-  flex: 1 1 300px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
+  overflow-y: auto;
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-.news-card:hover {
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+#chat-window.visible {
+  display: flex;
 }
 
-.news-card h3 {
-  color: var(--accent-color);
+.chat-bubble {
+  background: #f1f1f1;
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
   margin-bottom: 0.5rem;
+  font-size: 0.95rem;
 }
 
-.news-card p {
-  font-size: 0.95rem;
-  margin: 0;
+.chat-bubble.bot {
+  align-self: flex-start;
+  background: var(--accent-color);
+  color: white;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.options button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.options button:hover {
+  background: #a60d24;
 }
 
 /* === Barrierefreiheit === */
@@ -227,5 +301,10 @@ body {
   .news-list {
     flex-direction: column;
     align-items: center;
+  }
+
+  #chat-window {
+    right: 10px;
+    width: 90%;
   }
 }
