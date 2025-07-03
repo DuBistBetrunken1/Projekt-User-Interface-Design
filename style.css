@@ -6,6 +6,7 @@ body {
   background-color: #fff;
   color: #111;
   transition: background-color 0.3s, color 0.3s;
+  padding-top: 150px;
 }
 .dark {
   background-color: #121212;
@@ -14,6 +15,11 @@ body {
 
 /* === Header === */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   padding: 2rem;
   background: linear-gradient(to right, #222, #444);
   color: white;
