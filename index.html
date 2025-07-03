@@ -115,49 +115,73 @@
   </div>
 
   <script>
-    const toggle = document.getElementById("chatToggle");
-    const chat = document.getElementById("chatWindow");
-    const body = document.getElementById("chatBody");
+  const toggle = document.getElementById("chatToggle");
+  const chat = document.getElementById("chatWindow");
+  const body = document.getElementById("chatBody");
 
-    toggle.onclick = () => chat.classList.toggle("visible");
+  toggle.onclick = () => chat.classList.toggle("visible");
 
-    function showSoftwareOptions() {
-      body.innerHTML += `
-        <div class="message user">Ich habe ein Problem mit der Software</div>
-        <div class="message bot">Welches Produkt betrifft das Problem?</div>
-        <div class="message option" onclick="body.innerHTML += '<div class=message user>AlertX</div>'">AlertX</div>
-        <div class="message option" onclick="body.innerHTML += '<div class=message user>CommandX</div>'">CommandX</div>
-        <div class="message option" onclick="body.innerHTML += '<div class=message user>CommandX.Mobile</div>'">CommandX.Mobile</div>
-        <div class="message option" onclick="body.innerHTML += '<div class=message user>CommandX.WIS</div>'">CommandX.WIS</div>
-      `;
-    }
+  function clearOptions() {
+    document.querySelectorAll(".message.option, .option-grid").forEach(el => el.remove());
+  }
 
-    function forwardToTickets() {
-      body.innerHTML += `
-        <div class="message user">Ich möchte einen Fehler melden</div>
-        <div class="message bot">Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</div>
-      `;
-    }
+  function resetChat() {
+    body.innerHTML = `
+      <div class="message bot">Hallo! Wie kann ich dir helfen?</div>
+      <div class="message option" onclick="showSoftwareOptions()">Ich habe ein Problem mit der Software</div>
+      <div class="message option" onclick="forwardToTickets()">Ich möchte einen Fehler melden</div>
+      <div class="message option" onclick="showProductInterest()">Ich interessiere mich für eins der Produkte</div>
+    `;
+  }
 
-    function showProductInterest() {
-      body.innerHTML += `
-        <div class="message user">Ich interessiere mich für eins der Produkte</div>
-        <div class="message bot">Für welches Produkt interessierst du dich?</div>
-        <div class="message option">AlertX – Ansprechpartner: Max Mustermann</div>
-        <div class="message option">CommandX – Ansprechpartnerin: Lisa Beispiel</div>
-        <div class="message option">CommandX.Mobile – Ansprechpartner: Alex Meier</div>
-        <div class="message option">CommandX.WIS – Ansprechpartnerin: Jana Schulz</div>
-      `;
-    }
+  function showSoftwareOptions() {
+    clearOptions();
+    body.innerHTML += `<div class="message user">Ich habe ein Problem mit der Software</div>`;
+    body.innerHTML += `<div class="message bot">Welches Produkt betrifft das Problem?</div>`;
+    body.innerHTML += `
+      <div class="option-grid">
+        <div class="message option" onclick="selectOption('AlertX')">AlertX</div>
+        <div class="message option" onclick="selectOption('CommandX')">CommandX</div>
+        <div class="message option" onclick="selectOption('CommandX.Mobile')">CommandX.Mobile</div>
+        <div class="message option" onclick="selectOption('CommandX.WIS')">CommandX.WIS</div>
+      </div>
+    `;
+  }
 
-    document.getElementById("darkModeToggle").addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
-    });
+  function forwardToTickets() {
+    clearOptions();
+    body.innerHTML += `<div class="message user">Ich möchte einen Fehler melden</div>`;
+    body.innerHTML += `<div class="message bot">Bitte melden Sie den Fehler direkt über unser <a href='#'>Ticketsystem</a>.</div>`;
+  }
 
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark");
-    }
-  </script>
+  function showProductInterest() {
+    clearOptions();
+    body.innerHTML += `<div class="message user">Ich interessiere mich für eins der Produkte</div>`;
+    body.innerHTML += `<div class="message bot">Für welches Produkt interessierst du dich?</div>`;
+    body.innerHTML += `
+      <div class="option-grid">
+        <div class="message option" onclick="selectOption('AlertX – Max Mustermann')">AlertX – Max Mustermann</div>
+        <div class="message option" onclick="selectOption('CommandX – Lisa Beispiel')">CommandX – Lisa Beispiel</div>
+        <div class="message option" onclick="selectOption('CommandX.Mobile – Alex Meier')">CommandX.Mobile – Alex Meier</div>
+        <div class="message option" onclick="selectOption('CommandX.WIS – Jana Schulz')">CommandX.WIS – Jana Schulz</div>
+      </div>
+    `;
+  }
+
+  function selectOption(text) {
+    clearOptions();
+    body.innerHTML += `<div class="message user">${text}</div>`;
+  }
+
+  // Dark Mode beibehalten
+  document.getElementById("darkModeToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  });
+
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+</script>
 </body>
 </html>
