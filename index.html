@@ -14,9 +14,9 @@
   <header class="header sticky" role="banner">
     <img src="logo.png" alt="Eurocommand Logo" class="logo" />
     <nav class="nav" role="navigation" aria-label="Hauptnavigation">
+      <a href="#news">Neuigkeiten</a>
       <a href="#produkte">Produkte</a>
       <a href="#service">Service</a>
-      <a href="#unternehmen">Unternehmen</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
     <button id="theme-toggle" aria-label="Dark Mode umschalten">🌓</button>
@@ -31,6 +31,21 @@
     </div>
     <div class="hero-image">
       <img src="headerbild.png" alt="Einsatzsoftware im Einsatz" />
+    </div>
+  </section>
+
+  <!-- News zuerst -->
+  <section class="news" id="news" aria-label="Aktuelles und Neuigkeiten">
+    <h2>Neuigkeiten</h2>
+    <div class="news-list">
+      <article class="news-card">
+        <h3>Neue Version von CommandX veröffentlicht</h3>
+        <p>Die neue Version bietet Verbesserungen in der Bedienbarkeit und Performance.</p>
+      </article>
+      <article class="news-card">
+        <h3>AlertX unterstützt jetzt Standortverfolgung</h3>
+        <p>Echtzeitortung ermöglicht genauere Einsatzkoordination.</p>
+      </article>
     </div>
   </section>
 
@@ -69,32 +84,74 @@
     </div>
   </section>
 
-  <!-- News Bereich -->
-  <section class="news" id="news" aria-label="Aktuelles und Neuigkeiten">
-    <h2>Neuigkeiten</h2>
-    <div class="news-list">
-      <article class="news-card">
-        <h3>Neue Version von CommandX veröffentlicht</h3>
-        <p>Die neue Version bietet Verbesserungen in der Bedienbarkeit und Performance.</p>
-      </article>
-      <article class="news-card">
-        <h3>AlertX unterstützt jetzt Standortverfolgung</h3>
-        <p>Echtzeitortung ermöglicht genauere Einsatzkoordination.</p>
-      </article>
-    </div>
-  </section>
+  <!-- Chatbot-Icon -->
+  <div id="chat-icon" role="button" aria-label="Chatbot öffnen">💬</div>
 
+  <!-- Chatfenster -->
+  <div id="chat-window" role="dialog" aria-label="Unterhaltung mit dem Supportbot">
+    <div id="chat-content">
+      <div class="chat-bubble bot">Hallo! Wie kann ich dir helfen?</div>
+      <div class="options">
+        <button onclick="handleOption('software')">Ich habe ein Problem mit der Software</button>
+        <button onclick="handleOption('fehler')">Ich möchte einen Fehler melden</button>
+        <button onclick="handleOption('interesse')">Ich interessiere mich für ein Produkt</button>
+        <button onclick="resetChat()">Neuen Chat starten</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
   <script>
-    // Theme Switcher
     document.getElementById("theme-toggle").addEventListener("click", function () {
       document.body.classList.toggle("dark-mode");
     });
 
-    // Scroll-Indikator
     window.addEventListener("scroll", () => {
       const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
       document.querySelector('.scroll-indicator').style.width = scrolled + "%";
     });
+
+    // Chatbot
+    document.getElementById("chat-icon").addEventListener("click", () => {
+      document.getElementById("chat-window").classList.toggle("visible");
+    });
+
+    function resetChat() {
+      document.getElementById("chat-content").innerHTML = `
+        <div class="chat-bubble bot">Hallo! Wie kann ich dir helfen?</div>
+        <div class="options">
+          <button onclick="handleOption('software')">Ich habe ein Problem mit der Software</button>
+          <button onclick="handleOption('fehler')">Ich möchte einen Fehler melden</button>
+          <button onclick="handleOption('interesse')">Ich interessiere mich für ein Produkt</button>
+          <button onclick="resetChat()">Neuen Chat starten</button>
+        </div>`;
+    }
+
+    function handleOption(option) {
+      let content = document.getElementById("chat-content");
+      if (option === "software") {
+        content.innerHTML += `<div class="chat-bubble bot">Welches Produkt betrifft dein Problem?</div>
+          <div class="options">
+            <button onclick="alert('Support wird benachrichtigt für AlertX')">AlertX</button>
+            <button onclick="alert('Support wird benachrichtigt für CommandX')">CommandX</button>
+            <button onclick="alert('Support wird benachrichtigt für CommandX.Mobile')">CommandX.Mobile</button>
+            <button onclick="alert('Support wird benachrichtigt für CommandX.WIS')">CommandX.WIS</button>
+            <button onclick="resetChat()">Neuen Chat starten</button>
+          </div>`;
+      } else if (option === "fehler") {
+        content.innerHTML += `<div class="chat-bubble bot">Bitte wenden Sie sich an <strong>support@eurocommand.de</strong></div>
+          <button onclick="resetChat()">Neuen Chat starten</button>`;
+      } else if (option === "interesse") {
+        content.innerHTML += `<div class="chat-bubble bot">Für welches Produkt interessieren Sie sich?</div>
+          <div class="options">
+            <button onclick="alert('Ansprechpartner: Max Mustermann für AlertX')">AlertX</button>
+            <button onclick="alert('Ansprechpartnerin: Lisa Schmidt für CommandX')">CommandX</button>
+            <button onclick="alert('Ansprechpartner: Tom Becker für CommandX.Mobile')">CommandX.Mobile</button>
+            <button onclick="alert('Ansprechpartnerin: Julia König für CommandX.WIS')">CommandX.WIS</button>
+            <button onclick="resetChat()">Neuen Chat starten</button>
+          </div>`;
+      }
+    }
   </script>
 </body>
 </html>
