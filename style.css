@@ -172,34 +172,22 @@ body {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Chatbot Styles */
-.chat-toggle {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  font-size: 1.5rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  cursor: pointer;
-}
-
+/* Chatbot modernes Redesign */
 .chat-window {
   position: fixed;
   bottom: 5rem;
   right: 2rem;
-  width: 300px;
-  max-width: 90vw;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  width: 320px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   display: none;
   flex-direction: column;
-  z-index: 1000;
   overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 999;
 }
 
 .chat-window.visible {
@@ -210,33 +198,91 @@ body {
   background: #007bff;
   color: white;
   padding: 1rem;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 .chat-body {
   padding: 1rem;
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chat-body p {
+  margin: 0;
+  font-size: 0.95rem;
 }
 
 .chat-body button {
-  display: block;
-  margin: 0.5rem 0;
-  width: 100%;
+  padding: 0.6rem 1rem;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  font-size: 0.95rem;
+}
+
+.chat-body button:hover {
+  background: #eaeaea;
+  transform: scale(1.02);
 }
 
 .chat-footer {
-  padding: 0.5rem;
-  background: #f0f0f0;
+  padding: 0.75rem 1rem;
+  background: #fafafa;
+  border-top: 1px solid #e0e0e0;
   text-align: right;
 }
 
+.chat-footer button {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+  background: #e0e0e0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-footer button:hover {
+  background: #ccc;
+}
+
+/* Dark Mode Anpassungen */
 .dark .chat-window {
-  background: #2c2c2c;
+  background: #1e1e1e;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.dark .chat-body button {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: #eee;
+}
+
+.dark .chat-body button:hover {
+  background: #333;
+}
+
+.dark .chat-footer {
+  background: #2a2a2a;
+  border-top: 1px solid #444;
+}
+
+.dark .chat-footer button {
+  background: #444;
   color: #fff;
 }
 
-.dark .chat-header {
-  background: #004a99;
+.dark .chat-footer button:hover {
+  background: #555;
 }
 
 /* Dark Mode Kontraste */
