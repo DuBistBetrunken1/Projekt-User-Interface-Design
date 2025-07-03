@@ -113,100 +113,71 @@
   </section>
 
 <!-- Chatbot Button -->
-<button class="chat-toggle" id="chatToggle" aria-label="Support Chat öffnen">💬</button>
+  <button class="chat-toggle" id="chatToggle" aria-label="Support Chat öffnen">💬</button>
 
-<!-- Neuer Moderner Chatbot -->
-<div class="chatbot" id="chatbot">
-  <div class="chatbot-header">
-    <span>💬 Eurocommand Chat</span>
-    <button id="chatClose">✖</button>
-  </div>
-  <div class="chatbot-messages" id="chatMessages">
-    <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
-    <div class="chatbot-options" id="chatOptions">
-      <button onclick="handleChat('software')">🛠 Softwareproblem</button>
-      <button onclick="handleChat('bug')">🐞 Fehler melden</button>
-      <button onclick="handleChat('interest')">📦 Interesse</button>
-      <button onclick="handleChat('other')">❓ Sonstiges</button>
+  <!-- Moderner Chatbot -->
+  <div class="chatbot" id="chatbot">
+    <div class="chatbot-header">
+      <span>💬 Eurocommand Chat</span>
+      <button id="chatClose">✖</button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
+      <div class="chatbot-options" id="chatOptions">
+        <button onclick="handleChat('software')">🛠 Softwareproblem</button>
+        <button onclick="handleChat('bug')">🐞 Fehler melden</button>
+        <button onclick="handleChat('interest')">📦 Interesse</button>
+        <button onclick="handleChat('other')">❓ Sonstiges</button>
+      </div>
+    </div>
+    <div class="chatbot-footer">
+      <button onclick="resetChat()">🔁 Zurück</button>
     </div>
   </div>
-  <div class="chatbot-footer">
-    <button onclick="resetChat()">🔁 Zurück</button>
-  </div>
-</div>
 
+  <script>
+    const chatbot = document.getElementById("chatbot");
+    const chatToggle = document.getElementById("chatToggle");
+    const chatClose = document.getElementById("chatClose");
+    const chatMessages = document.getElementById("chatMessages");
+    const chatOptions = document.getElementById("chatOptions");
 
-<script>
-  const chatbot = document.getElementById("chatbot");
-const chatToggle = document.getElementById("chatToggle");
-const chatClose = document.getElementById("chatClose");
-const chatMessages = document.getElementById("chatMessages");
-const chatOptions = document.getElementById("chatOptions");
+    chatToggle.onclick = () => chatbot.classList.add("visible");
+    chatClose.onclick = () => chatbot.classList.remove("visible");
 
-chatToggle.onclick = () => chatbot.classList.toggle("visible");
-chatClose.onclick = () => chatbot.classList.remove("visible");
-
-function resetChat() {
-  chatMessages.innerHTML = `
-    <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
-    <div class="chatbot-options" id="chatOptions">
-      <button onclick="handleChat('software')">🛠 Softwareproblem</button>
-      <button onclick="handleChat('bug')">🐞 Fehler melden</button>
-      <button onclick="handleChat('interest')">📦 Interesse</button>
-      <button onclick="handleChat('other')">❓ Sonstiges</button>
-    </div>`;
-}
-
-function handleChat(type) {
-  const messages = {
-    software: "Welches Produkt bereitet dir Probleme?",
-    bug: "Bitte beschreibe den Fehler möglichst genau.",
-    interest: "Für welches Produkt interessierst du dich?",
-    other: "Bitte schildere dein Anliegen.",
-  };
-  chatMessages.innerHTML += `<div class="bot-msg">${messages[type]}</div>`;
-  chatOptions.style.display = "none";
-}
-
-
-  function chatResponse(type) {
-    if (type === 'software') {
-      body.innerHTML = `
-        <p>Welches Produkt betrifft das Problem?</p>
-        <div class="chat-options grid">
-          <button>AlertX</button>
-          <button>CommandX</button>
-          <button>CommandX.Mobile</button>
-          <button>CommandX.WIS</button>
-        </div>`;
-    } else if (type === 'bug') {
-      body.innerHTML = `
-        <p>Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</p>`;
-    } else if (type === 'interest') {
-      body.innerHTML = `
-        <p>Für welches Produkt interessieren Sie sich?</p>
-        <div class="chat-options grid">
-          <button>AlertX</button>
-          <button>CommandX</button>
-          <button>CommandX.Mobile</button>
-          <button>CommandX.WIS</button>
+    function resetChat() {
+      chatMessages.innerHTML = `
+        <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
+        <div class="chatbot-options" id="chatOptions">
+          <button onclick="handleChat('software')">🛠 Softwareproblem</button>
+          <button onclick="handleChat('bug')">🐞 Fehler melden</button>
+          <button onclick="handleChat('interest')">📦 Interesse</button>
+          <button onclick="handleChat('other')">❓ Sonstiges</button>
         </div>`;
     }
-  }
 
-  // Dark Mode Umschalten
-  document.getElementById("darkModeToggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
-  });
+    function handleChat(type) {
+      const messages = {
+        software: "Welches Produkt bereitet dir Probleme?",
+        bug: "Bitte beschreibe den Fehler möglichst genau.",
+        interest: "Für welches Produkt interessierst du dich?",
+        other: "Bitte schildere dein Anliegen.",
+      };
+      chatMessages.innerHTML += `<div class="bot-msg">${messages[type]}</div>`;
+      chatOptions.style.display = "none";
+    }
 
-  // Dark Mode beim Laden setzen
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-  }
+    // Dark Mode
+    document.getElementById("darkModeToggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    });
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+    }
 
-  // Chat beim Laden zurücksetzen
-  resetChat();
-</script>
+    // Init Chat
+    resetChat();
+  </script>
 </body>
 </html>
