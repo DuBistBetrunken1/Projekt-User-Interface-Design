@@ -137,23 +137,37 @@
 
 
 <script>
-  const toggle = document.getElementById("chatToggle");
-  const chat = document.getElementById("chatWindow");
-  const body = document.getElementById("chatBody");
+  const chatbot = document.getElementById("chatbot");
+const chatToggle = document.getElementById("chatToggle");
+const chatClose = document.getElementById("chatClose");
+const chatMessages = document.getElementById("chatMessages");
+const chatOptions = document.getElementById("chatOptions");
 
-  toggle.onclick = () => {
-    chat.classList.toggle("visible");
+chatToggle.onclick = () => chatbot.classList.toggle("visible");
+chatClose.onclick = () => chatbot.classList.remove("visible");
+
+function resetChat() {
+  chatMessages.innerHTML = `
+    <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
+    <div class="chatbot-options" id="chatOptions">
+      <button onclick="handleChat('software')">🛠 Softwareproblem</button>
+      <button onclick="handleChat('bug')">🐞 Fehler melden</button>
+      <button onclick="handleChat('interest')">📦 Interesse</button>
+      <button onclick="handleChat('other')">❓ Sonstiges</button>
+    </div>`;
+}
+
+function handleChat(type) {
+  const messages = {
+    software: "Welches Produkt bereitet dir Probleme?",
+    bug: "Bitte beschreibe den Fehler möglichst genau.",
+    interest: "Für welches Produkt interessierst du dich?",
+    other: "Bitte schildere dein Anliegen.",
   };
+  chatMessages.innerHTML += `<div class="bot-msg">${messages[type]}</div>`;
+  chatOptions.style.display = "none";
+}
 
-  function resetChat() {
-    body.innerHTML = `
-      <p>Hallo! Wie kann ich dir helfen?</p>
-      <div class="chat-options">
-        <button onclick="chatResponse('software')">Ich habe ein Problem mit der Software</button>
-        <button onclick="chatResponse('bug')">Ich möchte einen Fehler melden</button>
-        <button onclick="chatResponse('interest')">Ich interessiere mich für eins der Produkte</button>
-      </div>`;
-  }
 
   function chatResponse(type) {
     if (type === 'software') {
