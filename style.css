@@ -1,4 +1,4 @@
-/* Grundlegendes Layout */
+/* Grundlayout */
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
@@ -12,7 +12,7 @@ body {
   color: #f0f0f0;
 }
 
-/* Header-Bereich */
+/* Header */
 .header {
   padding: 2rem;
   background: linear-gradient(to right, #222, #444);
@@ -86,7 +86,7 @@ body {
   cursor: pointer;
 }
 
-/* News Section */
+/* News */
 .news-section {
   padding: 2rem;
   background-color: #f9f9f9;
@@ -112,7 +112,11 @@ body {
   background: #2c2c2c;
 }
 
-/* Neue Produkt-Sektion im Split-Layout */
+.dark .news-panel strong {
+  color: #ffcc00;
+}
+
+/* Produkte (abwechselnd links/rechts) */
 .products-section {
   padding: 4rem 2rem;
   max-width: 1200px;
@@ -172,7 +176,23 @@ body {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Chatbot modernes Redesign */
+/* Chatbot Toggle Button */
+.chat-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Moderner Chatbot Stil */
 .chat-window {
   position: fixed;
   bottom: 5rem;
@@ -254,7 +274,7 @@ body {
   background: #ccc;
 }
 
-/* Dark Mode Anpassungen */
+/* Dark Mode für Chat */
 .dark .chat-window {
   background: #1e1e1e;
   color: #fff;
@@ -285,16 +305,7 @@ body {
   background: #555;
 }
 
-/* Dark Mode Kontraste */
-.dark .top-nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.dark .news-panel strong {
-  color: #ffcc00;
-}
-
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
@@ -317,5 +328,16 @@ body {
 
   .product-image img {
     max-width: 90%;
+  }
+
+  .chat-window {
+    right: 1rem;
+    width: 95%;
+    bottom: 1rem;
+  }
+
+  .chat-toggle {
+    right: 1rem;
+    bottom: 1rem;
   }
 }
