@@ -55,33 +55,62 @@ h1, h2 {
 }
 
 /* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+  padding: 2rem 5%;
+  min-height: 500px;
+}
+
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
-  gap: 2rem;
-  flex-wrap: wrap;
+  gap: 4rem;
+  max-width: 1400px;
+  width: 100%;
 }
 
 .header-left {
-  flex: 1 1 45%;
+  flex: 1;
 }
 
-.header-right {
-  flex: 1 1 45%;
+.header-left h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.header-left .claim {
+  font-size: 1.5rem;
+  color: #c4002b;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
 .logo {
-  width: 180px;
-  margin-top: 1rem;
+  max-width: 220px;
+  height: auto;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .header-image {
-  width: 100%;
-  max-width: 400px;
+  position: relative;
+  max-width: 100%;
   height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.6), transparent 60%);
 }
+
+
 
 /* News */
 .news-section {
