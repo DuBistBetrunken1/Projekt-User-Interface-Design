@@ -1,4 +1,5 @@
-/* Grundlayout */
+
+/* === Grundlayout === */
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
@@ -6,59 +7,43 @@ body {
   color: #111;
   transition: background-color 0.3s, color 0.3s;
 }
-
 .dark {
   background-color: #121212;
   color: #f0f0f0;
 }
 
-/* Header */
+/* === Header === */
 .header {
   padding: 2rem;
   background: linear-gradient(to right, #222, #444);
   color: white;
 }
-
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
-
-.header-left {
+.header-left, .header-right {
   flex: 1;
   min-width: 280px;
 }
-
 .header-left h1 {
   font-size: 2rem;
-  margin-bottom: 0.5rem;
 }
-
 .claim {
   font-size: 1.2rem;
   font-weight: 300;
-  margin-bottom: 1rem;
 }
-
 .logo {
   max-width: 200px;
-  height: auto;
 }
-
-.header-right {
-  flex: 1;
-  text-align: right;
-  min-width: 280px;
-}
-
 .header-image {
   max-width: 100%;
   border-radius: 12px;
 }
 
-/* Navigation */
+/* === Navigation === */
 .top-nav ul {
   list-style: none;
   padding: 0;
@@ -67,18 +52,15 @@ body {
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 .top-nav a {
   color: inherit;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
 }
-
 .top-nav a:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-
 .top-nav button {
   background: none;
   border: none;
@@ -86,20 +68,14 @@ body {
   cursor: pointer;
 }
 
-/* News */
+/* === News === */
 .news-section {
   padding: 2rem;
   background-color: #f9f9f9;
 }
-
 .dark .news-section {
   background-color: #1e1e1e;
 }
-
-.news-section h2 {
-  margin-bottom: 1rem;
-}
-
 .news-panel {
   background: white;
   border-left: 5px solid #ffcc00;
@@ -107,28 +83,23 @@ body {
   margin-bottom: 1rem;
   border-radius: 8px;
 }
-
 .dark .news-panel {
   background: #2c2c2c;
 }
-
 .dark .news-panel strong {
   color: #ffcc00;
 }
 
-/* Produkte (abwechselnd links/rechts) */
+/* === Produkte === */
 .products-section {
   padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .products-section h2 {
-  font-size: 2rem;
   text-align: center;
   margin-bottom: 3rem;
 }
-
 .product-row {
   display: flex;
   align-items: center;
@@ -137,38 +108,19 @@ body {
   margin-bottom: 4rem;
   flex-wrap: wrap;
 }
-
 .product-row.reverse {
   flex-direction: row-reverse;
 }
-
 .product-text {
   flex: 1;
   min-width: 280px;
 }
-
-.product-text h3 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.product-text p {
-  font-size: 1rem;
-  color: #444;
-  line-height: 1.6;
-}
-
-.dark .product-text p {
-  color: #ccc;
-}
-
 .product-image {
   flex: 1;
   min-width: 280px;
   display: flex;
   justify-content: center;
 }
-
 .product-image img {
   width: 100%;
   max-width: 500px;
@@ -176,7 +128,82 @@ body {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Chatbot Toggle Button */
+/* === CTA === */
+.cta-section {
+  background-color: #000;
+  color: white;
+  padding: 4rem 2rem;
+}
+.cta-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cta-text {
+  flex: 1;
+  min-width: 280px;
+}
+.cta-button {
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.cta-image {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
+.cta-image img {
+  max-width: 100%;
+}
+
+/* === Formular === */
+.form-section {
+  padding: 4rem 2rem;
+  background-color: #f5f5f5;
+}
+.form-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.form-text h2 {
+  font-size: 1.8rem;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.form-footer button {
+  background-color: #ffcc00;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* === Chatbot === */
 .chat-toggle {
   position: fixed;
   bottom: 2rem;
@@ -191,223 +218,60 @@ body {
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
-
-/* Moderner Chatbot im Messenger-Stil */
 .chat-window {
   position: fixed;
   bottom: 5rem;
   right: 2rem;
-  width: 360px;
-  max-width: 95%;
-  background: #f0f0f0;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  width: 320px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   display: none;
   flex-direction: column;
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
-  z-index: 1000;
   border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 999;
 }
-
 .chat-window.visible {
   display: flex;
 }
-
 .chat-header {
-  background: #1a2c4b;
+  background: #007bff;
   color: white;
   padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-weight: 600;
 }
-
-.chat-title {
+.chat-body {
+  padding: 1rem;
   display: flex;
+  flex-direction: column;
   gap: 0.75rem;
-  align-items: center;
 }
-
-.chat-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: white;
+.chat-body p {
+  margin: 0;
 }
-
-.chat-close {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-
-.chat-messages {
-  padding: 1rem;
-  flex-grow: 1;
-  overflow-y: auto;
+.chat-options {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  background: #eeeeee;
 }
-
-.message {
-  padding: 0.7rem 1rem;
-  border-radius: 16px;
-  max-width: 80%;
-  word-wrap: break-word;
-  font-size: 0.95rem;
-}
-
-.message.bot {
-  background: white;
-  align-self: flex-start;
-}
-
-.message.user {
-  background: #007bff;
-  color: white;
-  align-self: flex-end;
-}
-
-.message.option {
-  background: #fff;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.message.option:hover {
-  background: #e6e6e6;
-}
-
-.chat-input {
-  border-top: 1px solid #ccc;
-  padding: 0.5rem;
-  display: flex;
-  gap: 0.5rem;
-  background: #fff;
-}
-
-.chat-input input {
-  flex: 1;
-  padding: 0.6rem;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  font-size: 0.9rem;
-  background: #f9f9f9;
-}
-
-.chat-input button {
-  background: #eee;
-  border: none;
-  border-radius: 50%;
-  width: 2.2rem;
-  height: 2.2rem;
-  cursor: not-allowed;
-}
-/* Option-Grid für 2x2-Layout */
-.option-grid {
+.chat-options.grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
-  align-self: stretch;
 }
-
-/* Buttons bleiben gleich */
-.message.option {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 0.6rem 1rem;
+.chat-body button {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
   cursor: pointer;
-  text-align: center;
-  transition: background 0.2s;
 }
-
-.message.option:hover {
-  background: #e6e6e6;
-}
-
-
-/* Dark Mode für Chat */
-.dark .chat-window {
-  background: #1e1e1e;
-  color: #fff;
-  border: 1px solid #333;
-}
-
-.dark .chat-messages {
-  background: #2a2a2a;
-}
-
-.dark .message.bot {
-  background: #3a3a3a;
-  color: #eee;
-}
-
-.dark .message.option {
-  background: #2a2a2a;
-  border: 1px solid #444;
-  color: #eee;
-}
-
-.dark .message.option:hover {
-  background: #333;
-}
-
-.dark .chat-input {
-  background: #1e1e1e;
-  border-top: 1px solid #444;
-}
-
-.dark .chat-input input {
-  background: #2a2a2a;
-  color: white;
-  border: 1px solid #444;
-}
-
-.dark .chat-input button {
-  background: #444;
-  color: #ccc;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .header-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .header-right {
-    margin-top: 1rem;
-  }
-
-  .top-nav ul {
-    justify-content: center;
-  }
-
-  .product-row,
-  .product-row.reverse {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .product-image img {
-    max-width: 90%;
-  }
-
-  .chat-window {
-    right: 1rem;
-    width: 95%;
-    bottom: 1rem;
-  }
-
-  .chat-toggle {
-    right: 1rem;
-    bottom: 1rem;
-  }
+.chat-footer {
+  padding: 0.75rem 1rem;
+  background: #fafafa;
+  border-top: 1px solid #e0e0e0;
+  text-align: right;
 }
