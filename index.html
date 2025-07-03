@@ -113,25 +113,25 @@
   </section>
 
   <!-- Chatbot Button -->
-  <button class="chat-toggle" id="chatToggle" aria-label="Support Chat öffnen">💬</button>
+<button class="chat-toggle" id="chatToggle" aria-label="Support Chat öffnen">💬</button>
 
-  <!-- Chatbot -->
-  <div class="chat-window" id="chatWindow">
-    <div class="chat-header">💬 Support-Chat</div>
-    <div class="chat-body" id="chatBody">
-      <p>Hallo! Wie kann ich dir helfen?</p>
-      <div class="chat-options">
-        <button onclick="chatResponse('software')">Ich habe ein Problem mit der Software</button>
-        <button onclick="chatResponse('bug')">Ich möchte einen Fehler melden</button>
-        <button onclick="chatResponse('interest')">Ich interessiere mich für eins der Produkte</button>
-      </div>
-    </div>
-    <div class="chat-footer">
-      <button onclick="resetChat()">🔄 Neustart</button>
+<!-- Moderner Chatbot -->
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">💬 Support-Chat</div>
+  <div class="chat-body" id="chatBody">
+    <p>Hallo! Wie kann ich dir helfen?</p>
+    <div class="chat-options">
+      <button onclick="chatResponse('software')">Ich habe ein Problem mit der Software</button>
+      <button onclick="chatResponse('bug')">Ich möchte einen Fehler melden</button>
+      <button onclick="chatResponse('interest')">Ich interessiere mich für eins der Produkte</button>
     </div>
   </div>
+  <div class="chat-footer">
+    <button onclick="resetChat()">🔄 Neustart</button>
+  </div>
+</div>
 
-  <script>
+<script>
   const toggle = document.getElementById("chatToggle");
   const chat = document.getElementById("chatWindow");
   const body = document.getElementById("chatBody");
@@ -161,7 +161,8 @@
           <button>CommandX.WIS</button>
         </div>`;
     } else if (type === 'bug') {
-      body.innerHTML = `<p>Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</p>`;
+      body.innerHTML = `
+        <p>Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</p>`;
     } else if (type === 'interest') {
       body.innerHTML = `
         <p>Für welches Produkt interessieren Sie sich?</p>
