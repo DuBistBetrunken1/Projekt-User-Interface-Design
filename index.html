@@ -115,10 +115,7 @@
         <strong>Wie kann ich dir helfen?</strong>
         <span>Eurocommand Chatbot</span>
       </div>
-      <div class="chatbot-controls">
-        <button onclick="resetChat()" title="Zurücksetzen">🔄</button>
-        <button onclick="toggleChat()" title="Schließen">×</button>
-      </div>
+      <button onclick="toggleChat()">×</button>
     </div>
 
     <div class="chatbot-messages" id="chatMessages">
@@ -163,8 +160,10 @@
     function sendMessage() {
       const message = userInput.value.trim();
       if (!message) return;
+
       appendUserMessage(message);
       userInput.value = "";
+
       setTimeout(() => {
         appendBotMessage("Vielen Dank für deine Nachricht! Wir melden uns bald.");
       }, 600);
@@ -186,19 +185,6 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    function resetChat() {
-      chatMessages.innerHTML = `
-        <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
-        <div class="chatbot-options" id="chatOptions">
-          <button onclick="handleChat('software')">🛠 Softwareproblem</button>
-          <button onclick="handleChat('bug')">🐞 Fehler melden</button>
-          <button onclick="handleChat('interest')">📦 Interesse</button>
-          <button onclick="handleChat('other')">❓ Sonstiges</button>
-        </div>
-      `;
-    }
-
-    // Darkmode Umschalten
     darkToggle.addEventListener("click", () => {
       document.body.classList.toggle("dark");
     });
