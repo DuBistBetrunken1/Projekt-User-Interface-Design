@@ -24,7 +24,6 @@ body {
   color: white;
 }
 
-
 /* === Navigation === */
 .top-nav ul {
   list-style: none;
@@ -200,11 +199,12 @@ body {
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+
 .chat-window {
   position: fixed;
   bottom: 5rem;
   right: 2rem;
-  width: 320px;
+  width: 340px;
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -243,6 +243,11 @@ body {
   flex-direction: column;
   gap: 0.5rem;
 }
+.chat-options.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
 .chat-options.grid button {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
@@ -274,4 +279,24 @@ body {
   background: #fafafa;
   border-top: 1px solid #e0e0e0;
   text-align: right;
+}
+.bot-msg {
+  background-color: #f1f1f1;
+  padding: 0.75rem;
+  border-radius: 10px;
+  max-width: 90%;
+}
+.user-msg {
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 10px;
+  max-width: 90%;
+  align-self: flex-end;
+}
+.dark .bot-msg {
+  background-color: #2a2a2a;
+}
+.dark .user-msg {
+  background-color: #0056b3;
 }
