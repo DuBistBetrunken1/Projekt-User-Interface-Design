@@ -4,179 +4,224 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eurocommand Startseite</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #e1f0f2;
+      color: #111;
+    }
+
+    /* Navigation */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: white;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    .nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 5%;
+      background-color: white;
+    }
+
+    .hero-text h1 {
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .slogan {
+      font-size: 1.2rem;
+      color: #c8102e;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+
+    .hero-logo {
+      margin-top: 1rem;
+      height: 50px;
+    }
+
+    .hero-image img {
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    /* Chatbot Button */
+    #chat-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 1.8rem;
+      background-color: #c8102e;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 998;
+    }
+
+    /* Chatbot Box */
+    .chatbot {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 280px;
+      display: none;
+      flex-direction: column;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 999;
+      overflow: hidden;
+    }
+
+    .chatbot-header {
+      background: #c8102e;
+      color: white;
+      padding: 0.8rem;
+      font-weight: bold;
+    }
+
+    .chatbot-body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .message {
+      padding: 0.5rem 0.8rem;
+      border-radius: 10px;
+      max-width: 90%;
+    }
+
+    .message.bot {
+      background: #eee;
+      align-self: flex-start;
+    }
+
+    .message.user {
+      background: #c8102e;
+      color: white;
+      align-self: flex-end;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .button-group button {
+      padding: 0.5rem;
+      background-color: #e1f0f2;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      text-align: left;
+    }
+
+    .button-group button:hover {
+      background-color: #d0e2e4;
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Navigation -->
   <header class="header" role="banner">
-    <img src="logo.png" alt="Logo der Eurocommand GmbH" class="logo" />
-    <nav class="nav" role="navigation" aria-label="Hauptnavigation">
+    <img src="logo.png" alt="Eurocommand Logo" class="logo" />
+    <nav class="nav" role="navigation">
       <a href="#">Produkte</a>
-      <a href="#">Kritis</a>
       <a href="#">Service</a>
       <a href="#">Unternehmen</a>
       <a href="#">Kontakt</a>
     </nav>
   </header>
 
-  <main role="main">
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Die digitale Führungsunterstützungsplattform</h1>
-        <div class="slogan">Einfach. Intuitiv. Ausfallsicher.</div>
-        <img src="cmx_logo.png" alt="CommandX Logo" class="hero-logo" />
-      </div>
-      <div class="hero-image">
-        <img src="headerbild.png" alt="Illustration zur Führungsunterstützung" />
-      </div>
-    </section>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Die digitale Führungsunterstützungsplattform</h1>
+      <div class="slogan">Einfach. Intuitiv. Ausfallsicher.</div>
+      <img src="cmx_logo.png" alt="CommandX Logo" class="hero-logo" />
+    </div>
+    <div class="hero-image">
+      <img src="headerbild.png" alt="Headerbild" />
+    </div>
+  </section>
 
-    <section class="product-slider" aria-label="Produktvorstellung">
-      <div class="slider-container" aria-live="polite">
-        <button class="slider-btn" onclick="changeSlide(-1)" aria-label="Vorheriges Produkt">&#8592;</button>
+  <!-- Chatbot Button -->
+  <button id="chat-icon" onclick="toggleChat()" aria-label="Chat öffnen">💬</button>
 
-        <div class="slide active">
-          <img src="alertx.png" alt="Produktbild von AlertX – der Alarmierungs-App" />
-          <div class="slide-text">
-            <h2>AlertX</h2>
-            <h3>Die multifunktionale Alarmierungs-App</h3>
-            <p>Effiziente Alarmierung für jede Lage.</p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="commandx.png" alt="Produktbild von CommandX" />
-          <div class="slide-text">
-            <h2>CommandX</h2>
-            <h3>Die webbasierte Einsatzplattform</h3>
-            <p>Zentrale Steuerung aller Einsatzdaten auf einen Blick.</p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="commandxmobile.png" alt="CommandX.Mobile auf dem Tablet" />
-          <div class="slide-text">
-            <h2>CommandX.MOBILE</h2>
-            <h3>Mobil führen wie im Stab</h3>
-            <p>Offlinefähig, intuitiv, einsatzbereit.</p>
-          </div>
-        </div>
-
-        <div class="slide">
-          <img src="commandxwis.png" alt="CommandX.WIS Anzeigesystem" />
-          <div class="slide-text">
-            <h2>CommandX.WIS</h2>
-            <h3>Alarm- und Informationsanzeige</h3>
-            <p>Flexibel konfigurierbar und sofort einsatzbereit.</p>
-          </div>
-        </div>
-
-        <button class="slider-btn" onclick="changeSlide(1)" aria-label="Nächstes Produkt">&#8594;</button>
-      </div>
-    </section>
-
-    <section class="news" aria-labelledby="news-heading">
-      <h2 id="news-heading">Neuigkeiten</h2>
-      <div class="news-container">
-        <article class="news-item">
-          <h3>AlertX Update</h3>
-          <p>Alarmgruppen direkt aus der Übersicht bearbeiten.</p>
-        </article>
-        <article class="news-item">
-          <h3>CommandX für Tablets</h3>
-          <p>Jetzt optimiert für mobile Geräte und Touchbedienung.</p>
-        </article>
-        <article class="news-item">
-          <h3>Besuchen Sie uns auf der Interschutz</h3>
-          <p>20.–25. Juni 2025 in Hannover.</p>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <!-- Chatbot UI -->
+  <!-- Chatbot-Fenster -->
   <div class="chatbot" id="chatbot">
-    <div class="chatbot-header" onclick="toggleChat()">💬 Hilfe</div>
+    <div class="chatbot-header">💬 Hilfe</div>
     <div class="chatbot-body" id="chat-body">
       <div class="message bot">Hallo! Wie kann ich dir helfen?</div>
-    </div>
-    <div class="chatbot-input">
-      <input type="text" id="chat-input" placeholder="Deine Nachricht..." onkeydown="handleChat(event)" />
-    </div>
-  </div>
-
-  <!-- Chatbot Icon -->
-<button id="chat-icon" onclick="toggleChat()" aria-label="Chat starten">💬</button>
-
-<!-- Chatbot Fenster -->
-<div class="chatbot" id="chatbot">
-  <div class="chatbot-header">💬 Hilfe</div>
-  <div class="chatbot-body" id="chat-body">
-    <div class="message bot">Hallo! Wie kann ich dir helfen?</div>
-    <div class="button-group">
-      <button onclick="handleOption('software')">Ich habe ein Problem mit der Software</button>
-      <button onclick="handleOption('fehler')">Ich möchte einen Fehler melden</button>
-      <button onclick="handleOption('interesse')">Ich interessiere mich für eins der Produkte</button>
+      <div class="button-group">
+        <button onclick="handleOption('software')">Ich habe ein Problem mit der Software</button>
+        <button onclick="handleOption('fehler')">Ich möchte einen Fehler melden</button>
+        <button onclick="handleOption('interesse')">Ich interessiere mich für eins der Produkte</button>
+      </div>
     </div>
   </div>
-</div>
 
-  <!-- JavaScript direkt eingebunden -->
+  <!-- JavaScript -->
   <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-
-    function changeSlide(direction) {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + direction + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }
-
-    let chatStage = 0;
-    let selectedProduct = "";
-
     function toggleChat() {
-      document.getElementById('chatbot').classList.toggle('active');
+      const chat = document.getElementById('chatbot');
+      chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
     }
 
-    function handleChat(event) {
-      if (event.key === 'Enter') {
-        const input = document.getElementById('chat-input');
-        const text = input.value.trim();
-        if (!text) return;
+    function handleOption(option) {
+      const chatBody = document.getElementById('chat-body');
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user';
 
-        const chatBody = document.getElementById('chat-body');
+      let botResponse = '';
 
-        const userMsg = document.createElement('div');
-        userMsg.className = 'message user';
-        userMsg.textContent = text;
-        chatBody.appendChild(userMsg);
-
-        const botMsg = document.createElement('div');
-        botMsg.className = 'message bot';
-
-        if (chatStage === 0) {
-          if (text.toLowerCase().includes('problem') || text.toLowerCase().includes('hilfe')) {
-            botMsg.textContent = 'Kein Problem! Welches Produkt betrifft dein technisches Problem? (z.B. AlertX, CommandX)';
-            chatStage = 1;
-          } else {
-            botMsg.textContent = 'Hallo! Wie kann ich dir helfen? Du kannst z.B. "Ich habe ein Problem" schreiben.';
-          }
-        } else if (chatStage === 1) {
-          selectedProduct = text;
-          botMsg.textContent = `Danke! Was genau funktioniert bei ${selectedProduct} nicht wie erwartet?`;
-          chatStage = 2;
-        } else if (chatStage === 2) {
-          botMsg.textContent = 'Danke für die Information. Ich leite dein Anliegen an unseren Support weiter. Ein Kollege wird sich gleich mit dir verbinden.';
-          chatStage = 3;
-        } else {
-          botMsg.textContent = 'Unser Support wird sich gleich bei dir melden. Danke für deine Geduld.';
-        }
-
-        chatBody.appendChild(botMsg);
-        chatBody.scrollTop = chatBody.scrollHeight;
-        input.value = '';
+      if (option === 'software') {
+        userMsg.textContent = 'Ich habe ein Problem mit der Software';
+        botResponse = 'Kein Problem! Welches Produkt betrifft dein Problem?';
+      } else if (option === 'fehler') {
+        userMsg.textContent = 'Ich möchte einen Fehler melden';
+        botResponse = 'Bitte nutze unser Ticketsystem unter support.eurocommand.com – Danke!';
+      } else if (option === 'interesse') {
+        userMsg.textContent = 'Ich interessiere mich für eins der Produkte';
+        botResponse = 'Gerne! Welches Produkt interessiert dich am meisten?';
       }
+
+      chatBody.appendChild(userMsg);
+
+      const botMsg = document.createElement('div');
+      botMsg.className = 'message bot';
+      botMsg.textContent = botResponse;
+      chatBody.appendChild(botMsg);
+
+      const btnGroup = document.querySelector('.button-group');
+      if (btnGroup) btnGroup.remove();
     }
   </script>
 
