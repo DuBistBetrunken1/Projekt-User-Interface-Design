@@ -105,6 +105,22 @@
     </div>
   </div>
 
+  <!-- Chatbot Icon -->
+<button id="chat-icon" onclick="toggleChat()" aria-label="Chat starten">💬</button>
+
+<!-- Chatbot Fenster -->
+<div class="chatbot" id="chatbot">
+  <div class="chatbot-header">💬 Hilfe</div>
+  <div class="chatbot-body" id="chat-body">
+    <div class="message bot">Hallo! Wie kann ich dir helfen?</div>
+    <div class="button-group">
+      <button onclick="handleOption('software')">Ich habe ein Problem mit der Software</button>
+      <button onclick="handleOption('fehler')">Ich möchte einen Fehler melden</button>
+      <button onclick="handleOption('interesse')">Ich interessiere mich für eins der Produkte</button>
+    </div>
+  </div>
+</div>
+
   <!-- JavaScript direkt eingebunden -->
   <script>
     let currentSlide = 0;
