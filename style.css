@@ -304,4 +304,37 @@ body {
   border-color: #666;
   color: white;
 }
+.chatbot-footer {
+  padding: 0.75rem 1rem;
+  background: #fafafa;
+  border-top: 1px solid #e0e0e0;
+  text-align: right;
+}
+
+.reset-btn {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  border: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.reset-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.dark .reset-btn {
+  background-color: #3a3a3a;
+  color: white;
+}
+
+.dark .reset-btn:hover {
+  background-color: #555;
+}
 
