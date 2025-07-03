@@ -215,9 +215,13 @@ body {
   border: 1px solid #e0e0e0;
   transition: transform 0.3s ease, opacity 0.3s ease;
   z-index: 999;
+  transform: scale(0.95);
+  opacity: 0;
 }
 .chat-window.visible {
   display: flex;
+  transform: scale(1);
+  opacity: 1;
 }
 .chat-header {
   background: #007bff;
