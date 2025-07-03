@@ -3,128 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eurocommand Startseite</title>
+  <title>Eurocommand</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav class="top-nav">
-    <ul>
-      <li><a href="#">Produkte</a></li>
-      <li><a href="#">Service</a></li>
-      <li><a href="#">Unternehmen</a></li>
-      <li><a href="#">Kontakt</a></li>
-      <li><button id="darkModeToggle" aria-label="Dark Mode umschalten">🌙</button></li>
-    </ul>
-  </nav>
-
-  <!-- Header -->
   <header class="header">
-    <div class="header-wrapper">
+    <div class="header-content">
       <div class="header-left">
-        <h1>Die digitale<br>Führungsunterstützungsplattform</h1>
+        <h1>Die digitale Führungsunterstützungsplattform</h1>
         <p class="claim">Einfach. Intuitiv. Ausfallsicher.</p>
-        <img src="commandx-logo.png" alt="CommandX Logo" class="logo" />
+        <img src="logo-commandx.png" alt="CommandX Logo" class="logo" />
       </div>
       <div class="header-right">
-        <img src="header.png" alt="Header-Bild" class="header-image" />
+        <img src="hero-image.png" alt="Header" class="header-image" />
       </div>
     </div>
+    <nav class="top-nav">
+      <ul>
+        <li><a href="#">Produkte</a></li>
+        <li><a href="#">Service</a></li>
+        <li><a href="#">Unternehmen</a></li>
+        <li><a href="#">Kontakt</a></li>
+        <li><button id="darkModeToggle" aria-label="Dark Mode umschalten">🌙</button></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Neuigkeiten -->
   <section class="news-section">
     <h2>📰 Neuigkeiten</h2>
-    <div class="news-card">
+    <div class="news-panel">
       <strong>⚡ Neue Version von CommandX veröffentlicht</strong>
       <p>Die neue Version bietet Verbesserungen in der Bedienbarkeit und Performance.</p>
     </div>
-    <div class="news-card">
+    <div class="news-panel">
       <strong>📍 Nutzer können jetzt Standortverfolgung aktivieren</strong>
       <p>Die neue Funktion ermöglicht noch genauere Einsatzkoordination.</p>
     </div>
   </section>
 
-  <!-- Produkte -->
   <section class="products-section">
     <h2>✨ Unsere Produkte</h2>
     <div class="product-grid">
-      <a href="#" class="product-card">
+      <a class="product-card" href="#">
         <img src="alertx.png" alt="AlertX" />
         <h3>AlertX</h3>
         <p>Die multifunktionale Alarmierungs-App.</p>
       </a>
-      <a href="#" class="product-card">
+      <a class="product-card" href="#">
         <img src="commandx.png" alt="CommandX" />
         <h3>CommandX</h3>
         <p>Die digitale Führungsunterstützungsplattform.</p>
       </a>
-      <a href="#" class="product-card">
-        <img src="mobile.png" alt="CommandX.Mobile" />
+      <a class="product-card" href="#">
+        <img src="commandx-mobile.png" alt="CommandX.Mobile" />
         <h3>CommandX.Mobile</h3>
         <p>Die mobile Führungsunterstützungsapp.</p>
       </a>
-      <a href="#" class="product-card">
-        <img src="wis.png" alt="CommandX.WIS" />
+      <a class="product-card" href="#">
+        <img src="commandx-wis.png" alt="CommandX.WIS" />
         <h3>CommandX.WIS</h3>
         <p>Alarm- und Informationsanzeigesystem.</p>
       </a>
     </div>
   </section>
 
-  <!-- Chatbot -->
+  <!-- Chatbot Button -->
   <button class="chat-toggle" id="chatToggle" aria-label="Support Chat öffnen">💬</button>
 
-  <div class="chat-container" id="chatContainer" hidden>
+  <!-- Chatbot Fenster -->
+  <div class="chat-window" id="chatWindow">
     <div class="chat-header">💬 Support-Chat</div>
     <div class="chat-body" id="chatBody">
       <p>Hallo! Wie kann ich dir helfen?</p>
-      <button onclick="handleChat('problem')">Ich habe ein Problem mit der Software</button>
-      <button onclick="handleChat('fehler')">Ich möchte einen Fehler melden</button>
-      <button onclick="handleChat('interesse')">Ich interessiere mich für eins der Produkte</button>
+      <button onclick="showSoftwareOptions()">Ich habe ein Problem mit der Software</button>
+      <button onclick="forwardToTickets()">Ich möchte einen Fehler melden</button>
+      <button onclick="showProductInterest()">Ich interessiere mich für eins der Produkte</button>
     </div>
-    <button onclick="resetChat()">🔄 Neustart</button>
+    <div class="chat-footer">
+      <button onclick="resetChat()">🔄 Neustart</button>
+    </div>
   </div>
 
   <script>
-    const toggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-    toggle.addEventListener('click', () => {
-      body.classList.toggle('dark');
-    });
+    const toggle = document.getElementById("chatToggle");
+    const chat = document.getElementById("chatWindow");
+    const body = document.getElementById("chatBody");
 
-    const chatToggle = document.getElementById("chatToggle");
-    const chatContainer = document.getElementById("chatContainer");
-
-    chatToggle.addEventListener("click", () => {
-      chatContainer.hidden = !chatContainer.hidden;
-    });
-
-    function handleChat(option) {
-      const body = document.getElementById("chatBody");
-      if (option === "problem") {
-        body.innerHTML = `
-          <p>Bitte wähle das Produkt aus:</p>
-          <button>AlertX</button><button>CommandX</button><button>CommandX.Mobile</button><button>CommandX.WIS</button>`;
-      } else if (option === "fehler") {
-        body.innerHTML = `<p>Du wirst zum Ticketsystem weitergeleitet...</p>`;
-      } else if (option === "interesse") {
-        body.innerHTML = `
-          <p>Welches Produkt interessiert dich?</p>
-          <button onclick="alert('Kontakt: lena.schmidt@firma.de')">AlertX</button>
-          <button onclick="alert('Kontakt: max.meyer@firma.de')">CommandX</button>`;
-      }
-    }
+    toggle.onclick = () => chat.classList.toggle("visible");
 
     function resetChat() {
-      const body = document.getElementById("chatBody");
       body.innerHTML = `
         <p>Hallo! Wie kann ich dir helfen?</p>
-        <button onclick="handleChat('problem')">Ich habe ein Problem mit der Software</button>
-        <button onclick="handleChat('fehler')">Ich möchte einen Fehler melden</button>
-        <button onclick="handleChat('interesse')">Ich interessiere mich für eins der Produkte</button>`;
+        <button onclick="showSoftwareOptions()">Ich habe ein Problem mit der Software</button>
+        <button onclick="forwardToTickets()">Ich möchte einen Fehler melden</button>
+        <button onclick="showProductInterest()">Ich interessiere mich für eins der Produkte</button>
+      `;
     }
+
+    function showSoftwareOptions() {
+      body.innerHTML = `
+        <p>Welches Produkt betrifft das Problem?</p>
+        <button>AlertX</button>
+        <button>CommandX</button>
+        <button>CommandX.Mobile</button>
+        <button>CommandX.WIS</button>
+      `;
+    }
+
+    function forwardToTickets() {
+      body.innerHTML = `
+        <p>Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</p>
+      `;
+    }
+
+    function showProductInterest() {
+      body.innerHTML = `
+        <p>Für welches Produkt interessieren Sie sich?</p>
+        <button>AlertX – Ansprechpartner: Max Mustermann</button>
+        <button>CommandX – Ansprechpartnerin: Lisa Beispiel</button>
+        <button>CommandX.Mobile – Ansprechpartner: Alex Meier</button>
+        <button>CommandX.WIS – Ansprechpartnerin: Jana Schulz</button>
+      `;
+    }
+
+    document.getElementById("darkModeToggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+    });
   </script>
 </body>
 </html>
