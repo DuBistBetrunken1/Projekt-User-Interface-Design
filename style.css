@@ -98,11 +98,19 @@ body.dark .news {
 }
 
 .news-item {
-  background: #2a2a2a;
+  background-color: #ffffff;
+  color: #111;
   padding: 1rem;
-  margin-bottom: 1rem;
   border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: background 0.3s, color 0.3s;
 }
+
+body.dark .news-item {
+  background-color: #2b2b2b;
+  color: #fff;
+}
+
 
 .product-slider {
   padding: 4rem 2rem;
