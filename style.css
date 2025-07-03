@@ -82,9 +82,15 @@ body.dark .hero {
 }
 
 .news {
+  background-color: #f5f5f5;
+  color: #111;
+  padding: 2rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark .news {
   background-color: #1e1e1e;
   color: #fff;
-  padding: 2rem;
 }
 
 .news h2 {
