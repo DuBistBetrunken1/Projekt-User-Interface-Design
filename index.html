@@ -19,7 +19,7 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-text">
       <h1>Die digitale Führungsunterstützungsplattform</h1>
@@ -31,7 +31,62 @@
     </div>
   </section>
 
-  <!-- Chat Icon -->
+  <!-- Produkt-Slider -->
+  <section class="product-slider">
+    <div class="slider-container">
+      <button class="slider-btn" onclick="changeSlide(-1)">←</button>
+      <div class="slide active">
+        <img src="alertx.png" alt="AlertX" />
+        <div class="slide-text">
+          <h2>AlertX</h2>
+          <h3>Die multifunktionale Alarmierungs-App</h3>
+          <p>Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="commandx.png" alt="CommandX" />
+        <div class="slide-text">
+          <h2>CommandX</h2>
+          <h3>Die digitale Führungsunterstützungsplattform</h3>
+          <p>Unsere webbasierte Plattform bietet alle Funktionen für ein effizientes Krisenmanagement.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="mobile.png" alt="CommandX.Mobile" />
+        <div class="slide-text">
+          <h2>CommandX.MOBILE</h2>
+          <h3>Das mobile Führungssystem</h3>
+          <p>iOS-App für Einsatzleitung vor Ort – schnell, sicher und leistungsfähig.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="wis.png" alt="CommandX.WIS" />
+        <div class="slide-text">
+          <h2>CommandX.WIS</h2>
+          <h3>Alarm- und Informationsanzeigesystem</h3>
+          <p>Zentrale Lösung zur Alarmvisualisierung und Informationsmanagement.</p>
+        </div>
+      </div>
+      <button class="slider-btn" onclick="changeSlide(1)">→</button>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="news">
+    <h2>Neuigkeiten</h2>
+    <div class="news-container">
+      <div class="news-item">
+        <h3>Neue Version von CommandX veröffentlicht</h3>
+        <p>Die neue Version bietet Verbesserungen in der Bedienbarkeit und Performance.</p>
+      </div>
+      <div class="news-item">
+        <h3>AlertX unterstützt jetzt Standortverfolgung</h3>
+        <p>Neue Funktionen ermöglichen noch genauere Einsatzkoordinierung.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot Button -->
   <button id="chat-icon" onclick="toggleChat()" aria-label="Chat starten">💬</button>
 
   <!-- Chatbot -->
@@ -40,7 +95,19 @@
     <div class="chatbot-body" id="chat-body"></div>
   </div>
 
+  <!-- Script -->
   <script>
+    // Produkt-Slider
+    let current = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function changeSlide(dir) {
+      slides[current].classList.remove("active");
+      current = (current + dir + slides.length) % slides.length;
+      slides[current].classList.add("active");
+    }
+
+    // Chatbot
     const chatBody = document.getElementById("chat-body");
 
     function toggleChat() {
@@ -112,7 +179,7 @@
           { label: "CommandX.WIS", value: "int-wis" }
         ]);
       } else if (value.startsWith("sw-")) {
-        addBotMessage("Danke, wir kümmern uns um dein Anliegen zu " + label + ". Ein Mitarbeiter wird sich melden.");
+        addBotMessage(`Danke, wir kümmern uns um dein Anliegen zu ${label}. Ein Mitarbeiter wird sich melden.`);
         addRestartButton();
       } else if (value.startsWith("int-")) {
         const nameMap = {
@@ -139,6 +206,5 @@
       }
     });
   </script>
-
 </body>
 </html>
