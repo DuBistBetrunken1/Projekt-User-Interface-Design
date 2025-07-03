@@ -112,84 +112,92 @@
     </div>
   </section>
 
-<!-- Chatbot Button -->
-<button class="chat-toggle" onclick="toggleChat()">💬</button>
+  <!-- Chatbot Button -->
+  <button class="chat-toggle" onclick="toggleChat()">💬</button>
 
-<!-- Chatbot Fenster -->
-<div class="chatbot" id="chatbot">
-  <div class="chatbot-header">
-    <div>
-      <strong>Wie kann ich dir helfen?</strong>
-      <span>Eurocommand Chatbot</span>
+  <!-- Chatbot Fenster -->
+  <div class="chatbot" id="chatbot">
+    <div class="chatbot-header">
+      <div>
+        <strong>Wie kann ich dir helfen?</strong>
+        <span>Eurocommand Chatbot</span>
+      </div>
+      <button onclick="toggleChat()">×</button>
     </div>
-    <button onclick="toggleChat()">×</button>
-  </div>
 
-  <div class="chatbot-messages" id="chatMessages">
-    <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
-    <div class="chatbot-options" id="chatOptions">
-      <button onclick="handleChat('software')">🛠 Softwareproblem</button>
-      <button onclick="handleChat('bug')">🐞 Fehler melden</button>
-      <button onclick="handleChat('interest')">📦 Interesse</button>
-      <button onclick="handleChat('other')">❓ Sonstiges</button>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
+      <div class="chatbot-options" id="chatOptions">
+        <button onclick="handleChat('software')">🛠 Softwareproblem</button>
+        <button onclick="handleChat('bug')">🐞 Fehler melden</button>
+        <button onclick="handleChat('interest')">📦 Interesse</button>
+        <button onclick="handleChat('other')">❓ Sonstiges</button>
+      </div>
+    </div>
+
+    <div class="chatbot-input">
+      <input type="text" id="userInput" placeholder="Nachricht eingeben" />
+      <button onclick="sendMessage()">➤</button>
     </div>
   </div>
 
-  <div class="chatbot-input">
-    <input type="text" id="userInput" placeholder="Nachricht eingeben" />
-    <button onclick="sendMessage()">➤</button>
-  </div>
-</div>
-<script>
-  const chatbot = document.getElementById("chatbot");
-  const chatMessages = document.getElementById("chatMessages");
-  const chatOptions = document.getElementById("chatOptions");
-  const userInput = document.getElementById("userInput");
+  <script>
+    const chatbot = document.getElementById("chatbot");
+    const chatMessages = document.getElementById("chatMessages");
+    const chatOptions = document.getElementById("chatOptions");
+    const userInput = document.getElementById("userInput");
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const body = document.body;
 
-  function toggleChat() {
-    chatbot.classList.toggle("visible");
-  }
+    function toggleChat() {
+      chatbot.classList.toggle("visible");
+    }
 
-  function handleChat(type) {
-    const responses = {
-      software: "Welches Produkt bereitet dir Probleme?",
-      bug: "Bitte beschreibe den Fehler möglichst genau.",
-      interest: "Für welches Produkt interessierst du dich?",
-      other: "Bitte schildere dein Anliegen.",
-    };
+    function handleChat(type) {
+      const responses = {
+        software: "Welches Produkt bereitet dir Probleme?",
+        bug: "Bitte beschreibe den Fehler möglichst genau.",
+        interest: "Für welches Produkt interessierst du dich?",
+        other: "Bitte schildere dein Anliegen.",
+      };
 
-    appendBotMessage(responses[type]);
-    chatOptions.style.display = "none";
-  }
+      appendBotMessage(responses[type]);
+      chatOptions.style.display = "none";
+    }
 
-  function sendMessage() {
-    const message = userInput.value.trim();
-    if (!message) return;
+    function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
 
-    appendUserMessage(message);
-    userInput.value = "";
+      appendUserMessage(message);
+      userInput.value = "";
 
-    // Beispiel-Antwort vom Bot
-    setTimeout(() => {
-      appendBotMessage("Vielen Dank für deine Nachricht! Wir melden uns bald.");
-    }, 600);
-  }
+      // Beispiel-Antwort vom Bot
+      setTimeout(() => {
+        appendBotMessage("Vielen Dank für deine Nachricht! Wir melden uns bald.");
+      }, 600);
+    }
 
-  function appendBotMessage(text) {
-    const msg = document.createElement("div");
-    msg.className = "bot-msg";
-    msg.textContent = text;
-    chatMessages.appendChild(msg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
+    function appendBotMessage(text) {
+      const msg = document.createElement("div");
+      msg.className = "bot-msg";
+      msg.textContent = text;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-  function appendUserMessage(text) {
-    const msg = document.createElement("div");
-    msg.className = "user-msg";
-    msg.textContent = text;
-    chatMessages.appendChild(msg);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-</script>
+    function appendUserMessage(text) {
+      const msg = document.createElement("div");
+      msg.className = "user-msg";
+      msg.textContent = text;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // === Darkmode Toggle ===
+    darkModeToggle.addEventListener("click", () => {
+      body.classList.toggle("dark");
+    });
+  </script>
 </body>
 </html>
