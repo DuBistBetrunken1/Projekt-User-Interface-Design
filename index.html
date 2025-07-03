@@ -9,10 +9,9 @@
       margin: 0;
       font-family: "Segoe UI", sans-serif;
       background-color: #e1f0f2;
-      color: #111;
     }
 
-    /* Navigation */
+    /* Header */
     .header {
       display: flex;
       justify-content: space-between;
@@ -64,7 +63,7 @@
       border-radius: 10px;
     }
 
-    /* Chatbot Button */
+    /* Chat Button */
     #chat-icon {
       position: fixed;
       bottom: 20px;
@@ -81,12 +80,12 @@
       z-index: 998;
     }
 
-    /* Chatbot Box */
+    /* Chatbot */
     .chatbot {
       position: fixed;
       bottom: 90px;
       right: 20px;
-      width: 280px;
+      width: 300px;
       display: none;
       flex-direction: column;
       background: white;
@@ -94,6 +93,7 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       z-index: 999;
       overflow: hidden;
+      max-height: 400px;
     }
 
     .chatbot-header {
@@ -108,6 +108,7 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      overflow-y: auto;
     }
 
     .message {
@@ -149,10 +150,10 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header class="header" role="banner">
+  <!-- Header + Hero -->
+  <header class="header">
     <img src="logo.png" alt="Eurocommand Logo" class="logo" />
-    <nav class="nav" role="navigation">
+    <nav class="nav">
       <a href="#">Produkte</a>
       <a href="#">Service</a>
       <a href="#">Unternehmen</a>
@@ -160,7 +161,6 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-text">
       <h1>Die digitale Führungsunterstützungsplattform</h1>
@@ -168,61 +168,117 @@
       <img src="cmx_logo.png" alt="CommandX Logo" class="hero-logo" />
     </div>
     <div class="hero-image">
-      <img src="headerbild.png" alt="Headerbild" />
+      <img src="headerbild.png" alt="Header" />
     </div>
   </section>
 
-  <!-- Chatbot Button -->
-  <button id="chat-icon" onclick="toggleChat()" aria-label="Chat öffnen">💬</button>
+  <!-- Chat Icon -->
+  <button id="chat-icon" onclick="toggleChat()" aria-label="Chat starten">💬</button>
 
-  <!-- Chatbot-Fenster -->
+  <!-- Chatbot UI -->
   <div class="chatbot" id="chatbot">
     <div class="chatbot-header">💬 Hilfe</div>
-    <div class="chatbot-body" id="chat-body">
-      <div class="message bot">Hallo! Wie kann ich dir helfen?</div>
-      <div class="button-group">
-        <button onclick="handleOption('software')">Ich habe ein Problem mit der Software</button>
-        <button onclick="handleOption('fehler')">Ich möchte einen Fehler melden</button>
-        <button onclick="handleOption('interesse')">Ich interessiere mich für eins der Produkte</button>
-      </div>
-    </div>
+    <div class="chatbot-body" id="chat-body"></div>
   </div>
 
-  <!-- JavaScript -->
   <script>
+    const chatBody = document.getElementById("chat-body");
+
     function toggleChat() {
-      const chat = document.getElementById('chatbot');
-      chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
-    }
-
-    function handleOption(option) {
-      const chatBody = document.getElementById('chat-body');
-      const userMsg = document.createElement('div');
-      userMsg.className = 'message user';
-
-      let botResponse = '';
-
-      if (option === 'software') {
-        userMsg.textContent = 'Ich habe ein Problem mit der Software';
-        botResponse = 'Kein Problem! Welches Produkt betrifft dein Problem?';
-      } else if (option === 'fehler') {
-        userMsg.textContent = 'Ich möchte einen Fehler melden';
-        botResponse = 'Bitte nutze unser Ticketsystem unter support.eurocommand.com – Danke!';
-      } else if (option === 'interesse') {
-        userMsg.textContent = 'Ich interessiere mich für eins der Produkte';
-        botResponse = 'Gerne! Welches Produkt interessiert dich am meisten?';
+      const chatbot = document.getElementById("chatbot");
+      chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
+      if (chatBody.innerHTML.trim() === "") {
+        startChat();
       }
-
-      chatBody.appendChild(userMsg);
-
-      const botMsg = document.createElement('div');
-      botMsg.className = 'message bot';
-      botMsg.textContent = botResponse;
-      chatBody.appendChild(botMsg);
-
-      const btnGroup = document.querySelector('.button-group');
-      if (btnGroup) btnGroup.remove();
     }
+
+    function startChat() {
+      chatBody.innerHTML = "";
+      addBotMessage("Hallo! Wie kann ich dir helfen?");
+      addButtons([
+        { label: "Ich habe ein Problem mit der Software", value: "software" },
+        { label: "Ich möchte einen Fehler melden", value: "fehler" },
+        { label: "Ich interessiere mich für eins der Produkte", value: "interesse" }
+      ]);
+    }
+
+    function addBotMessage(text) {
+      const msg = document.createElement("div");
+      msg.className = "message bot";
+      msg.textContent = text;
+      chatBody.appendChild(msg);
+    }
+
+    function addUserMessage(text) {
+      const msg = document.createElement("div");
+      msg.className = "message user";
+      msg.textContent = text;
+      chatBody.appendChild(msg);
+    }
+
+    function addButtons(options) {
+      const container = document.createElement("div");
+      container.className = "button-group";
+      options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.textContent = opt.label;
+        btn.onclick = () => handleOption(opt.value, opt.label);
+        container.appendChild(btn);
+      });
+      chatBody.appendChild(container);
+    }
+
+    function handleOption(value, label) {
+      addUserMessage(label);
+      document.querySelector(".button-group")?.remove();
+
+      if (value === "software") {
+        addBotMessage("Welches Produkt betrifft dein Problem?");
+        addButtons([
+          { label: "AlertX", value: "sw-alertx" },
+          { label: "CommandX", value: "sw-cmx" },
+          { label: "CommandX.Mobile", value: "sw-mobile" },
+          { label: "CommandX.WIS", value: "sw-wis" }
+        ]);
+      } else if (value === "fehler") {
+        addBotMessage("Bitte nutze unser Ticketsystem unter:");
+        addBotMessage("👉 support.eurocommand.com");
+        addRestartButton();
+      } else if (value === "interesse") {
+        addBotMessage("Für welches Produkt interessierst du dich?");
+        addButtons([
+          { label: "AlertX", value: "int-alertx" },
+          { label: "CommandX", value: "int-cmx" },
+          { label: "CommandX.Mobile", value: "int-mobile" },
+          { label: "CommandX.WIS", value: "int-wis" }
+        ]);
+      } else if (value.startsWith("sw-")) {
+        addBotMessage("Danke, wir kümmern uns um dein Anliegen zu " + label + ". Ein Mitarbeiter wird sich melden.");
+        addRestartButton();
+      } else if (value.startsWith("int-")) {
+        const nameMap = {
+          "int-alertx": "Laura Schröder",
+          "int-cmx": "Markus Weber",
+          "int-mobile": "Julia Meier",
+          "int-wis": "Thomas Kühn"
+        };
+        const name = nameMap[value] || "unser Team";
+        addBotMessage(`Dein Ansprechpartner für ${label} ist ${name}.`);
+        addRestartButton();
+      }
+    }
+
+    function addRestartButton() {
+      addButtons([
+        { label: "Neuen Chat starten", value: "restart" }
+      ]);
+    }
+
+    document.addEventListener("click", e => {
+      if (e.target.textContent === "Neuen Chat starten") {
+        startChat();
+      }
+    });
   </script>
 
 </body>
