@@ -7,7 +7,6 @@ body {
   transition: background-color 0.3s, color 0.3s;
   padding-top: 150px;
 }
-
 .dark {
   background-color: #121212;
   color: #f0f0f0;
@@ -25,6 +24,7 @@ body {
   color: white;
 }
 
+/* === Navigation === */
 .top-nav ul {
   list-style: none;
   padding: 0;
@@ -33,23 +33,21 @@ body {
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 .top-nav a {
   color: inherit;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
 }
-
 .top-nav a:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-
 .top-nav button {
   background: none;
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+  color: inherit;
 }
 
 /* === News === */
@@ -57,11 +55,9 @@ body {
   padding: 2rem;
   background-color: #f9f9f9;
 }
-
 .dark .news-section {
   background-color: #1e1e1e;
 }
-
 .news-panel {
   background: white;
   border-left: 5px solid #ffcc00;
@@ -69,11 +65,9 @@ body {
   margin-bottom: 1rem;
   border-radius: 8px;
 }
-
 .dark .news-panel {
   background: #2c2c2c;
 }
-
 .dark .news-panel strong {
   color: #ffcc00;
 }
@@ -84,12 +78,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .products-section h2 {
   text-align: center;
   margin-bottom: 3rem;
 }
-
 .product-row {
   display: flex;
   align-items: center;
@@ -98,23 +90,19 @@ body {
   margin-bottom: 4rem;
   flex-wrap: wrap;
 }
-
 .product-row.reverse {
   flex-direction: row-reverse;
 }
-
 .product-text {
   flex: 1;
   min-width: 280px;
 }
-
 .product-image {
   flex: 1;
   min-width: 280px;
   display: flex;
   justify-content: center;
 }
-
 .product-image img {
   width: 100%;
   max-width: 500px;
@@ -128,7 +116,6 @@ body {
   color: white;
   padding: 4rem 2rem;
 }
-
 .cta-content {
   display: flex;
   flex-wrap: wrap;
@@ -137,12 +124,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .cta-text {
   flex: 1;
   min-width: 280px;
 }
-
 .cta-button {
   margin-top: 1.5rem;
   padding: 1rem 2rem;
@@ -152,13 +137,11 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-
 .cta-image {
   flex: 1;
   min-width: 280px;
   text-align: center;
 }
-
 .cta-image img {
   max-width: 100%;
 }
@@ -168,30 +151,25 @@ body {
   padding: 4rem 2rem;
   background-color: #f5f5f5;
 }
-
 .form-content {
   max-width: 900px;
   margin: 0 auto;
 }
-
 .form-text h2 {
   font-size: 1.8rem;
 }
-
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-top: 2rem;
 }
-
 .contact-form input,
 .contact-form textarea {
   padding: 0.8rem;
   border: 1px solid #ccc;
   border-radius: 6px;
 }
-
 .form-footer {
   display: flex;
   justify-content: space-between;
@@ -199,7 +177,6 @@ body {
   flex-wrap: wrap;
   gap: 1rem;
 }
-
 .form-footer button {
   background-color: #ffcc00;
   padding: 0.8rem 1.5rem;
@@ -208,7 +185,7 @@ body {
   cursor: pointer;
 }
 
-/* === Chat Toggle Button === */
+/* === Chatbot === */
 .chat-toggle {
   position: fixed;
   bottom: 2rem;
@@ -221,67 +198,66 @@ body {
   width: 3rem;
   height: 3rem;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  z-index: 1001;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 999;
 }
 
-/* === Chatbot Modern === */
 .chatbot {
   position: fixed;
-  bottom: 6rem;
+  bottom: 5rem;
   right: 2rem;
   width: 360px;
   max-height: 90vh;
-  display: none;
-  flex-direction: column;
-  background-color: #f2f2f2;
+  background: #f2f2f2;
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  font-family: 'Segoe UI', sans-serif;
+  display: none;
+  flex-direction: column;
   overflow: hidden;
-  z-index: 1000;
+  font-family: 'Segoe UI', sans-serif;
   border: 1px solid #ccc;
+  z-index: 1000;
 }
-
 .chatbot.visible {
   display: flex;
 }
-
 .chatbot-header {
-  background-color: #0b2b4b;
+  background: #0b2b4b;
   color: white;
   padding: 1rem;
+  font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 600;
 }
-
 .chatbot-header span {
   font-size: 0.9rem;
   font-weight: 400;
-  display: block;
 }
-
 .chatbot-header strong {
   font-size: 1.1rem;
 }
-
-.chatbot-header button {
-  background: transparent;
+.chatbot-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+.chatbot-controls button {
+  background: rgba(255,255,255,0.2);
   color: white;
   border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
+  font-size: 1.1rem;
   border-radius: 50%;
   width: 28px;
   height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+.chatbot-controls button:hover {
+  background: rgba(255,255,255,0.4);
 }
 
-/* === Nachrichtenbereich === */
 .chatbot-messages {
   padding: 1rem;
   display: flex;
@@ -289,9 +265,7 @@ body {
   gap: 0.75rem;
   overflow-y: auto;
   flex-grow: 1;
-  background-color: #fff;
 }
-
 .bot-msg,
 .user-msg {
   padding: 0.8rem 1rem;
@@ -299,27 +273,24 @@ body {
   max-width: 85%;
   line-height: 1.4;
 }
-
 .bot-msg {
   background-color: white;
   align-self: flex-start;
   color: #333;
 }
-
 .user-msg {
   background-color: #007bff;
   color: white;
   align-self: flex-end;
 }
 
-/* === Auswahloptionen 2x2 Grid === */
+/* === Auswahloptionen im 2x2 Grid === */
 .chatbot-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
-
 .chatbot-options button {
   padding: 0.6rem;
   border-radius: 8px;
@@ -329,19 +300,17 @@ body {
   cursor: pointer;
   transition: background-color 0.2s;
 }
-
 .chatbot-options button:hover {
   background-color: #f0f0f0;
 }
 
-/* === Eingabezeile === */
+/* === Eingabefeld & Senden === */
 .chatbot-input {
   padding: 0.75rem;
   display: flex;
   border-top: 1px solid #ccc;
   background-color: #fff;
 }
-
 .chatbot-input input {
   flex: 1;
   padding: 0.6rem 0.8rem;
@@ -349,11 +318,6 @@ body {
   border-radius: 6px 0 0 6px;
   font-size: 0.9rem;
 }
-
-.chatbot-input input:focus {
-  outline: none;
-}
-
 .chatbot-input button {
   background-color: #007bff;
   border: none;
@@ -363,48 +327,40 @@ body {
   cursor: pointer;
   font-size: 1.2rem;
 }
+.chatbot-input input:focus {
+  outline: none;
+}
 
-/* === Darkmode Chatbot === */
+/* === Dark Mode Anpassungen === */
 .dark .chatbot {
-  background-color: #2a2a2a;
+  background-color: #2b2b2b;
   border-color: #444;
+  color: white;
 }
-
-.dark .chatbot-header {
-  background-color: #1a1a1a;
-  color: #fff;
-}
-
-.dark .chatbot-messages {
-  background-color: #1e1e1e;
-}
-
 .dark .bot-msg {
-  background-color: #2e2e2e;
-  color: #ddd;
+  background-color: #3b3b3b;
+  color: white;
 }
-
 .dark .user-msg {
   background-color: #0056b3;
 }
-
 .dark .chatbot-options button {
-  background-color: #3a3a3a;
+  background-color: #444;
   color: white;
   border-color: #666;
 }
-
-.dark .chatbot-options button:hover {
+.dark .chatbot-input {
+  background-color: #1f1f1f;
+  border-top: 1px solid #444;
+}
+.dark .chatbot-input input {
+  background-color: #2c2c2c;
+  border-color: #666;
+  color: white;
+}
+.dark .chatbot-controls button {
   background-color: #555;
 }
-
-.dark .chatbot-input {
-  background-color: #2a2a2a;
-  border-color: #444;
-}
-
-.dark .chatbot-input input {
-  background-color: #1f1f1f;
-  border-color: #555;
-  color: white;
+.dark .chatbot-controls button:hover {
+  background-color: #777;
 }
