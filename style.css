@@ -239,11 +239,25 @@ body {
   flex-direction: column;
   gap: 0.5rem;
 }
-.chat-options.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+.chat-options.grid button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
 }
+.chat-options.grid button:hover {
+  background-color: #eaeaea;
+}
+.dark .chat-options.grid button {
+  background-color: #444;
+  color: #fff;
+  border-color: #666;
+}
+.dark .chat-options.grid button:hover {
+  background-color: #555;
+}
+
 .chat-body button {
   padding: 0.6rem;
   border-radius: 8px;
