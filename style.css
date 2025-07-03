@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background-color: #e1f0f2;
+  background-color: #e3f1f3;
   color: #111;
 }
 
@@ -27,7 +27,7 @@ body {
   font-weight: 500;
 }
 
-/* Hero */
+/* Hero-Bereich */
 .hero {
   display: flex;
   justify-content: space-between;
@@ -39,11 +39,12 @@ body {
 
 .hero-text h1 {
   font-size: 1.8rem;
-  color: #111;
+  color: #222;
+  margin: 0;
 }
 
 .slogan {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #c8102e;
   font-weight: bold;
   margin: 1rem 0;
@@ -51,18 +52,19 @@ body {
 
 .hero-logo {
   margin-top: 1rem;
-  height: 40px;
+  height: 50px;
 }
 
 .hero-image img {
-  height: 250px;
+  max-height: 250px;
+  width: auto;
   border-radius: 10px;
 }
 
-/* Produkt-Slider */
+/* Produktslider */
 .product-slider {
   background-color: #d0e2e4;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
   text-align: center;
 }
 
@@ -81,7 +83,6 @@ body {
   cursor: pointer;
   color: #000;
   padding: 1rem;
-  z-index: 2;
 }
 
 .slide {
@@ -92,6 +93,7 @@ body {
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .slide.active {
@@ -99,7 +101,7 @@ body {
 }
 
 .slide img {
-  max-width: 350px;
+  max-width: 400px;
   height: auto;
   border-radius: 10px;
 }
@@ -110,8 +112,8 @@ body {
 }
 
 .slide-text h2 {
-  font-size: 1.6rem;
-  margin: 0;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
 }
 
 .slide-text h3 {
@@ -125,100 +127,97 @@ body {
   color: #222;
 }
 
-/* News */
+/* News-Bereich */
 .news {
-  background: #fff;
   padding: 3rem 2rem;
+  background-color: #e3f1f3;
 }
 
 .news h2 {
-  text-align: center;
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  color: #111;
 }
 
 .news-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.news-item {
-  max-width: 400px;
-  background-color: #f5f5f5;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .news-item h3 {
-  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  margin: 0 0 0.3rem;
   color: #c8102e;
 }
 
-/* Chatbot Icon */
+.news-item p {
+  font-size: 0.95rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Chatbot */
 #chat-icon {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #c8102e;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: #c8102e;
   color: white;
   border: none;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 1.4rem;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
 }
 
-/* Chatbot Box */
 .chatbot {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  max-height: 450px;
-  background-color: white;
-  border-radius: 10px;
-  border: 1px solid #ccc;
   display: none;
   flex-direction: column;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  overflow: hidden;
   z-index: 1000;
 }
 
 .chatbot-header {
-  background-color: #c8102e;
+  background: #c8102e;
   color: white;
   padding: 1rem;
   font-weight: bold;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
 .chatbot-body {
   padding: 1rem;
+  max-height: 400px;
   overflow-y: auto;
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .message {
-  margin-bottom: 0.8rem;
-  padding: 0.6rem 1rem;
-  border-radius: 12px;
-  max-width: 80%;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  max-width: 90%;
+  line-height: 1.4;
 }
 
 .message.bot {
-  background-color: #f1f1f1;
+  background: #f0f0f0;
   align-self: flex-start;
 }
 
 .message.user {
-  background-color: #c8102e;
+  background: #c8102e;
   color: white;
   align-self: flex-end;
 }
@@ -231,14 +230,40 @@ body {
 }
 
 .button-group button {
-  background-color: #eee;
+  background: #c8102e;
+  color: white;
   border: none;
-  padding: 0.6rem;
-  border-radius: 6px;
+  padding: 0.5rem;
+  border-radius: 8px;
   cursor: pointer;
-  text-align: left;
+  font-size: 0.9rem;
+  transition: background 0.2s ease-in-out;
 }
 
 .button-group button:hover {
-  background-color: #ddd;
+  background: #a30c24;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slide {
+    flex-direction: column;
+  }
+
+  .slide img {
+    max-width: 80%;
+  }
+
+  .slide-text {
+    text-align: center;
+  }
+
+  .slider-btn {
+    font-size: 1.5rem;
+  }
 }
