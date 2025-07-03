@@ -3,155 +3,182 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eurocommand GmbH</title>
+  <title>Eurocommand</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Scroll-Indikator -->
-  <div class="scroll-indicator" aria-hidden="true"></div>
 
-  <!-- Header -->
-  <header class="header sticky" role="banner">
+  <div class="scroll-indicator" id="scrollBar"></div>
+
+  <header class="header">
     <img src="logo.png" alt="Eurocommand Logo" class="logo" />
-    <nav class="nav" role="navigation" aria-label="Hauptnavigation">
-      <a href="#news">Neuigkeiten</a>
+    <nav class="nav">
       <a href="#produkte">Produkte</a>
-      <a href="#service">Service</a>
-      <a href="#kontakt">Kontakt</a>
+      <a href="#news">Neuigkeiten</a>
+      <a href="#">Service</a>
+      <a href="#">Unternehmen</a>
+      <a href="#">Kontakt</a>
     </nav>
-    <button id="theme-toggle" aria-label="Dark Mode umschalten">🌓</button>
+    <button id="theme-toggle">🌓</button>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
+  <section class="hero">
     <div class="hero-text">
       <h1>Die digitale Führungsunterstützungsplattform</h1>
       <p class="slogan">Einfach. Intuitiv. Ausfallsicher.</p>
-      <img src="cmx_logo.png" alt="CommandX Logo" class="hero-logo" />
+      <img src="commandx_logo.png" alt="CommandX Logo" class="hero-logo" />
     </div>
     <div class="hero-image">
-      <img src="headerbild.png" alt="Einsatzsoftware im Einsatz" />
+      <img src="header-placeholder.jpg" alt="Header" />
     </div>
   </section>
 
-  <!-- News zuerst -->
-  <section class="news" id="news" aria-label="Aktuelles und Neuigkeiten">
-    <h2>Neuigkeiten</h2>
-    <div class="news-list">
-      <article class="news-card">
-        <h3>Neue Version von CommandX veröffentlicht</h3>
+  <section id="news" class="news">
+    <h2>📰 Neuigkeiten</h2>
+    <div class="news-items">
+      <div class="news-card">
+        <h3>🛠️ Neue Version von CommandX veröffentlicht</h3>
         <p>Die neue Version bietet Verbesserungen in der Bedienbarkeit und Performance.</p>
-      </article>
-      <article class="news-card">
-        <h3>AlertX unterstützt jetzt Standortverfolgung</h3>
-        <p>Echtzeitortung ermöglicht genauere Einsatzkoordination.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- Produktbereich -->
-  <section class="product-slider" id="produkte" aria-label="Produktübersicht">
-    <h2>Unsere Produkte</h2>
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="alertx.png" alt="AlertX App Screenshot" />
-        <div class="product-info">
-          <h3>AlertX</h3>
-          <p>Die multifunktionale Alarmierungs-App</p>
-        </div>
       </div>
-      <div class="product-card">
-        <img src="commandx.png" alt="CommandX Screenshot" />
-        <div class="product-info">
-          <h3>CommandX</h3>
-          <p>Die digitale Führungsunterstützungsplattform</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="mobile.png" alt="CommandX.Mobile Screenshot" />
-        <div class="product-info">
-          <h3>CommandX.Mobile</h3>
-          <p>Mobiles Einsatzführungssystem</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="wis.png" alt="CommandX.WIS Screenshot" />
-        <div class="product-info">
-          <h3>CommandX.WIS</h3>
-          <p>Alarm- und Informationsanzeigesystem</p>
-        </div>
+      <div class="news-card">
+        <h3>📍 Nutzer können jetzt Standortverfolgung aktivieren</h3>
+        <p>Die neue Funktion ermöglicht noch genauere Einsatzkoordination.</p>
       </div>
     </div>
   </section>
 
-  <!-- Chatbot-Icon -->
-  <div id="chat-icon" role="button" aria-label="Chatbot öffnen">💬</div>
-
-  <!-- Chatfenster -->
-  <div id="chat-window" role="dialog" aria-label="Unterhaltung mit dem Supportbot">
-    <div id="chat-content">
-      <div class="chat-bubble bot">Hallo! Wie kann ich dir helfen?</div>
-      <div class="options">
-        <button onclick="handleOption('software')">Ich habe ein Problem mit der Software</button>
-        <button onclick="handleOption('fehler')">Ich möchte einen Fehler melden</button>
-        <button onclick="handleOption('interesse')">Ich interessiere mich für ein Produkt</button>
-        <button onclick="resetChat()">Neuen Chat starten</button>
+  <section id="produkte" class="product-section">
+    <h2>🚀 Unsere Produkte</h2>
+    <div class="product-container">
+      <div class="product-card">
+        <img src="alertx.png" alt="AlertX" />
+        <h3>AlertX</h3>
+        <p>Die multifunktionale Alarmierungs-App.</p>
+      </div>
+      <div class="product-card">
+        <img src="commandx.png" alt="CommandX" />
+        <h3>CommandX</h3>
+        <p>Die digitale Führungsunterstützungsplattform.</p>
+      </div>
+      <div class="product-card">
+        <img src="mobile.png" alt="CommandX.Mobile" />
+        <h3>CommandX.Mobile</h3>
+        <p>Die mobile Führungsunterstützungsapp.</p>
+      </div>
+      <div class="product-card">
+        <img src="wis.png" alt="CommandX.WIS" />
+        <h3>CommandX.WIS</h3>
+        <p>Alarm- und Informationsanzeigesystem.</p>
       </div>
     </div>
+  </section>
+
+  <!-- Chatbot Icon -->
+  <button id="chat-icon">💬</button>
+
+  <!-- Chatbot Window -->
+  <div id="chat-window">
+    <div id="chat-content"></div>
   </div>
 
-  <!-- JavaScript -->
   <script>
+    // Dark Mode Toggle
     document.getElementById("theme-toggle").addEventListener("click", function () {
       document.body.classList.toggle("dark-mode");
     });
 
-    window.addEventListener("scroll", () => {
-      const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-      document.querySelector('.scroll-indicator').style.width = scrolled + "%";
-    });
+    // Chatbot öffnen/schließen
+    const chatIcon = document.getElementById("chat-icon");
+    const chatWindow = document.getElementById("chat-window");
 
-    // Chatbot
-    document.getElementById("chat-icon").addEventListener("click", () => {
-      document.getElementById("chat-window").classList.toggle("visible");
-    });
-
-    function resetChat() {
-      document.getElementById("chat-content").innerHTML = `
-        <div class="chat-bubble bot">Hallo! Wie kann ich dir helfen?</div>
-        <div class="options">
-          <button onclick="handleOption('software')">Ich habe ein Problem mit der Software</button>
-          <button onclick="handleOption('fehler')">Ich möchte einen Fehler melden</button>
-          <button onclick="handleOption('interesse')">Ich interessiere mich für ein Produkt</button>
-          <button onclick="resetChat()">Neuen Chat starten</button>
-        </div>`;
-    }
-
-    function handleOption(option) {
-      let content = document.getElementById("chat-content");
-      if (option === "software") {
-        content.innerHTML += `<div class="chat-bubble bot">Welches Produkt betrifft dein Problem?</div>
-          <div class="options">
-            <button onclick="alert('Support wird benachrichtigt für AlertX')">AlertX</button>
-            <button onclick="alert('Support wird benachrichtigt für CommandX')">CommandX</button>
-            <button onclick="alert('Support wird benachrichtigt für CommandX.Mobile')">CommandX.Mobile</button>
-            <button onclick="alert('Support wird benachrichtigt für CommandX.WIS')">CommandX.WIS</button>
-            <button onclick="resetChat()">Neuen Chat starten</button>
-          </div>`;
-      } else if (option === "fehler") {
-        content.innerHTML += `<div class="chat-bubble bot">Bitte wenden Sie sich an <strong>support@eurocommand.de</strong></div>
-          <button onclick="resetChat()">Neuen Chat starten</button>`;
-      } else if (option === "interesse") {
-        content.innerHTML += `<div class="chat-bubble bot">Für welches Produkt interessieren Sie sich?</div>
-          <div class="options">
-            <button onclick="alert('Ansprechpartner: Max Mustermann für AlertX')">AlertX</button>
-            <button onclick="alert('Ansprechpartnerin: Lisa Schmidt für CommandX')">CommandX</button>
-            <button onclick="alert('Ansprechpartner: Tom Becker für CommandX.Mobile')">CommandX.Mobile</button>
-            <button onclick="alert('Ansprechpartnerin: Julia König für CommandX.WIS')">CommandX.WIS</button>
-            <button onclick="resetChat()">Neuen Chat starten</button>
-          </div>`;
+    chatIcon.addEventListener("click", () => {
+      chatWindow.classList.toggle("visible");
+      if (chatWindow.classList.contains("visible")) {
+        showChatOptions("start");
       }
+    });
+
+    function showChatOptions(state) {
+      const chat = document.getElementById("chat-content");
+      chat.innerHTML = "";
+
+      const botMessage = document.createElement("div");
+      botMessage.className = "chat-bubble bot";
+
+      const options = document.createElement("div");
+      options.className = "options";
+
+      if (state === "start") {
+        botMessage.textContent = "Hallo! Wie kann ich dir helfen?";
+        options.innerHTML = `
+          <button onclick="showChatOptions('problem')">Ich habe ein Problem mit der Software</button>
+          <button onclick="showChatOptions('fehler')">Ich möchte einen Fehler melden</button>
+          <button onclick="showChatOptions('interesse')">Ich interessiere mich für ein Produkt</button>
+        `;
+      }
+
+      if (state === "problem") {
+        botMessage.textContent = "Welches Produkt betrifft das Problem?";
+        options.innerHTML = `
+          <button onclick="showBotReply('AlertX Support hilft dir weiter!')">AlertX</button>
+          <button onclick="showBotReply('CommandX Support hilft dir weiter!')">CommandX</button>
+          <button onclick="showBotReply('CommandX.Mobile Support hilft dir weiter!')">CommandX.Mobile</button>
+          <button onclick="showBotReply('CommandX.WIS Support hilft dir weiter!')">CommandX.WIS</button>
+          <button onclick="showChatOptions('start')">Zurück</button>
+        `;
+      }
+
+      if (state === "fehler") {
+        botMessage.textContent = "Bitte nutze unser Ticketsystem für Fehlerberichte:";
+        options.innerHTML = `
+          <button onclick="window.open('https://support.eurocommand.de', '_blank')">Zum Ticketsystem</button>
+          <button onclick="showChatOptions('start')">Zurück</button>
+        `;
+      }
+
+      if (state === "interesse") {
+        botMessage.textContent = "Für welches Produkt interessierst du dich?";
+        options.innerHTML = `
+          <button onclick="showBotReply('Für AlertX kontaktiere: Max Mustermann')">AlertX</button>
+          <button onclick="showBotReply('Für CommandX kontaktiere: Lara Leitner')">CommandX</button>
+          <button onclick="showBotReply('Für CommandX.Mobile kontaktiere: Tom Tablet')">CommandX.Mobile</button>
+          <button onclick="showBotReply('Für CommandX.WIS kontaktiere: Nina Nachricht')">CommandX.WIS</button>
+          <button onclick="showChatOptions('start')">Zurück</button>
+        `;
+      }
+
+      chat.appendChild(botMessage);
+      chat.appendChild(options);
     }
+
+    function showBotReply(message) {
+      const chat = document.getElementById("chat-content");
+      const bubble = document.createElement("div");
+      bubble.className = "chat-bubble bot";
+      bubble.textContent = message;
+
+      const restart = document.createElement("button");
+      restart.textContent = "Neuen Chat starten";
+      restart.className = "restart-btn";
+      restart.onclick = () => showChatOptions("start");
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "options";
+      wrapper.appendChild(restart);
+
+      chat.innerHTML = "";
+      chat.appendChild(bubble);
+      chat.appendChild(wrapper);
+    }
+
+    // Scroll-Indikator
+    window.onscroll = function () {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById("scrollBar").style.width = scrolled + "%";
+    };
   </script>
+
 </body>
 </html>
