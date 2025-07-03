@@ -24,30 +24,7 @@ body {
   background: linear-gradient(to right, #222, #444);
   color: white;
 }
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.header-left, .header-right {
-  flex: 1;
-  min-width: 280px;
-}
-.header-left h1 {
-  font-size: 2rem;
-}
-.claim {
-  font-size: 1.2rem;
-  font-weight: 300;
-}
-.logo {
-  max-width: 200px;
-}
-.header-image {
-  max-width: 100%;
-  border-radius: 12px;
-}
+
 
 /* === Navigation === */
 .top-nav ul {
