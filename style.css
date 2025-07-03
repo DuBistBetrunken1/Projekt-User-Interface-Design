@@ -309,6 +309,29 @@ body {
   height: 2.2rem;
   cursor: not-allowed;
 }
+/* Option-Grid für 2x2-Layout */
+.option-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  align-self: stretch;
+}
+
+/* Buttons bleiben gleich */
+.message.option {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.message.option:hover {
+  background: #e6e6e6;
+}
+
 
 /* Dark Mode für Chat */
 .dark .chat-window {
