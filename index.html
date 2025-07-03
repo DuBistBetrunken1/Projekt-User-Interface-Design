@@ -75,18 +75,55 @@
     </div>
   </section>
 
+  <section class="cta-section">
+    <div class="cta-content">
+      <div class="cta-text">
+        <h2>Bereit für den nächsten Schritt?</h2>
+        <p>Du hast Interesse an einem unserer Produkte oder benötigst Unterstützung für deine Einsatzführung? Sende uns deine Anfrage und wir melden uns kurzfristig bei dir zurück.</p>
+        <button class="cta-button" onclick="document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth' });">Jetzt anfragen</button>
+      </div>
+      <div class="cta-image">
+        <img src="cta-illustration.png" alt="Illustration" />
+      </div>
+    </div>
+  </section>
+
+  <section class="form-section" id="contactForm">
+    <div class="form-content">
+      <div class="form-text">
+        <h2>Jetzt unverbindlich Kontakt aufnehmen</h2>
+        <p>Ob CommandX, AlertX oder unsere mobilen Lösungen – teile uns dein Anliegen mit, und wir beraten dich individuell.</p>
+      </div>
+      <form class="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Max Mustermann" required />
+
+        <label for="email">E-Mail</label>
+        <input type="email" id="email" placeholder="max@example.de" required />
+
+        <label for="message">Nachricht</label>
+        <textarea id="message" rows="5" placeholder="Ich interessiere mich für ..."></textarea>
+
+        <div class="form-footer">
+          <label><input type="checkbox" required /> Ich akzeptiere die <a href="#">Datenschutzerklärung</a>.</label>
+          <button type="submit">Jetzt absenden</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <!-- Chatbot Button -->
   <button class="chat-toggle" id="chatToggle" aria-label="Support Chat öffnen">💬</button>
 
-  <!-- Moderner Chatbot -->
+  <!-- Chatbot -->
   <div class="chat-window" id="chatWindow">
     <div class="chat-header">💬 Support-Chat</div>
     <div class="chat-body" id="chatBody">
       <p>Hallo! Wie kann ich dir helfen?</p>
       <div class="chat-options">
-        <button onclick="chatStep('software')">Ich habe ein Problem mit der Software</button>
-        <button onclick="chatStep('bug')">Ich möchte einen Fehler melden</button>
-        <button onclick="chatStep('interest')">Ich interessiere mich für eins der Produkte</button>
+        <button onclick="chatResponse('software')">Ich habe ein Problem mit der Software</button>
+        <button onclick="chatResponse('bug')">Ich möchte einen Fehler melden</button>
+        <button onclick="chatResponse('interest')">Ich interessiere mich für eins der Produkte</button>
       </div>
     </div>
     <div class="chat-footer">
@@ -102,36 +139,36 @@
     toggle.onclick = () => chat.classList.toggle("visible");
 
     function resetChat() {
-      body.innerHTML = `
+      body.innerHTML = 
         <p>Hallo! Wie kann ich dir helfen?</p>
         <div class="chat-options">
-          <button onclick="chatStep('software')">Ich habe ein Problem mit der Software</button>
-          <button onclick="chatStep('bug')">Ich möchte einen Fehler melden</button>
-          <button onclick="chatStep('interest')">Ich interessiere mich für eins der Produkte</button>
-        </div>`;
+          <button onclick="chatResponse('software')">Ich habe ein Problem mit der Software</button>
+          <button onclick="chatResponse('bug')">Ich möchte einen Fehler melden</button>
+          <button onclick="chatResponse('interest')">Ich interessiere mich für eins der Produkte</button>
+        </div>;
     }
 
-    function chatStep(type) {
+    function chatResponse(type) {
       if (type === 'software') {
-        body.innerHTML = `
+        body.innerHTML = 
           <p>Welches Produkt betrifft das Problem?</p>
           <div class="chat-options grid">
             <button>AlertX</button>
             <button>CommandX</button>
             <button>CommandX.Mobile</button>
             <button>CommandX.WIS</button>
-          </div>`;
+          </div>;
       } else if (type === 'bug') {
-        body.innerHTML = `<p>Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</p>`;
+        body.innerHTML = <p>Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</p>;
       } else if (type === 'interest') {
-        body.innerHTML = `
+        body.innerHTML = 
           <p>Für welches Produkt interessieren Sie sich?</p>
           <div class="chat-options grid">
             <button>AlertX</button>
             <button>CommandX</button>
             <button>CommandX.Mobile</button>
             <button>CommandX.WIS</button>
-          </div>`;
+          </div>;
       }
     }
 
