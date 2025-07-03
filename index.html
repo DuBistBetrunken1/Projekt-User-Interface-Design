@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eurocommand Startseite</title>
+  <title>Eurocommand GmbH</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- Header -->
   <header class="header">
-    <img src="logo.png" alt="Eurocommand Logo" class="logo" />
+    <img src="eurocommand-logo.png" alt="Eurocommand Logo" class="logo" />
     <nav class="nav">
       <a href="#">Produkte</a>
       <a href="#">Service</a>
@@ -23,51 +23,58 @@
   <section class="hero">
     <div class="hero-text">
       <h1>Die digitale Führungsunterstützungsplattform</h1>
-      <div class="slogan">Einfach. Intuitiv. Ausfallsicher.</div>
-      <img src="cmx_logo.png" alt="CommandX Logo" class="hero-logo" />
+      <p class="slogan">Einfach. Intuitiv. Ausfallsicher.</p>
+      <img src="CmX_Logo_Web.png" alt="CommandX Logo" class="hero-logo" />
     </div>
     <div class="hero-image">
-      <img src="headerbild.png" alt="Header" />
+      <img src="EC_Headerbild_Startseite.png" alt="Header" />
     </div>
   </section>
 
   <!-- Produkt-Slider -->
   <section class="product-slider">
     <div class="slider-container">
-      <button class="slider-btn" onclick="changeSlide(-1)">←</button>
-      <div class="slide active">
-        <img src="alertx.png" alt="AlertX" />
-        <div class="slide-text">
-          <h2>AlertX</h2>
-          <h3>Die multifunktionale Alarmierungs-App</h3>
-          <p>Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet.</p>
+      <button class="slider-btn" onclick="prevSlide()">←</button>
+      <div id="slides">
+
+        <div class="slide active">
+          <img src="AlertX.png" alt="AlertX">
+          <div class="slide-text">
+            <h2>AlertX</h2>
+            <h3>Die multifunktionale Alarmierungs-App</h3>
+            <p>Entdecken Sie unsere Alarmierungsapp, die Ihnen alle wichtigen Funktionen für eine schnelle und effiziente Alarmierung bietet.</p>
+          </div>
         </div>
-      </div>
-      <div class="slide">
-        <img src="commandx.png" alt="CommandX" />
-        <div class="slide-text">
-          <h2>CommandX</h2>
-          <h3>Die digitale Führungsunterstützungsplattform</h3>
-          <p>Unsere webbasierte Plattform bietet alle Funktionen für ein effizientes Krisenmanagement.</p>
+
+        <div class="slide">
+          <img src="CommandX.png" alt="CommandX">
+          <div class="slide-text">
+            <h2>CommandX</h2>
+            <h3>Die digitale Führungsunterstützungsplattform</h3>
+            <p>Unsere webbasierte Plattform bietet alle Funktionen für ein effizientes Krisenmanagement.</p>
+          </div>
         </div>
-      </div>
-      <div class="slide">
-        <img src="mobile.png" alt="CommandX.Mobile" />
-        <div class="slide-text">
-          <h2>CommandX.MOBILE</h2>
-          <h3>Das mobile Führungssystem</h3>
-          <p>iOS-App für Einsatzleitung vor Ort – schnell, sicher und leistungsfähig.</p>
+
+        <div class="slide">
+          <img src="CommandX.Mobile.png" alt="CommandX.Mobile">
+          <div class="slide-text">
+            <h2>CommandX.MOBILE</h2>
+            <h3>Das mobile Führungssystem</h3>
+            <p>Die native iOS-App für Einsatzleitung vor Ort – schnell, sicher und leistungsfähig.</p>
+          </div>
         </div>
-      </div>
-      <div class="slide">
-        <img src="wis.png" alt="CommandX.WIS" />
-        <div class="slide-text">
-          <h2>CommandX.WIS</h2>
-          <h3>Alarm- und Informationsanzeigesystem</h3>
-          <p>Zentrale Lösung zur Alarmvisualisierung und Informationsmanagement.</p>
+
+        <div class="slide">
+          <img src="CommandX.WIS.png" alt="CommandX.WIS">
+          <div class="slide-text">
+            <h2>CommandX.WIS</h2>
+            <h3>Alarm- und Informationsanzeigesystem</h3>
+            <p>Unsere zentrale Lösung zur Alarmvisualisierung und Informationsmanagement.</p>
+          </div>
         </div>
+
       </div>
-      <button class="slider-btn" onclick="changeSlide(1)">→</button>
+      <button class="slider-btn" onclick="nextSlide()">→</button>
     </div>
   </section>
 
@@ -81,130 +88,98 @@
       </div>
       <div class="news-item">
         <h3>AlertX unterstützt jetzt Standortverfolgung</h3>
-        <p>Neue Funktionen ermöglichen noch genauere Einsatzkoordinierung.</p>
+        <p>Live Funktionen ermöglichen noch genauere Einsatzkoordination.</p>
       </div>
     </div>
   </section>
 
-  <!-- Chatbot Button -->
-  <button id="chat-icon" onclick="toggleChat()" aria-label="Chat starten">💬</button>
-
   <!-- Chatbot -->
+  <button id="chat-icon" onclick="toggleChat()">💬</button>
   <div class="chatbot" id="chatbot">
-    <div class="chatbot-header">💬 Hilfe</div>
-    <div class="chatbot-body" id="chat-body"></div>
+    <div class="chatbot-header">Support Chat</div>
+    <div class="chatbot-body" id="chat-body">
+      <div class="message bot">Hallo! Wie kann ich dir helfen?</div>
+      <div class="button-group">
+        <button onclick="handleChoice('software')">Ich habe ein Problem mit der Software</button>
+        <button onclick="handleChoice('fehler')">Ich möchte einen Fehler melden</button>
+        <button onclick="handleChoice('interesse')">Ich interessiere mich für ein Produkt</button>
+      </div>
+    </div>
   </div>
 
   <!-- Script -->
   <script>
-    // Produkt-Slider
-    let current = 0;
-    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
 
-    function changeSlide(dir) {
-      slides[current].classList.remove("active");
-      current = (current + dir + slides.length) % slides.length;
-      slides[current].classList.add("active");
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
     }
 
-    // Chatbot
-    const chatBody = document.getElementById("chat-body");
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
 
     function toggleChat() {
-      const chatbot = document.getElementById("chatbot");
-      chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
-      if (chatBody.innerHTML.trim() === "") {
-        startChat();
+      const chat = document.getElementById('chatbot');
+      chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function handleChoice(choice) {
+      const body = document.getElementById('chat-body');
+      let html = '';
+
+      if (choice === 'software') {
+        html += `<div class="message bot">Welches Produkt betrifft das Problem?</div>
+          <div class="button-group">
+            <button onclick="reply('AlertX')">AlertX</button>
+            <button onclick="reply('CommandX')">CommandX</button>
+            <button onclick="reply('CommandX.MOBILE')">CommandX.MOBILE</button>
+            <button onclick="reply('CommandX.WIS')">CommandX.WIS</button>
+            <button onclick="restartChat()">Neuer Chat</button>
+          </div>`;
+      } else if (choice === 'fehler') {
+        html += `<div class="message bot">Bitte nutzen Sie unser <a href="#">Ticketsystem</a>, um den Fehler zu melden.</div>
+        <div class="button-group"><button onclick="restartChat()">Neuer Chat</button></div>`;
+      } else if (choice === 'interesse') {
+        html += `<div class="message bot">Für welches Produkt interessieren Sie sich?</div>
+          <div class="button-group">
+            <button onclick="reply('AlertX - Ansprechpartner: Herr Müller')">AlertX</button>
+            <button onclick="reply('CommandX - Ansprechpartner: Frau Schneider')">CommandX</button>
+            <button onclick="reply('CommandX.MOBILE - Ansprechpartner: Herr Berger')">CommandX.MOBILE</button>
+            <button onclick="reply('CommandX.WIS - Ansprechpartner: Frau Krüger')">CommandX.WIS</button>
+            <button onclick="restartChat()">Neuer Chat</button>
+          </div>`;
       }
+
+      body.innerHTML += html;
+      body.scrollTop = body.scrollHeight;
     }
 
-    function startChat() {
-      chatBody.innerHTML = "";
-      addBotMessage("Hallo! Wie kann ich dir helfen?");
-      addButtons([
-        { label: "Ich habe ein Problem mit der Software", value: "software" },
-        { label: "Ich möchte einen Fehler melden", value: "fehler" },
-        { label: "Ich interessiere mich für eins der Produkte", value: "interesse" }
-      ]);
+    function reply(text) {
+      const body = document.getElementById('chat-body');
+      body.innerHTML += `<div class="message user">${text}</div>`;
+      body.scrollTop = body.scrollHeight;
     }
 
-    function addBotMessage(text) {
-      const msg = document.createElement("div");
-      msg.className = "message bot";
-      msg.textContent = text;
-      chatBody.appendChild(msg);
+    function restartChat() {
+      const body = document.getElementById('chat-body');
+      body.innerHTML = `<div class="message bot">Hallo! Wie kann ich dir helfen?</div>
+        <div class="button-group">
+          <button onclick="handleChoice('software')">Ich habe ein Problem mit der Software</button>
+          <button onclick="handleChoice('fehler')">Ich möchte einen Fehler melden</button>
+          <button onclick="handleChoice('interesse')">Ich interessiere mich für ein Produkt</button>
+        </div>`;
     }
-
-    function addUserMessage(text) {
-      const msg = document.createElement("div");
-      msg.className = "message user";
-      msg.textContent = text;
-      chatBody.appendChild(msg);
-    }
-
-    function addButtons(options) {
-      const container = document.createElement("div");
-      container.className = "button-group";
-      options.forEach(opt => {
-        const btn = document.createElement("button");
-        btn.textContent = opt.label;
-        btn.onclick = () => handleOption(opt.value, opt.label);
-        container.appendChild(btn);
-      });
-      chatBody.appendChild(container);
-    }
-
-    function handleOption(value, label) {
-      addUserMessage(label);
-      document.querySelector(".button-group")?.remove();
-
-      if (value === "software") {
-        addBotMessage("Welches Produkt betrifft dein Problem?");
-        addButtons([
-          { label: "AlertX", value: "sw-alertx" },
-          { label: "CommandX", value: "sw-cmx" },
-          { label: "CommandX.Mobile", value: "sw-mobile" },
-          { label: "CommandX.WIS", value: "sw-wis" }
-        ]);
-      } else if (value === "fehler") {
-        addBotMessage("Bitte nutze unser Ticketsystem unter:");
-        addBotMessage("👉 support.eurocommand.com");
-        addRestartButton();
-      } else if (value === "interesse") {
-        addBotMessage("Für welches Produkt interessierst du dich?");
-        addButtons([
-          { label: "AlertX", value: "int-alertx" },
-          { label: "CommandX", value: "int-cmx" },
-          { label: "CommandX.Mobile", value: "int-mobile" },
-          { label: "CommandX.WIS", value: "int-wis" }
-        ]);
-      } else if (value.startsWith("sw-")) {
-        addBotMessage(`Danke, wir kümmern uns um dein Anliegen zu ${label}. Ein Mitarbeiter wird sich melden.`);
-        addRestartButton();
-      } else if (value.startsWith("int-")) {
-        const nameMap = {
-          "int-alertx": "Laura Schröder",
-          "int-cmx": "Markus Weber",
-          "int-mobile": "Julia Meier",
-          "int-wis": "Thomas Kühn"
-        };
-        const name = nameMap[value] || "unser Team";
-        addBotMessage(`Dein Ansprechpartner für ${label} ist ${name}.`);
-        addRestartButton();
-      }
-    }
-
-    function addRestartButton() {
-      addButtons([
-        { label: "Neuen Chat starten", value: "restart" }
-      ]);
-    }
-
-    document.addEventListener("click", e => {
-      if (e.target.textContent === "Neuen Chat starten") {
-        startChat();
-      }
-    });
   </script>
+
 </body>
 </html>
