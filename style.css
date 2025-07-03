@@ -47,17 +47,23 @@ body {
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
-  color: inherit;
 }
 
-/* === News === */
+/* === Neuigkeiten mit animiertem Hintergrund === */
 .news-section {
   padding: 2rem;
-  background-color: #f9f9f9;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  animation: fadeNews 10s ease infinite alternate;
 }
+@keyframes fadeNews {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
 .dark .news-section {
-  background-color: #1e1e1e;
+  background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
 }
+
 .news-panel {
   background: white;
   border-left: 5px solid #ffcc00;
@@ -72,12 +78,22 @@ body {
   color: #ffcc00;
 }
 
-/* === Produkte === */
+/* === Produkte mit animiertem Farbverlauf === */
 .products-section {
   padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  background: linear-gradient(to right, #ffffff, #e8f0ff);
+  animation: bgProducts 12s ease-in-out infinite alternate;
 }
+@keyframes bgProducts {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.dark .products-section {
+  background: linear-gradient(to right, #1a1a1a, #2a2a2a);
+}
+
 .products-section h2 {
   text-align: center;
   margin-bottom: 3rem;
@@ -186,78 +202,52 @@ body {
 }
 
 /* === Chatbot === */
-.chat-toggle {
+.chatbot {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  font-size: 1.5rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  z-index: 999;
-}
-
-.chatbot {
-  position: fixed;
-  bottom: 5rem;
-  right: 2rem;
   width: 360px;
   max-height: 90vh;
-  background: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
-  border: 1px solid #ccc;
+  overflow: hidden;
   z-index: 1000;
-}
-.chatbot.visible {
-  display: flex;
+  border: 1px solid #ccc;
 }
 .chatbot-header {
-  background: #0b2b4b;
+  background-color: #0b2b4b;
   color: white;
   padding: 1rem;
-  font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 600;
 }
 .chatbot-header span {
   font-size: 0.9rem;
   font-weight: 400;
+  display: block;
 }
 .chatbot-header strong {
   font-size: 1.1rem;
 }
-.chatbot-controls {
-  display: flex;
-  gap: 0.5rem;
-}
-.chatbot-controls button {
-  background: rgba(255,255,255,0.2);
+.chatbot-header button {
+  background: transparent;
   color: white;
   border: none;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
   border-radius: 50%;
   width: 28px;
   height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
-.chatbot-controls button:hover {
-  background: rgba(255,255,255,0.4);
-}
-
 .chatbot-messages {
   padding: 1rem;
   display: flex;
@@ -266,8 +256,7 @@ body {
   overflow-y: auto;
   flex-grow: 1;
 }
-.bot-msg,
-.user-msg {
+.bot-msg, .user-msg {
   padding: 0.8rem 1rem;
   border-radius: 10px;
   max-width: 85%;
@@ -284,7 +273,7 @@ body {
   align-self: flex-end;
 }
 
-/* === Auswahloptionen im 2x2 Grid === */
+/* === Optionen im 2x2 Grid === */
 .chatbot-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -304,7 +293,7 @@ body {
   background-color: #f0f0f0;
 }
 
-/* === Eingabefeld & Senden === */
+/* === Eingabefeld === */
 .chatbot-input {
   padding: 0.75rem;
   display: flex;
@@ -331,36 +320,18 @@ body {
   outline: none;
 }
 
-/* === Dark Mode Anpassungen === */
-.dark .chatbot {
-  background-color: #2b2b2b;
-  border-color: #444;
+/* === Chat Toggle Button === */
+.chat-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: #007bff;
   color: white;
-}
-.dark .bot-msg {
-  background-color: #3b3b3b;
-  color: white;
-}
-.dark .user-msg {
-  background-color: #0056b3;
-}
-.dark .chatbot-options button {
-  background-color: #444;
-  color: white;
-  border-color: #666;
-}
-.dark .chatbot-input {
-  background-color: #1f1f1f;
-  border-top: 1px solid #444;
-}
-.dark .chatbot-input input {
-  background-color: #2c2c2c;
-  border-color: #666;
-  color: white;
-}
-.dark .chatbot-controls button {
-  background-color: #555;
-}
-.dark .chatbot-controls button:hover {
-  background-color: #777;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
