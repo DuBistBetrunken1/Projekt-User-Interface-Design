@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Eurocommand Startseite</title>
+  <title>Eurocommand GmbH</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -18,115 +18,119 @@
     </nav>
   </header>
 
-  <main>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Die digitale Führungsunterstützungsplattform</h1>
+      <p class="slogan">Einfach. Intuitiv. Ausfallsicher.</p>
+      <img src="commandx-logo.png" alt="CommandX Logo" class="hero-logo" />
+    </div>
+    <div class="hero-image">
+      <img src="header.png" alt="Header" />
+    </div>
+  </section>
 
-    <section class="news-section">
-      <h2>📰 Neuigkeiten</h2>
-      <div class="news-box">
+  <section class="news">
+    <h2>📰 Neuigkeiten</h2>
+    <div class="news-container">
+      <div class="news-item">
         <h3>⚡ Neue Version von CommandX veröffentlicht</h3>
         <p>Die neue Version bietet Verbesserungen in der Bedienbarkeit und Performance.</p>
       </div>
-      <div class="news-box">
+      <div class="news-item">
         <h3>📍 Nutzer können jetzt Standortverfolgung aktivieren</h3>
         <p>Die neue Funktion ermöglicht noch genauere Einsatzkoordination.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="product-section">
-      <h2>🚀 Unsere Produkte</h2>
-      <div class="product-container">
-        <a href="alertx.html" class="product-card">
-          <img src="alertx.png" alt="AlertX" />
-          <h3>AlertX</h3>
-          <p>Die multifunktionale Alarmierungs-App.</p>
-        </a>
-        <a href="commandx.html" class="product-card">
-          <img src="commandx.png" alt="CommandX" />
-          <h3>CommandX</h3>
-          <p>Die digitale Führungsunterstützungsplattform.</p>
-        </a>
-        <a href="commandxmobile.html" class="product-card">
-          <img src="commandxmobile.png" alt="CommandX.Mobile" />
-          <h3>CommandX.Mobile</h3>
-          <p>Die mobile Führungsunterstützungsapp.</p>
-        </a>
-        <a href="commandxwis.html" class="product-card">
-          <img src="commandxwis.png" alt="CommandX.WIS" />
-          <h3>CommandX.WIS</h3>
-          <p>Alarm- und Informationsanzeigesystem.</p>
-        </a>
-      </div>
-    </section>
+  <section class="product-slider">
+    <h2>✨ Unsere Produkte</h2>
+    <div class="product-cards">
+      <a href="alertx.html" class="card">
+        <img src="alertx.png" alt="AlertX" />
+        <h3>AlertX</h3>
+        <p>Die multifunktionale Alarmierungs-App.</p>
+      </a>
+      <a href="commandx.html" class="card">
+        <img src="commandx.png" alt="CommandX" />
+        <h3>CommandX</h3>
+        <p>Die digitale Führungsunterstützungsplattform.</p>
+      </a>
+      <a href="mobile.html" class="card">
+        <img src="mobile.png" alt="CommandX.Mobile" />
+        <h3>CommandX.Mobile</h3>
+        <p>Die mobile Führungsunterstützungsapp.</p>
+      </a>
+      <a href="wis.html" class="card">
+        <img src="wis.png" alt="CommandX.WIS" />
+        <h3>CommandX.WIS</h3>
+        <p>Alarm- und Informationsanzeigesystem.</p>
+      </a>
+    </div>
+  </section>
 
-  </main>
-
-  <button id="chatToggle" aria-label="Chat öffnen">
+  <!-- Chatbot Button -->
+  <button class="chat-toggle" id="chatToggle" aria-label="Support Chat öffnen">
     <img src="chat-icon.png" alt="Chat Icon" />
   </button>
 
-  <div id="chatWindow" class="chat-window hidden">
+  <!-- Chatbot Window -->
+  <div class="chatbot" id="chatbot">
     <div class="chat-header">💬 Support-Chat</div>
     <div class="chat-body" id="chatBody">
-      <div class="chat-message bot">Hallo! Wie kann ich dir helfen?</div>
-      <div class="chat-options">
-        <button data-next="software">Ich habe ein Problem mit der Software</button>
-        <button data-next="fehler">Ich möchte einen Fehler melden</button>
-        <button data-next="interesse">Ich interessiere mich für eins der Produkte</button>
-      </div>
+      <p>Hallo! Wie kann ich dir helfen?</p>
+      <button onclick="selectOption('problem')">Ich habe ein Problem mit der Software</button>
+      <button onclick="selectOption('fehler')">Ich möchte einen Fehler melden</button>
+      <button onclick="selectOption('interesse')">Ich interessiere mich für eins der Produkte</button>
     </div>
-    <div class="chat-footer">
-      <button id="restartChat">🔄 Neustart</button>
-    </div>
+    <button onclick="resetChat()">🔄 Neustart</button>
   </div>
 
   <script>
-    const toggle = document.getElementById("darkModeToggle");
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
+    const body = document.body;
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
     });
 
-    const chatToggle = document.getElementById("chatToggle");
-    const chatWindow = document.getElementById("chatWindow");
-    const chatBody = document.getElementById("chatBody");
-    const restartBtn = document.getElementById("restartChat");
+    document.getElementById('chatToggle').onclick = () => {
+      document.getElementById('chatbot').classList.toggle('active');
+    };
 
-    chatToggle.addEventListener("click", () => {
-      chatWindow.classList.toggle("hidden");
-    });
+    function resetChat() {
+      document.getElementById('chatBody').innerHTML = `
+        <p>Hallo! Wie kann ich dir helfen?</p>
+        <button onclick="selectOption('problem')">Ich habe ein Problem mit der Software</button>
+        <button onclick="selectOption('fehler')">Ich möchte einen Fehler melden</button>
+        <button onclick="selectOption('interesse')">Ich interessiere mich für eins der Produkte</button>
+      `;
+    }
 
-    restartBtn.addEventListener("click", () => {
-      chatBody.innerHTML = `
-        <div class="chat-message bot">Hallo! Wie kann ich dir helfen?</div>
-        <div class="chat-options">
-          <button data-next="software">Ich habe ein Problem mit der Software</button>
-          <button data-next="fehler">Ich möchte einen Fehler melden</button>
-          <button data-next="interesse">Ich interessiere mich für eins der Produkte</button>
-        </div>`;
-    });
-
-    chatBody.addEventListener("click", (e) => {
-      if (e.target.dataset.next === "software") {
-        chatBody.innerHTML += `
-          <div class="chat-message bot">Um welches Produkt geht es?</div>
-          <div class="chat-options">
-            <button>AlertX</button>
-            <button>CommandX</button>
-            <button>CommandX.Mobile</button>
-            <button>CommandX.WIS</button>
-          </div>`;
-      } else if (e.target.dataset.next === "fehler") {
-        chatBody.innerHTML += `<div class="chat-message bot">Bitte besuchen Sie unser Ticketsystem unter <a href="#">support.eurocommand.de</a></div>`;
-      } else if (e.target.dataset.next === "interesse") {
-        chatBody.innerHTML += `
-          <div class="chat-message bot">Wofür interessieren Sie sich?</div>
-          <div class="chat-options">
-            <button>AlertX – Ansprechpartner: Max Weber</button>
-            <button>CommandX – Ansprechpartnerin: Anna Schulte</button>
-            <button>CommandX.Mobile – Ansprechpartner: Leo Brandt</button>
-            <button>CommandX.WIS – Ansprechpartner: Eva Schröder</button>
-          </div>`;
+    function selectOption(option) {
+      const body = document.getElementById('chatBody');
+      if (option === 'problem') {
+        body.innerHTML = `
+          <p>Mit welchem Produkt hast du ein Problem?</p>
+          <button>AlertX</button>
+          <button>CommandX</button>
+          <button>CommandX.Mobile</button>
+          <button>CommandX.WIS</button>
+        `;
+      } else if (option === 'fehler') {
+        body.innerHTML = `
+          <p>Du wirst nun an unser Ticketsystem weitergeleitet.</p>
+          <a href="https://support.eurocommand.de" target="_blank">Zum Ticketsystem</a>
+        `;
+      } else if (option === 'interesse') {
+        body.innerHTML = `
+          <p>Welches Produkt interessiert dich?</p>
+          <button onclick="alert('Ansprechpartner: Max Mustermann')">AlertX</button>
+          <button onclick="alert('Ansprechpartnerin: Lisa Becker')">CommandX</button>
+          <button onclick="alert('Ansprechpartner: Jonas Meier')">CommandX.Mobile</button>
+          <button onclick="alert('Ansprechpartnerin: Sophie Klein')">CommandX.WIS</button>
+        `;
       }
-    });
+    }
   </script>
 </body>
 </html>
