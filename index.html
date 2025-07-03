@@ -132,54 +132,61 @@
   </div>
 
   <script>
-    const toggle = document.getElementById("chatToggle");
-    const chat = document.getElementById("chatWindow");
-    const body = document.getElementById("chatBody");
+  const toggle = document.getElementById("chatToggle");
+  const chat = document.getElementById("chatWindow");
+  const body = document.getElementById("chatBody");
 
-    toggle.onclick = () => chat.classList.toggle("visible");
+  toggle.onclick = () => {
+    chat.classList.toggle("visible");
+  };
 
-    function resetChat() {
-      body.innerHTML = 
-        <p>Hallo! Wie kann ich dir helfen?</p>
-        <div class="chat-options">
-          <button onclick="chatResponse('software')">Ich habe ein Problem mit der Software</button>
-          <button onclick="chatResponse('bug')">Ich möchte einen Fehler melden</button>
-          <button onclick="chatResponse('interest')">Ich interessiere mich für eins der Produkte</button>
-        </div>;
+  function resetChat() {
+    body.innerHTML = `
+      <p>Hallo! Wie kann ich dir helfen?</p>
+      <div class="chat-options">
+        <button onclick="chatResponse('software')">Ich habe ein Problem mit der Software</button>
+        <button onclick="chatResponse('bug')">Ich möchte einen Fehler melden</button>
+        <button onclick="chatResponse('interest')">Ich interessiere mich für eins der Produkte</button>
+      </div>`;
+  }
+
+  function chatResponse(type) {
+    if (type === 'software') {
+      body.innerHTML = `
+        <p>Welches Produkt betrifft das Problem?</p>
+        <div class="chat-options grid">
+          <button>AlertX</button>
+          <button>CommandX</button>
+          <button>CommandX.Mobile</button>
+          <button>CommandX.WIS</button>
+        </div>`;
+    } else if (type === 'bug') {
+      body.innerHTML = `<p>Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</p>`;
+    } else if (type === 'interest') {
+      body.innerHTML = `
+        <p>Für welches Produkt interessieren Sie sich?</p>
+        <div class="chat-options grid">
+          <button>AlertX</button>
+          <button>CommandX</button>
+          <button>CommandX.Mobile</button>
+          <button>CommandX.WIS</button>
+        </div>`;
     }
+  }
 
-    function chatResponse(type) {
-      if (type === 'software') {
-        body.innerHTML = 
-          <p>Welches Produkt betrifft das Problem?</p>
-          <div class="chat-options grid">
-            <button>AlertX</button>
-            <button>CommandX</button>
-            <button>CommandX.Mobile</button>
-            <button>CommandX.WIS</button>
-          </div>;
-      } else if (type === 'bug') {
-        body.innerHTML = <p>Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</p>;
-      } else if (type === 'interest') {
-        body.innerHTML = 
-          <p>Für welches Produkt interessieren Sie sich?</p>
-          <div class="chat-options grid">
-            <button>AlertX</button>
-            <button>CommandX</button>
-            <button>CommandX.Mobile</button>
-            <button>CommandX.WIS</button>
-          </div>;
-      }
-    }
+  // Dark Mode Umschalten
+  document.getElementById("darkModeToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  });
 
-    document.getElementById("darkModeToggle").addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
-    });
+  // Dark Mode beim Laden setzen
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
 
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark");
-    }
-  </script>
+  // Chat beim Laden zurücksetzen
+  resetChat();
+</script>
 </body>
 </html>
