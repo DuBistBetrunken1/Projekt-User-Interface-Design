@@ -88,17 +88,29 @@
   <!-- Chatbot Button -->
   <button class="chat-toggle" id="chatToggle" aria-label="Support Chat öffnen">💬</button>
 
-  <!-- Chatbot Fenster -->
+  <!-- Moderner Chatbot -->
   <div class="chat-window" id="chatWindow">
-    <div class="chat-header">💬 Support-Chat</div>
-    <div class="chat-body" id="chatBody">
-      <p>Hallo! Wie kann ich dir helfen?</p>
-      <button onclick="showSoftwareOptions()">Ich habe ein Problem mit der Software</button>
-      <button onclick="forwardToTickets()">Ich möchte einen Fehler melden</button>
-      <button onclick="showProductInterest()">Ich interessiere mich für eins der Produkte</button>
+    <div class="chat-header">
+      <div class="chat-title">
+        <img src="bot-icon.png" alt="Bot" class="chat-avatar" />
+        <div>
+          <strong>Wie kann ich dir helfen?</strong><br />
+          <small>Support-Chat – Prototyp</small>
+        </div>
+      </div>
+      <button class="chat-close" onclick="chat.classList.remove('visible')">×</button>
     </div>
-    <div class="chat-footer">
-      <button onclick="resetChat()">🔄 Neustart</button>
+
+    <div class="chat-messages" id="chatBody">
+      <div class="message bot">Hallo! Wie kann ich dir helfen?</div>
+      <div class="message option" onclick="showSoftwareOptions()">Ich habe ein Problem mit der Software</div>
+      <div class="message option" onclick="forwardToTickets()">Ich möchte einen Fehler melden</div>
+      <div class="message option" onclick="showProductInterest()">Ich interessiere mich für eins der Produkte</div>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" placeholder="Nachricht senden (deaktiviert)" disabled />
+      <button disabled>▶</button>
     </div>
   </div>
 
@@ -109,38 +121,32 @@
 
     toggle.onclick = () => chat.classList.toggle("visible");
 
-    function resetChat() {
-      body.innerHTML = `
-        <p>Hallo! Wie kann ich dir helfen?</p>
-        <button onclick="showSoftwareOptions()">Ich habe ein Problem mit der Software</button>
-        <button onclick="forwardToTickets()">Ich möchte einen Fehler melden</button>
-        <button onclick="showProductInterest()">Ich interessiere mich für eins der Produkte</button>
-      `;
-    }
-
     function showSoftwareOptions() {
-      body.innerHTML = `
-        <p>Welches Produkt betrifft das Problem?</p>
-        <button>AlertX</button>
-        <button>CommandX</button>
-        <button>CommandX.Mobile</button>
-        <button>CommandX.WIS</button>
+      body.innerHTML += `
+        <div class="message user">Ich habe ein Problem mit der Software</div>
+        <div class="message bot">Welches Produkt betrifft das Problem?</div>
+        <div class="message option" onclick="body.innerHTML += '<div class=message user>AlertX</div>'">AlertX</div>
+        <div class="message option" onclick="body.innerHTML += '<div class=message user>CommandX</div>'">CommandX</div>
+        <div class="message option" onclick="body.innerHTML += '<div class=message user>CommandX.Mobile</div>'">CommandX.Mobile</div>
+        <div class="message option" onclick="body.innerHTML += '<div class=message user>CommandX.WIS</div>'">CommandX.WIS</div>
       `;
     }
 
     function forwardToTickets() {
-      body.innerHTML = `
-        <p>Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</p>
+      body.innerHTML += `
+        <div class="message user">Ich möchte einen Fehler melden</div>
+        <div class="message bot">Bitte melden Sie den Fehler direkt über unser <a href="#">Ticketsystem</a>.</div>
       `;
     }
 
     function showProductInterest() {
-      body.innerHTML = `
-        <p>Für welches Produkt interessieren Sie sich?</p>
-        <button>AlertX – Ansprechpartner: Max Mustermann</button>
-        <button>CommandX – Ansprechpartnerin: Lisa Beispiel</button>
-        <button>CommandX.Mobile – Ansprechpartner: Alex Meier</button>
-        <button>CommandX.WIS – Ansprechpartnerin: Jana Schulz</button>
+      body.innerHTML += `
+        <div class="message user">Ich interessiere mich für eins der Produkte</div>
+        <div class="message bot">Für welches Produkt interessierst du dich?</div>
+        <div class="message option">AlertX – Ansprechpartner: Max Mustermann</div>
+        <div class="message option">CommandX – Ansprechpartnerin: Lisa Beispiel</div>
+        <div class="message option">CommandX.Mobile – Ansprechpartner: Alex Meier</div>
+        <div class="message option">CommandX.WIS – Ansprechpartnerin: Jana Schulz</div>
       `;
     }
 
