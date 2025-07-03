@@ -112,24 +112,29 @@
     </div>
   </section>
 
-  <!-- Chatbot Button -->
+<!-- Chatbot Button -->
 <button class="chat-toggle" id="chatToggle" aria-label="Support Chat öffnen">💬</button>
 
-<!-- Moderner Chatbot -->
-<div class="chat-window" id="chatWindow">
-  <div class="chat-header">💬 Support-Chat</div>
-  <div class="chat-body" id="chatBody">
-    <p>Hallo! Wie kann ich dir helfen?</p>
-    <div class="chat-options">
-      <button onclick="chatResponse('software')">Ich habe ein Problem mit der Software</button>
-      <button onclick="chatResponse('bug')">Ich möchte einen Fehler melden</button>
-      <button onclick="chatResponse('interest')">Ich interessiere mich für eins der Produkte</button>
+<!-- Neuer Moderner Chatbot -->
+<div class="chatbot" id="chatbot">
+  <div class="chatbot-header">
+    <span>💬 Eurocommand Chat</span>
+    <button id="chatClose">✖</button>
+  </div>
+  <div class="chatbot-messages" id="chatMessages">
+    <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
+    <div class="chatbot-options" id="chatOptions">
+      <button onclick="handleChat('software')">🛠 Softwareproblem</button>
+      <button onclick="handleChat('bug')">🐞 Fehler melden</button>
+      <button onclick="handleChat('interest')">📦 Interesse</button>
+      <button onclick="handleChat('other')">❓ Sonstiges</button>
     </div>
   </div>
-  <div class="chat-footer">
-    <button onclick="resetChat()">🔄 Neustart</button>
+  <div class="chatbot-footer">
+    <button onclick="resetChat()">🔁 Zurück</button>
   </div>
 </div>
+
 
 <script>
   const toggle = document.getElementById("chatToggle");
