@@ -145,21 +145,17 @@ body {
 }
 
 .chat-window {
-  display: none;
-  flex-direction: column;
-  position: fixed;
-  bottom: 5rem;
-  right: 1rem;
-  background: white;
-  border-radius: 10px;
-  width: 280px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: 1000;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .chat-window.visible {
   display: flex;
+  opacity: 1;
+  transform: scale(1);
 }
+
 
 .chat-header {
   background: crimson;
