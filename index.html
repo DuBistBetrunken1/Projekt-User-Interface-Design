@@ -118,23 +118,18 @@
   <!-- Moderner Chatbot -->
   <div class="chatbot" id="chatbot">
     <div class="chatbot-header">
-      <span>💬 Eurocommand Chat</span>
-      <button id="chatClose">✖</button>
-    </div>
-    <div class="chatbot-messages" id="chatMessages">
-      <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
-      <div class="chatbot-options" id="chatOptions">
-        <button onclick="handleChat('software')">🛠 Softwareproblem</button>
-        <button onclick="handleChat('bug')">🐞 Fehler melden</button>
-        <button onclick="handleChat('interest')">📦 Interesse</button>
-        <button onclick="handleChat('other')">❓ Sonstiges</button>
-      </div>
-    </div>
-    <div class="chatbot-footer">
-  <button class="reset-btn" onclick="resetChat()" aria-label="Chat zurücksetzen">
-    <span>⟲</span> Zurück
-  </button>
+  <span>💬 Eurocommand Chat</span>
+  <div class="chatbot-actions">
+    <button class="reset-icon" onclick="resetChat()" title="Zurücksetzen">⟲</button>
+    <button class="close-icon" id="chatClose" title="Schließen">✖</button>
+  </div>
 </div>
+
+<div class="chatbot-footer">
+  <input type="text" id="userInput" placeholder="Nachricht eingeben" />
+  <button class="send-btn" onclick="sendMessage()" aria-label="Nachricht senden">📤</button>
+</div>
+
 
     <div class="chatbot-input">
   <input type="text" placeholder="Nachricht eingeben" disabled />
