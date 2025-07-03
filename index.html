@@ -19,16 +19,16 @@
     </ul>
   </nav>
 
-  <!-- Header-Bereich -->
+  <!-- Header -->
   <header class="header">
-    <div class="header-content">
+    <div class="header-wrapper">
       <div class="header-left">
-        <h1>Die digitale Führungsunterstützungsplattform</h1>
+        <h1>Die digitale<br>Führungsunterstützungsplattform</h1>
         <p class="claim">Einfach. Intuitiv. Ausfallsicher.</p>
         <img src="commandx-logo.png" alt="CommandX Logo" class="logo" />
       </div>
       <div class="header-right">
-        <img src="header.png" alt="Header" class="header-image" />
+        <img src="header.png" alt="Header-Bild" class="header-image" />
       </div>
     </div>
   </header>
@@ -73,10 +73,9 @@
     </div>
   </section>
 
-  <!-- Chatbot Button -->
+  <!-- Chatbot -->
   <button class="chat-toggle" id="chatToggle" aria-label="Support Chat öffnen">💬</button>
 
-  <!-- Chatfenster -->
   <div class="chat-container" id="chatContainer" hidden>
     <div class="chat-header">💬 Support-Chat</div>
     <div class="chat-body" id="chatBody">
@@ -91,7 +90,6 @@
   <script>
     const toggle = document.getElementById('darkModeToggle');
     const body = document.body;
-
     toggle.addEventListener('click', () => {
       body.classList.toggle('dark');
     });
