@@ -19,10 +19,7 @@
     </nav>
   </header>
 
-  <!-- Neuigkeiten mit Blur und Partikel -->
-  <section class="news-section section-wrapper">
-    <canvas class="particles-bg" id="newsParticles"></canvas>
-    <div class="blur-bg"></div>
+  <section class="news-section">
     <h2>📰 Neuigkeiten</h2>
     <div class="news-panel">
       <strong>⚡ Neue Version von CommandX veröffentlicht</strong>
@@ -34,10 +31,7 @@
     </div>
   </section>
 
-  <!-- Produkte mit Blur und Partikel -->
-  <section class="products-section section-wrapper">
-    <canvas class="particles-bg" id="productsParticles"></canvas>
-    <div class="blur-bg"></div>
+  <section class="products-section">
     <h2>✨ Unsere Produkte</h2>
     <div class="product-row">
       <div class="product-text">
@@ -77,7 +71,6 @@
     </div>
   </section>
 
-  <!-- Call-to-Action -->
   <section class="cta-section">
     <div class="cta-content">
       <div class="cta-text">
@@ -91,7 +84,6 @@
     </div>
   </section>
 
-  <!-- Kontaktformular -->
   <section class="form-section" id="contactForm">
     <div class="form-content">
       <div class="form-text">
@@ -123,7 +115,10 @@
         <strong>Wie kann ich dir helfen?</strong>
         <span>Eurocommand Chatbot</span>
       </div>
-      <button onclick="toggleChat()">×</button>
+      <div class="chatbot-controls">
+        <button onclick="resetChat()" title="Zurücksetzen">🔄</button>
+        <button onclick="toggleChat()" title="Schließen">×</button>
+      </div>
     </div>
 
     <div class="chatbot-messages" id="chatMessages">
@@ -142,7 +137,6 @@
     </div>
   </div>
 
-  <!-- Skripte -->
   <script>
     const chatbot = document.getElementById("chatbot");
     const chatMessages = document.getElementById("chatMessages");
@@ -161,6 +155,7 @@
         interest: "Für welches Produkt interessierst du dich?",
         other: "Bitte schildere dein Anliegen.",
       };
+
       appendBotMessage(responses[type]);
       chatOptions.style.display = "none";
     }
@@ -191,70 +186,22 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
+    function resetChat() {
+      chatMessages.innerHTML = `
+        <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
+        <div class="chatbot-options" id="chatOptions">
+          <button onclick="handleChat('software')">🛠 Softwareproblem</button>
+          <button onclick="handleChat('bug')">🐞 Fehler melden</button>
+          <button onclick="handleChat('interest')">📦 Interesse</button>
+          <button onclick="handleChat('other')">❓ Sonstiges</button>
+        </div>
+      `;
+    }
+
+    // Darkmode Umschalten
     darkToggle.addEventListener("click", () => {
       document.body.classList.toggle("dark");
     });
-
-    function createParticles(canvasId, color) {
-      const canvas = document.getElementById(canvasId);
-      const ctx = canvas.getContext("2d");
-      let particles = [];
-      const num = 60;
-
-      function resize() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-      }
-
-      function init() {
-        resize();
-        particles = [];
-        for (let i = 0; i < num; i++) {
-          particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            dx: (Math.random() - 0.5) * 0.5,
-            dy: (Math.random() - 0.5) * 0.5,
-            radius: Math.random() * 2 + 1,
-          });
-        }
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = color;
-        for (const p of particles) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-
-      function update() {
-        for (const p of particles) {
-          p.x += p.dx;
-          p.y += p.dy;
-          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-        }
-      }
-
-      function animate() {
-        draw();
-        update();
-        requestAnimationFrame(animate);
-      }
-
-      init();
-      animate();
-      window.addEventListener("resize", () => {
-        resize();
-        init();
-      });
-    }
-
-    createParticles("newsParticles", "rgba(255, 200, 0, 0.2)");
-    createParticles("productsParticles", "rgba(0, 120, 255, 0.2)");
   </script>
 </body>
 </html>
