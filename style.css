@@ -71,6 +71,38 @@ body {
 .dark .news-panel strong {
   color: #ffcc00;
 }
+/* === Hintergrund für Neuigkeiten === */
+.news-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fefcea 0%, #f1da36 100%);
+  animation: fadeIn 1s ease-in-out;
+  z-index: 1;
+}
+.news-section::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.3), transparent 60%);
+  animation: floatBlob 6s ease-in-out infinite;
+  z-index: 0;
+}
+.news-panel {
+  position: relative;
+  z-index: 2;
+}
+
+/* === Hintergrund für Produkte === */
+.products-section {
+  background: linear-gradient(to bottom right, #e6f0ff, #cce0ff);
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+.products
 
 /* === Produkte === */
 .products-section {
