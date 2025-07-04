@@ -485,9 +485,7 @@ body {
   cursor: pointer;
   transition: background 0.15s;
 }
-.form-footer button:hover { 
-  background: #ffe380; 
-}
+.form-footer button:hover { background: #ffe380; }
 
 /*CHATBOT*/
 .chat-toggle {
