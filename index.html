@@ -150,14 +150,34 @@
 
     function handleChat(type) {
       const responses = {
-        software: "Welches Produkt bereitet dir Probleme?",
-        bug: "Bitte beschreibe den Fehler möglichst genau.",
-        interest: "Für welches Produkt interessierst du dich?",
-        other: "Bitte schildere dein Anliegen.",
+        software: [
+          "Welches Produkt bereitet dir Probleme?",
+          "Danke für die Info. Könntest du das Problem bitte näher beschreiben?",
+          "Verstanden. Ein realer Supportmitarbeiter wird sich deinem Anliegen jetzt widmen und den Chat betreten."
+        ],
+        bug: [
+          "Bitte beschreibe den Fehler möglichst genau.",
+          "Danke, das hilft uns weiter. Welches Produkt und welche Version nutzt du aktuell?",
+          "Perfekt, ich leite die Information an unser Technikteam weiter."
+        ],
+        interest: [
+          "Für welches Produkt interessierst du dich?",
+          "Super Wahl! Möchtest du eine individuelle Beratung oder eine Live-Demo buchen?",
+          "Du kannst dir auch eine Online-Schulung durch unser geschultes Personal sichern."
+        ],
+        other: [
+          "Bitte schildere dein Anliegen.",
+          "Danke, ich leite dein Anliegen intern weiter.",
+          "Ein Supportmitarbeiter wird sich in Kürze melden."
+        ]
       };
 
-      appendBotMessage(responses[type]);
+      let steps = responses[type];
+      let delay = 500;
       chatOptions.style.display = "none";
+      steps.forEach((msg, i) => {
+        setTimeout(() => appendBotMessage(msg), delay * (i + 1));
+      });
     }
 
     function sendMessage() {
