@@ -19,21 +19,25 @@
     </nav>
   </header>
 
-  <section class="news-section">
+  <!-- NEWS SECTION MIT BLUR & PARTIKEL -->
+  <section class="news-section with-particles">
+    <canvas class="particles-bg"></canvas>
     <h2>📰 Neuigkeiten</h2>
-    <div class="news-panel">
+    <div class="news-panel frosted">
       <strong>⚡ Neue Version von CommandX veröffentlicht</strong>
       <p>Die neue Version bietet Verbesserungen in der Bedienbarkeit und Performance.</p>
     </div>
-    <div class="news-panel">
+    <div class="news-panel frosted">
       <strong>📍 Nutzer können jetzt Standortverfolgung aktivieren</strong>
       <p>Die neue Funktion ermöglicht noch genauere Einsatzkoordination.</p>
     </div>
   </section>
 
-  <section class="products-section">
+  <!-- PRODUKTE SECTION MIT BLUR & PARTIKEL -->
+  <section class="products-section with-particles">
+    <canvas class="particles-bg"></canvas>
     <h2>✨ Unsere Produkte</h2>
-    <div class="product-row">
+    <div class="product-row frosted">
       <div class="product-text">
         <h3>AlertX</h3>
         <p>Die multifunktionale Alarmierungs-App.</p>
@@ -42,7 +46,7 @@
         <img src="alertx.png" alt="AlertX" />
       </div>
     </div>
-    <div class="product-row reverse">
+    <div class="product-row frosted reverse">
       <div class="product-text">
         <h3>CommandX</h3>
         <p>Die digitale Führungsunterstützungsplattform.</p>
@@ -51,7 +55,7 @@
         <img src="commandx.png" alt="CommandX" />
       </div>
     </div>
-    <div class="product-row">
+    <div class="product-row frosted">
       <div class="product-text">
         <h3>CommandX.Mobile</h3>
         <p>Die mobile Führungsunterstützungsapp.</p>
@@ -60,7 +64,7 @@
         <img src="mobile.png" alt="CommandX.Mobile" />
       </div>
     </div>
-    <div class="product-row reverse">
+    <div class="product-row frosted reverse">
       <div class="product-text">
         <h3>CommandX.WIS</h3>
         <p>Alarm- und Informationsanzeigesystem.</p>
@@ -71,6 +75,7 @@
     </div>
   </section>
 
+  <!-- CTA, Formular & Chatbot (unverändert) -->
   <section class="cta-section">
     <div class="cta-content">
       <div class="cta-text">
@@ -105,10 +110,8 @@
     </div>
   </section>
 
-  <!-- Chatbot Button -->
   <button class="chat-toggle" onclick="toggleChat()">💬</button>
 
-  <!-- Chatbot Fenster -->
   <div class="chatbot" id="chatbot">
     <div class="chatbot-header">
       <div>
@@ -120,7 +123,6 @@
         <button onclick="toggleChat()" title="Schließen">×</button>
       </div>
     </div>
-
     <div class="chatbot-messages" id="chatMessages">
       <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
       <div class="chatbot-options" id="chatOptions">
@@ -130,7 +132,6 @@
         <button onclick="handleChat('other')">❓ Sonstiges</button>
       </div>
     </div>
-
     <div class="chatbot-input">
       <input type="text" id="userInput" placeholder="Nachricht eingeben" />
       <button onclick="sendMessage()">➤</button>
@@ -147,7 +148,6 @@
     function toggleChat() {
       chatbot.classList.toggle("visible");
     }
-
     function handleChat(type) {
       const responses = {
         software: "Welches Produkt bereitet dir Probleme?",
@@ -155,11 +155,9 @@
         interest: "Für welches Produkt interessierst du dich?",
         other: "Bitte schildere dein Anliegen.",
       };
-
       appendBotMessage(responses[type]);
       chatOptions.style.display = "none";
     }
-
     function sendMessage() {
       const message = userInput.value.trim();
       if (!message) return;
@@ -169,7 +167,6 @@
         appendBotMessage("Vielen Dank für deine Nachricht! Wir melden uns bald.");
       }, 600);
     }
-
     function appendBotMessage(text) {
       const msg = document.createElement("div");
       msg.className = "bot-msg";
@@ -177,7 +174,6 @@
       chatMessages.appendChild(msg);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-
     function appendUserMessage(text) {
       const msg = document.createElement("div");
       msg.className = "user-msg";
@@ -185,7 +181,6 @@
       chatMessages.appendChild(msg);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-
     function resetChat() {
       chatMessages.innerHTML = `
         <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
@@ -197,11 +192,78 @@
         </div>
       `;
     }
-
     // Darkmode Umschalten
     darkToggle.addEventListener("click", () => {
       document.body.classList.toggle("dark");
     });
+
+    // ==== Partikel Background ====
+    function Particles(canvasSelector) {
+      const canvas = document.querySelector(canvasSelector);
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let w = 0, h = 0;
+      function resize() {
+        w = canvas.offsetWidth;
+        h = canvas.offsetHeight;
+        canvas.width = w * window.devicePixelRatio;
+        canvas.height = h * window.devicePixelRatio;
+        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+      }
+      function randomParticle() {
+        return {
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: 1.5 + Math.random() * 3,
+          dx: -0.3 + Math.random() * 0.6,
+          dy: -0.15 + Math.random() * 0.3,
+          alpha: 0.18 + Math.random() * 0.35
+        };
+      }
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (let p of particles) {
+          ctx.globalAlpha = p.alpha;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = '#aac8ff';
+          ctx.shadowColor = '#d0e4ff';
+          ctx.shadowBlur = 8;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+        ctx.globalAlpha = 1.0;
+      }
+      function update() {
+        for (let p of particles) {
+          p.x += p.dx;
+          p.y += p.dy;
+          // Wrap-around:
+          if (p.x < -10) p.x = w + 10;
+          if (p.x > w + 10) p.x = -10;
+          if (p.y < -10) p.y = h + 10;
+          if (p.y > h + 10) p.y = -10;
+        }
+      }
+      function loop() {
+        update();
+        draw();
+        requestAnimationFrame(loop);
+      }
+      function init() {
+        resize();
+        particles = Array.from({length: Math.round(w * h / 4000)}, randomParticle);
+        loop();
+      }
+      window.addEventListener('resize', () => {
+        resize();
+        particles = Array.from({length: Math.round(w * h / 4000)}, randomParticle);
+      });
+      init();
+    }
+    Particles('.news-section .particles-bg');
+    Particles('.products-section .particles-bg');
   </script>
 </body>
 </html>
