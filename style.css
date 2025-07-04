@@ -417,6 +417,27 @@ body {
 
 
 /* ===== CTA Section ===== */
+.cta-button {
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+  background-color: #ffcc00;
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.08rem;
+  cursor: pointer;
+  box-shadow: 0 3px 15px 0 rgba(0,0,0,0.07);
+  transition: background 0.16s, color 0.16s, box-shadow 0.18s;
+  letter-spacing: 0.01em;
+  display: inline-block;
+}
+.cta-button:hover, .cta-button:focus {
+  background-color: #ffe484;
+  color: #111;
+  box-shadow: 0 8px 22px 0 rgba(60,50,5,0.15);
+}
+
 .cta-section {
   background: #000;
   color: #fff;
