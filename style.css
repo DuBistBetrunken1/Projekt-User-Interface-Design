@@ -180,7 +180,6 @@ body {
 .dark .news-content h3 { color: #ffe484; }
 .dark .news-content p { color: #e8eaf0; }
 
-/*Weiterlesen*/
 .news-actions {
   display: flex;
   justify-content: flex-end;
@@ -486,8 +485,45 @@ body {
   cursor: pointer;
   transition: background 0.15s;
 }
-.form-footer button:hover { background: #ffe380; }
-
+.form-footer button:hover { 
+  background: #ffe380; 
+}
+.dark .form-section {
+  background-color: #1a1b1c;
+}
+.dark .form-content {
+  background: rgba(36,38,44,0.96);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 rgba(10,10,10,0.18);
+  padding: 2.2rem 1.6rem;
+}
+.dark .contact-form input,
+.dark .contact-form textarea {
+  background: #222426;
+  border-color: #444;
+  color: #f7f7f9;
+}
+.dark .contact-form input::placeholder,
+.dark .contact-form textarea::placeholder {
+  color: #b8b8b8;
+  opacity: 1;
+}
+.dark .form-footer {
+  color: #eee;
+}
+.dark .form-footer button {
+  background-color: #ffcc00;
+  color: #181a1b;
+}
+.dark .form-footer button:hover {
+  background: #ffe484;
+  color: #111;
+}
+@media (max-width: 600px) {
+  .dark .form-content {
+    padding: 1.2rem 0.3rem;
+  }
+}
 /*CHATBOT*/
 .chat-toggle {
   position: fixed;
