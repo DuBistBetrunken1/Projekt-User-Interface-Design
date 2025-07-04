@@ -19,9 +19,8 @@
     </nav>
   </header>
 
-  <!-- NEWS SECTION MIT BLUR & PARTIKEL -->
-  <section class="news-section with-particles">
-    <canvas class="particles-bg"></canvas>
+  <!-- NEWS SECTION MIT BLUR -->
+  <section class="news-section">
     <h2>📰 Neuigkeiten</h2>
     <div class="news-panel frosted">
       <strong>⚡ Neue Version von CommandX veröffentlicht</strong>
@@ -33,9 +32,8 @@
     </div>
   </section>
 
-  <!-- PRODUKTE SECTION MIT BLUR & PARTIKEL -->
-  <section class="products-section with-particles">
-    <canvas class="particles-bg"></canvas>
+  <!-- PRODUKTE SECTION MIT BLUR -->
+  <section class="products-section">
     <h2>✨ Unsere Produkte</h2>
     <div class="product-row frosted">
       <div class="product-text">
@@ -196,74 +194,6 @@
     darkToggle.addEventListener("click", () => {
       document.body.classList.toggle("dark");
     });
-
-    // ==== Partikel Background ====
-    function Particles(canvasSelector) {
-      const canvas = document.querySelector(canvasSelector);
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let particles = [];
-      let w = 0, h = 0;
-      function resize() {
-        w = canvas.offsetWidth;
-        h = canvas.offsetHeight;
-        canvas.width = w * window.devicePixelRatio;
-        canvas.height = h * window.devicePixelRatio;
-        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-      }
-      function randomParticle() {
-        return {
-          x: Math.random() * w,
-          y: Math.random() * h,
-          r: 1.5 + Math.random() * 3,
-          dx: -0.3 + Math.random() * 0.6,
-          dy: -0.15 + Math.random() * 0.3,
-          alpha: 0.18 + Math.random() * 0.35
-        };
-      }
-      function draw() {
-        ctx.clearRect(0, 0, w, h);
-        for (let p of particles) {
-          ctx.globalAlpha = p.alpha;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = '#aac8ff';
-          ctx.shadowColor = '#d0e4ff';
-          ctx.shadowBlur = 8;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        }
-        ctx.globalAlpha = 1.0;
-      }
-      function update() {
-        for (let p of particles) {
-          p.x += p.dx;
-          p.y += p.dy;
-          // Wrap-around:
-          if (p.x < -10) p.x = w + 10;
-          if (p.x > w + 10) p.x = -10;
-          if (p.y < -10) p.y = h + 10;
-          if (p.y > h + 10) p.y = -10;
-        }
-      }
-      function loop() {
-        update();
-        draw();
-        requestAnimationFrame(loop);
-      }
-      function init() {
-        resize();
-        particles = Array.from({length: Math.round(w * h / 4000)}, randomParticle);
-        loop();
-      }
-      window.addEventListener('resize', () => {
-        resize();
-        particles = Array.from({length: Math.round(w * h / 4000)}, randomParticle);
-      });
-      init();
-    }
-    Particles('.news-section .particles-bg');
-    Particles('.products-section .particles-bg');
   </script>
 </body>
 </html>
