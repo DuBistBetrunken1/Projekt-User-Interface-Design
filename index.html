@@ -150,23 +150,26 @@ function toggleChat() {
 
 const dialogFlows = {
   software: [
-    { type: "bot", text: "Welches Produkt bereitet dir Probleme?", input: "buttons", options: ["AlertX", "CommandX", "CommandX.Mobile"] },
+    { type: "bot", text: "Welches Produkt bereitet dir Probleme?", input: "buttons", options: ["AlertX", "CommandX", "CommandX.Mobile", "CommandX.WIS"] },
     { type: "bot", text: "Danke für die Info. Könntest du das Problem bitte näher beschreiben?", input: "text" },
+    { type: "bot", text: "Tritt das Problem regelmäßig auf oder nur gelegentlich?", input: "buttons", options: ["Regelmäßig", "Gelegentlich"] },
     { type: "bot", text: "Verstanden. Ein realer Supportmitarbeiter wird sich deinem Anliegen jetzt widmen und den Chat betreten." }
   ],
   bug: [
     { type: "bot", text: "Bitte beschreibe den Fehler möglichst genau.", input: "text" },
     { type: "bot", text: "Welches Produkt und welche Version nutzt du aktuell?", input: "text" },
+    { type: "bot", text: "Wie kritisch ist der Fehler?", input: "buttons", options: ["Blockiert Nutzung", "Beeinträchtigt Nutzung", "Nur kosmetisch"] },
     { type: "bot", text: "Perfekt, ich leite die Information an unser Technikteam weiter." }
   ],
   interest: [
-    { type: "bot", text: "Für welches Produkt interessierst du dich?", input: "buttons", options: ["AlertX", "CommandX", "Schulung buchen"] },
-    { type: "bot", text: "Super Wahl! Möchtest du eine individuelle Beratung oder eine Live-Demo buchen?", input: "text" },
+    { type: "bot", text: "Für welches Produkt interessierst du dich?", input: "buttons", options: ["AlertX", "CommandX", "CommandX.Mobile", "CommandX.WIS"] },
+    { type: "bot", text: "Super Wahl! Was interessiert dich am meisten?", input: "buttons", options: ["Funktionsumfang", "Preise", "Live-Demo"] },
+    { type: "bot", text: "Möchtest du eine individuelle Beratung oder eine Online-Schulung buchen?", input: "buttons", options: ["Beratung buchen", "Online-Schulung"] },
     { type: "bot", text: "Du kannst dir auch eine Online-Schulung durch unser geschultes Personal sichern." }
   ],
   other: [
     { type: "bot", text: "Bitte schildere dein Anliegen.", input: "text" },
-    { type: "bot", text: "Danke, ich leite dein Anliegen intern weiter." },
+    { type: "bot", text: "Danke. Geht es um eines unserer Produkte oder etwas anderes?", input: "buttons", options: ["Produktfrage", "Partnerschaft", "Technik", "Sonstiges"] },
     { type: "bot", text: "Ein Supportmitarbeiter wird sich in Kürze melden." }
   ]
 };
@@ -178,7 +181,17 @@ function handleChat(type) {
   chatMessages.innerHTML = "";
   currentFlow = dialogFlows[type];
   currentStep = 0;
-  continueDialog();
+  const step = currentFlow[currentStep];
+  appendBotMessage(step.text);
+
+  if (step.input === "buttons") {
+    showOptions(step.options);
+  } else if (step.input === "text") {
+    showTextInput();
+  } else {
+    hideInput();
+  }
+  currentStep++;
 }
 
 function continueDialog(userReply = null) {
@@ -211,15 +224,21 @@ function showOptions(options) {
     };
     chatOptions.appendChild(btn);
   });
+  userInput.disabled = true;
+  userInput.placeholder = "";
 }
 
 function showTextInput() {
+  chatOptions.innerHTML = "";
+  chatOptions.style.display = "none";
   userInput.disabled = false;
   userInput.placeholder = "Nachricht eingeben...";
   userInput.focus();
 }
 
 function hideInput() {
+  chatOptions.innerHTML = "";
+  chatOptions.style.display = "none";
   userInput.disabled = true;
   userInput.placeholder = "";
 }
@@ -260,13 +279,11 @@ function resetChat() {
   userInput.placeholder = "";
 }
 
-// Darkmode Umschalten
 darkToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
 });
 
 resetChat();
 </script>
-
 </body>
 </html>
