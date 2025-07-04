@@ -1,6 +1,4 @@
-/* ========================== */
-/*         GRUNDLAYOUT        */
-/* ========================== */
+/*GRUNDLAYOUT*/
 body {
   margin: 0;
   font-family: 'Segoe UI', system-ui, sans-serif;
@@ -14,10 +12,7 @@ body {
   color: #f7f7f9;
 }
 
-
-/* ========================== */
-/*           HEADER           */
-/* ========================== */
+/*HEADER*/
 .header {
   position: fixed;
   top: 0; left: 0; width: 100%;
@@ -87,10 +82,7 @@ body {
   .top-nav ul { gap: 1rem; }
 }
 
-
-/* ========================== */
-/*   FROSTED GLASS PANELS     */
-/* ========================== */
+/*PANEL DESIGN*/
 .frosted {
   background: rgba(255,255,255,0.35);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
@@ -105,10 +97,7 @@ body {
   border: 1px solid rgba(60,60,60,0.15);
 }
 
-
-/* ========================== */
-/*          NEWS              */
-/* ========================== */
+/*NEWS*/
 .section-headline {
   text-align: center;
   font-size: 2rem;
@@ -190,7 +179,8 @@ body {
 .dark .news-card.frosted { background: rgba(32,34,40,0.58); }
 .dark .news-content h3 { color: #ffe484; }
 .dark .news-content p { color: #e8eaf0; }
-/* "Weiterlesen"-Link */
+
+/*Weiterlesen*/
 .news-actions {
   display: flex;
   justify-content: flex-end;
@@ -225,7 +215,8 @@ body {
   background: #ffcc00;
   color: #222;
 }
-/* News-Button unter dem Grid */
+
+/*News-Button*/
 .news-more { text-align: center; margin-top: 1.2em; }
 .news-more-btn {
   background: #a8292d;
@@ -245,10 +236,7 @@ body {
   box-shadow: 0 4px 18px rgba(150,20,30,0.11);
 }
 
-
-/* ========================== */
-/*         PRODUKTE           */
-/* ========================== */
+/*PRODUCTS*/
 .products-section {
   padding: 4rem 2rem 2rem 2rem;
   max-width: 1200px;
@@ -303,7 +291,7 @@ body {
   padding: 2rem 1.2rem;
 }
 
-/* Flip Card */
+/*Flip Card*/
 .flip-card {
   background: transparent;
   width: 350px;
@@ -396,9 +384,7 @@ body {
 .dark .product-text p { color: #e8eaf0; }
 
 
-/* ========================== */
-/*           CTA              */
-/* ========================== */
+/*CTA*/
 .cta-section {
   background: #000;
   color: #fff;
@@ -463,9 +449,7 @@ body {
 }
 
 
-/* ========================== */
-/*        FORMULAR            */
-/* ========================== */
+/*FORMULAR*/
 .form-section {
   padding: 4rem 2rem;
   background-color: #f5f5f5;
@@ -504,10 +488,7 @@ body {
 }
 .form-footer button:hover { background: #ffe380; }
 
-
-/* ========================== */
-/*        CHATBOT             */
-/* ========================== */
+/*CHATBOT*/
 .chat-toggle {
   position: fixed;
   bottom: 2rem;
