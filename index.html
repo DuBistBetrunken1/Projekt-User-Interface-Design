@@ -7,79 +7,80 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header class="header">
-  <div class="header-inner">
-    <a href="#" class="logo">
-      <img src="logo.png" alt="Eurocommand Logo" />
-    </a>
-    <nav class="top-nav">
-      <ul>
-        <li><a href="#">Produkte</a></li>
-        <li><a href="#">Service</a></li>
-        <li><a href="#">Unternehmen</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><button id="darkModeToggle" aria-label="Dark Mode umschalten">🌙</button></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="logo.png" alt="Eurocommand Logo" />
+      </a>
+      <nav class="top-nav">
+        <ul>
+          <li><a href="#">Produkte</a></li>
+          <li><a href="#">Service</a></li>
+          <li><a href="#">Unternehmen</a></li>
+          <li><a href="#">Kontakt</a></li>
+          <li><button id="darkModeToggle" aria-label="Dark Mode umschalten">🌙</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-
-  <!-- NEWS SECTION MIT BLUR -->
+  <!-- Moderner News-Grid Bereich -->
   <section class="news-section">
-    <h2>📰 Neuigkeiten</h2>
-    <div class="news-panel frosted">
-      <strong>⚡ Neue Version von CommandX veröffentlicht</strong>
-      <p>Die neue Version bietet Verbesserungen in der Bedienbarkeit und Performance.</p>
+    <h2 class="section-headline">📰 Neuigkeiten</h2>
+    <div class="news-grid">
+
+      <!-- News 1 -->
+      <article class="news-card frosted">
+        <img src="EC_Posting_Neuer_Standort_Luebeck_Web.jpg" alt="Neuer Standort Lübeck" />
+        <div class="news-content">
+          <h3>Neuer Standort in Lübeck stärkt CommandX.AWARE und internationale Ausrichtung</h3>
+          <p>
+            Die Eurocommand GmbH erweitert ihre Präsenz und ist ab sofort auch am Standort Lübeck vertreten.
+            Die neue Adresse ist Teil unserer langfristigen Wachstumsstrategie und fungiert als...
+          </p>
+          <div class="news-actions">
+            <a href="#" class="news-link">Weiterlesen <span class="news-link-icon">▶️</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- News 2 -->
+      <article class="news-card frosted">
+        <img src="EC_Beitrag_24124.jpg" alt="Connected Solutions 2024" />
+        <div class="news-content">
+          <h3>Connected Solutions in der Entwicklung 2024 im Fokus</h3>
+          <p>
+            Nachfolgend zur PMRExpo 2024 haben wir noch einmal die Entwicklungsressourcen gebündelt und stellen heute die Version CommandX 24.12.4 zur Verfügung.
+            Die Nutzung von CommandX in...
+          </p>
+          <div class="news-actions">
+            <a href="#" class="news-link">Weiterlesen <span class="news-link-icon">▶️</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- News 3 -->
+      <article class="news-card frosted">
+        <img src="Bild-ba7802a57a236d8g9c41e1f72006a844.jpg" alt="Stabssoftware Niedersachsen" />
+        <div class="news-content">
+          <h3>Einheitliche Stabssoftware „CommandX“ für den Katastrophenschutz im Land Niedersachsen</h3>
+          <p>
+            Im Rahmen Ihrer diesjährigen Sommerreise war die niedersächsische Innenministerin Daniela Behrens zu Gast im Landkreis Uelzen.
+            In den modernen Stabsräumen erhielt Frau Behrens eine...
+          </p>
+          <div class="news-actions">
+            <a href="#" class="news-link">Weiterlesen <span class="news-link-icon">▶️</span></a>
+          </div>
+        </div>
+      </article>
     </div>
-    <div class="news-panel frosted">
-      <strong>📍 Nutzer können jetzt Standortverfolgung aktivieren</strong>
-      <p>Die neue Funktion ermöglicht noch genauere Einsatzkoordination.</p>
+    <div class="news-more">
+      <button class="news-more-btn">» Weitere Newsmeldungen</button>
     </div>
   </section>
 
-  <!-- PRODUKTE SECTION MIT BLUR -->
-  <section class="products-section">
-    <h2>✨ Unsere Produkte</h2>
-    <div class="product-row frosted">
-      <div class="product-text">
-        <h3>AlertX</h3>
-        <p>Die multifunktionale Alarmierungs-App.</p>
-      </div>
-      <div class="product-image">
-        <img src="alertx.png" alt="AlertX" />
-      </div>
-    </div>
-    <div class="product-row frosted reverse">
-      <div class="product-text">
-        <h3>CommandX</h3>
-        <p>Die digitale Führungsunterstützungsplattform.</p>
-      </div>
-      <div class="product-image">
-        <img src="commandx.png" alt="CommandX" />
-      </div>
-    </div>
-    <div class="product-row frosted">
-      <div class="product-text">
-        <h3>CommandX.Mobile</h3>
-        <p>Die mobile Führungsunterstützungsapp.</p>
-      </div>
-      <div class="product-image">
-        <img src="mobile.png" alt="CommandX.Mobile" />
-      </div>
-    </div>
-    <div class="product-row frosted reverse">
-      <div class="product-text">
-        <h3>CommandX.WIS</h3>
-        <p>Alarm- und Informationsanzeigesystem.</p>
-      </div>
-      <div class="product-image">
-        <img src="wis.png" alt="CommandX.WIS" />
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA, Formular & Chatbot (unverändert) -->
+  <!-- CTA -->
   <section class="cta-section">
     <div class="cta-content">
       <div class="cta-text">
@@ -93,6 +94,7 @@
     </div>
   </section>
 
+  <!-- Formular -->
   <section class="form-section" id="contactForm">
     <div class="form-content">
       <div class="form-text">
@@ -114,8 +116,10 @@
     </div>
   </section>
 
+  <!-- Chatbot Button -->
   <button class="chat-toggle" onclick="toggleChat()">💬</button>
 
+  <!-- Chatbot Fenster -->
   <div class="chatbot" id="chatbot">
     <div class="chatbot-header">
       <div>
@@ -143,6 +147,7 @@
   </div>
 
   <script>
+    // Chatbot + Darkmode
     const chatbot = document.getElementById("chatbot");
     const chatMessages = document.getElementById("chatMessages");
     const chatOptions = document.getElementById("chatOptions");
@@ -196,7 +201,6 @@
         </div>
       `;
     }
-    // Darkmode Umschalten
     darkToggle.addEventListener("click", () => {
       document.body.classList.toggle("dark");
     });
