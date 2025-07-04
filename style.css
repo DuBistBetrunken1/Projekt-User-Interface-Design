@@ -54,12 +54,13 @@ body {
   padding: 2rem;
   background: linear-gradient(135deg, #fdfbfb, #ebedee);
   animation: fadeNews 10s ease infinite alternate;
+  position: relative;
+  overflow: hidden;
 }
 @keyframes fadeNews {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
-
 .dark .news-section {
   background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
 }
@@ -70,6 +71,8 @@ body {
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 8px;
+  position: relative;
+  z-index: 1;
 }
 .dark .news-panel {
   background: #2c2c2c;
@@ -85,6 +88,8 @@ body {
   margin: 0 auto;
   background: linear-gradient(to right, #ffffff, #e8f0ff);
   animation: bgProducts 12s ease-in-out infinite alternate;
+  position: relative;
+  overflow: hidden;
 }
 @keyframes bgProducts {
   0% { background-position: 0% 50%; }
@@ -93,7 +98,6 @@ body {
 .dark .products-section {
   background: linear-gradient(to right, #1a1a1a, #2a2a2a);
 }
-
 .products-section h2 {
   text-align: center;
   margin-bottom: 3rem;
@@ -105,6 +109,8 @@ body {
   gap: 2rem;
   margin-bottom: 4rem;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 .product-row.reverse {
   flex-direction: row-reverse;
@@ -334,4 +340,64 @@ body {
   font-size: 1.5rem;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* === Animierter Blur- und Partikelhintergrund für Sektionen === */
+.section-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.blur-bg {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+}
+.particles-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* === Layer-Z-Hack === */
+.news-section > *, .products-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* === Darkmode für Chatbot === */
+.dark .chatbot {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+}
+.dark .chatbot-header {
+  background-color: #003366;
+}
+.dark .bot-msg {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+.dark .user-msg {
+  background-color: #0057b7;
+  color: white;
+}
+.dark .chatbot-input {
+  background-color: #2c2c2c;
+  border-top: 1px solid #555;
+}
+.dark .chatbot-input input {
+  background-color: #444;
+  color: #f0f0f0;
+  border-color: #555;
+}
+.dark .chatbot-options button {
+  background-color: #333;
+  border-color: #555;
+  color: #eee;
+}
+.dark .chatbot-options button:hover {
+  background-color: #444;
 }
