@@ -24,7 +24,7 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 .dark .header {
-  background: #232323;
+  background: #4a4a4a;
   color: #f7f7f9;
   border-bottom: 1px solid #333;
 }
