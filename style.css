@@ -364,3 +364,18 @@ body {
 .dark .chatbot-controls button:hover {
   background-color: #777;
 }
+/* Frosted Glass Panel/Card */
+.frosted {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.dark .frosted {
+  background: rgba(30, 32, 38, 0.35);
+  border: 1px solid rgba(60,60,60,0.15);
+}
+
