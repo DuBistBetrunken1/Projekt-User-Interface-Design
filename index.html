@@ -7,7 +7,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- ============================= -->
+  <!--           HEADER              -->
+  <!-- ============================= -->
   <header class="header">
     <div class="header-inner">
       <a href="#" class="logo">
@@ -19,13 +22,17 @@
           <li><a href="#">Service</a></li>
           <li><a href="#">Unternehmen</a></li>
           <li><a href="#">Kontakt</a></li>
-          <li><button id="darkModeToggle" aria-label="Dark Mode umschalten">🌙</button></li>
+          <li>
+            <button id="darkModeToggle" aria-label="Dark Mode umschalten">🌙</button>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Moderner News-Grid Bereich -->
+  <!-- ============================= -->
+  <!--           NEWS                -->
+  <!-- ============================= -->
   <section class="news-section">
     <h2 class="section-headline">📰 Neuigkeiten</h2>
     <div class="news-grid">
@@ -80,119 +87,132 @@
     </div>
   </section>
 
-<section class="products-section">
-  <h2>✨ Unsere Produkte</h2>
+  <!-- ============================= -->
+  <!--           PRODUKTE            -->
+  <!-- ============================= -->
+  <section class="products-section">
+    <h2>✨ Unsere Produkte</h2>
 
-  <!-- Produkt 1 (Text links, Bild rechts) -->
-  <div class="product-row">
-    <div class="product-text">
-      <h3>AlertX</h3>
-      <p>Die multifunktionale Alarmierungs-App.</p>
-    </div>
-    <div class="product-image">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="alertx.png" alt="AlertX">
-          </div>
-          <div class="flip-card-back">
-            <h4>AlertX – Details</h4>
-            <p>• Schnelle Alarmierung<br>• Gruppenkommunikation<br>• Einsatzübersicht</p>
-            <a href="#">Mehr erfahren</a>
+    <!-- Produkt 1 (Text links, Bild rechts) -->
+    <div class="product-row">
+      <div class="product-text">
+        <h3>AlertX</h3>
+        <p>Die multifunktionale Alarmierungs-App.</p>
+      </div>
+      <div class="product-image">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="alertx.png" alt="AlertX">
+            </div>
+            <div class="flip-card-back">
+              <h4>AlertX – Details</h4>
+              <p>• Schnelle Alarmierung<br>• Gruppenkommunikation<br>• Einsatzübersicht</p>
+              <a href="#">Mehr erfahren</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Produkt 2 (Text rechts, Bild links) -->
-  <div class="product-row reverse">
-    <div class="product-text">
-      <h3>CommandX</h3>
-      <p>Die digitale Führungsunterstützungsplattform.</p>
-    </div>
-    <div class="product-image">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="commandx.png" alt="CommandX">
-          </div>
-          <div class="flip-card-back">
-            <h4>CommandX – Details</h4>
-            <p>• Lagedarstellung<br>• Protokollierung<br>• Schnittstellenintegration</p>
-            <a href="#">Mehr erfahren</a>
+    <!-- Produkt 2 (Text rechts, Bild links) -->
+    <div class="product-row reverse">
+      <div class="product-text">
+        <h3>CommandX</h3>
+        <p>Die digitale Führungsunterstützungsplattform.</p>
+      </div>
+      <div class="product-image">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="commandx.png" alt="CommandX">
+            </div>
+            <div class="flip-card-back">
+              <h4>CommandX – Details</h4>
+              <p>• Lagedarstellung<br>• Protokollierung<br>• Schnittstellenintegration</p>
+              <a href="#">Mehr erfahren</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Produkt 3 (Text links, Bild rechts) -->
-  <div class="product-row">
-    <div class="product-text">
-      <h3>CommandX.Mobile</h3>
-      <p>Die mobile Führungsunterstützungsapp.</p>
-    </div>
-    <div class="product-image">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="mobile.png" alt="CommandX.Mobile">
-          </div>
-          <div class="flip-card-back">
-            <h4>CommandX.Mobile – Details</h4>
-            <p>• Einsatzmanagement<br>• Kartenansicht<br>• Offline-Funktion</p>
-            <a href="#">Mehr erfahren</a>
+    <!-- Produkt 3 (Text links, Bild rechts) -->
+    <div class="product-row">
+      <div class="product-text">
+        <h3>CommandX.Mobile</h3>
+        <p>Die mobile Führungsunterstützungsapp.</p>
+      </div>
+      <div class="product-image">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="mobile.png" alt="CommandX.Mobile">
+            </div>
+            <div class="flip-card-back">
+              <h4>CommandX.Mobile – Details</h4>
+              <p>• Einsatzmanagement<br>• Kartenansicht<br>• Offline-Funktion</p>
+              <a href="#">Mehr erfahren</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Produkt 4 (Text rechts, Bild links) -->
-  <div class="product-row reverse">
-    <div class="product-text">
-      <h3>CommandX.WIS</h3>
-      <p>Alarm- und Informationsanzeigesystem.</p>
-    </div>
-    <div class="product-image">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="wis.png" alt="CommandX.WIS">
-          </div>
-          <div class="flip-card-back">
-            <h4>CommandX.WIS – Details</h4>
-            <p>• Automatische Benachrichtigungen<br>• Konfigurierbar<br>• Realtime-Info</p>
-            <a href="#">Mehr erfahren</a>
+    <!-- Produkt 4 (Text rechts, Bild links) -->
+    <div class="product-row reverse">
+      <div class="product-text">
+        <h3>CommandX.WIS</h3>
+        <p>Alarm- und Informationsanzeigesystem.</p>
+      </div>
+      <div class="product-image">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="wis.png" alt="CommandX.WIS">
+            </div>
+            <div class="flip-card-back">
+              <h4>CommandX.WIS – Details</h4>
+              <p>• Automatische Benachrichtigungen<br>• Konfigurierbar<br>• Realtime-Info</p>
+              <a href="#">Mehr erfahren</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-  <!-- CTA -->
-<section class="cta-section">
-  <div class="cta-content">
-    <div class="cta-text">
-      <h2>Bereit für den nächsten Schritt?</h2>
-      <p>Du hast Interesse an einem unserer Produkte oder benötigst Unterstützung für deine Einsatzführung? Sende uns deine Anfrage und wir melden uns kurzfristig bei dir zurück.</p>
-      <button class="cta-button" onclick="document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth' });">Jetzt anfragen</button>
+  <!-- ============================= -->
+  <!--           CTA                 -->
+  <!-- ============================= -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <div class="cta-text">
+        <h2>Bereit für den nächsten Schritt?</h2>
+        <p>
+          Du hast Interesse an einem unserer Produkte oder benötigst Unterstützung für deine Einsatzführung? 
+          Sende uns deine Anfrage und wir melden uns kurzfristig bei dir zurück.
+        </p>
+        <button class="cta-button" onclick="document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth' });">
+          Jetzt anfragen
+        </button>
+      </div>
+      <div class="cta-image">
+        <img src="original-ded6e3c78c98b27a6b17a6d84cee9ccb.gif" alt="Illustration" class="cta-anim" />
+      </div>
     </div>
-    <div class="cta-image">
-      <img src="original-ded6e3c78c98b27a6b17a6d84cee9ccb.gif" alt="Illustration" class="cta-anim" />
-    </div>
-  </div>
-</section>
+  </section>
 
-  <!-- Formular -->
+  <!-- ============================= -->
+  <!--         FORMULAR              -->
+  <!-- ============================= -->
   <section class="form-section" id="contactForm">
     <div class="form-content">
       <div class="form-text">
         <h2>Jetzt unverbindlich Kontakt aufnehmen</h2>
-        <p>Ob CommandX, AlertX oder unsere mobilen Lösungen – teile uns dein Anliegen mit, und wir beraten dich individuell.</p>
+        <p>
+          Ob CommandX, AlertX oder unsere mobilen Lösungen – teile uns dein Anliegen mit, und wir beraten dich individuell.
+        </p>
       </div>
       <form class="contact-form">
         <label for="name">Name</label>
@@ -202,17 +222,19 @@
         <label for="message">Nachricht</label>
         <textarea id="message" rows="5" placeholder="Ich interessiere mich für ..."></textarea>
         <div class="form-footer">
-          <label><input type="checkbox" required /> Ich akzeptiere die <a href="#">Datenschutzerklärung</a>.</label>
+          <label>
+            <input type="checkbox" required /> Ich akzeptiere die <a href="#">Datenschutzerklärung</a>.
+          </label>
           <button type="submit">Jetzt absenden</button>
         </div>
       </form>
     </div>
   </section>
 
-  <!-- Chatbot Button -->
+  <!-- ============================= -->
+  <!--           CHATBOT             -->
+  <!-- ============================= -->
   <button class="chat-toggle" onclick="toggleChat()">💬</button>
-
-  <!-- Chatbot Fenster -->
   <div class="chatbot" id="chatbot">
     <div class="chatbot-header">
       <div>
@@ -239,6 +261,9 @@
     </div>
   </div>
 
+  <!-- ============================= -->
+  <!--           SCRIPT              -->
+  <!-- ============================= -->
   <script>
     // Chatbot + Darkmode
     const chatbot = document.getElementById("chatbot");
@@ -298,62 +323,65 @@
       document.body.classList.toggle("dark");
     });
   </script>
-  
+
+  <!-- ============================= -->
+  <!--           FOOTER              -->
+  <!-- ============================= -->
   <footer class="footer">
-  <div class="footer-main">
-    <div class="footer-col contact">
-      <strong>Eurocommand GmbH</strong>
-      <div>
-        Schnackenburgallee 217-223<br>
-        22525 Hamburg<br>
-        Telefon: 0 40 / 239 69 63-0<br>
-        Fax: 0 40 / 239 69 63-99
+    <div class="footer-main">
+      <div class="footer-col contact">
+        <strong>Eurocommand GmbH</strong>
+        <div>
+          Schnackenburgallee 217-223<br>
+          22525 Hamburg<br>
+          Telefon: 0 40 / 239 69 63-0<br>
+          Fax: 0 40 / 239 69 63-99
+        </div>
+        <img src="euroc-3dver_ohne_Schatten.png" alt="Eurocommand Logo" class="footer-logo" />
       </div>
-      <img src="euroc-3dver_ohne_Schatten.png" alt="Eurocommand Logo" class="footer-logo" />
+      <div class="footer-col">
+        <div class="footer-headline">PRODUKTE</div>
+        <ul>
+          <li>CommandX</li>
+          <li>CommandX.MOBILE</li>
+          <li>CommandX.SYNC</li>
+          <li>CommandX.TRAINER</li>
+          <li>CommandX.WIS</li>
+          <li>CIMgate.CONNECT</li>
+          <li>CIMgate.LIVE</li>
+          <li>AlertX</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-headline">SERVICE</div>
+        <ul>
+          <li>Technischer Support</li>
+          <li>Consulting</li>
+          <li>Projektmanagement</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-headline">ACADEMY</div>
+        <ul>
+          <li>Schulungsangebote</li>
+          <li>Individuelle Angebote</li>
+          <li>Übungsbegleitung</li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <div class="footer-headline">PRODUKTE</div>
-      <ul>
-        <li>CommandX</li>
-        <li>CommandX.MOBILE</li>
-        <li>CommandX.SYNC</li>
-        <li>CommandX.TRAINER</li>
-        <li>CommandX.WIS</li>
-        <li>CIMgate.CONNECT</li>
-        <li>CIMgate.LIVE</li>
-        <li>AlertX</li>
-      </ul>
+    <div class="footer-bottom">
+      <div class="footer-backtop" onclick="window.scrollTo({top:0,behavior:'smooth'});">
+        <svg width="36" height="36"><circle cx="18" cy="18" r="18" fill="#344"/><polyline points="10,22 18,14 26,22" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="footer-copyright">
+        © Eurocommand GmbH | 2025
+      </div>
+      <div class="footer-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <div class="footer-headline">SERVICE</div>
-      <ul>
-        <li>Technischer Support</li>
-        <li>Consulting</li>
-        <li>Projektmanagement</li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <div class="footer-headline">ACADEMY</div>
-      <ul>
-        <li>Schulungsangebote</li>
-        <li>Individuelle Angebote</li>
-        <li>Übungsbegleitung</li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-backtop" onclick="window.scrollTo({top:0,behavior:'smooth'});">
-      <svg width="36" height="36"><circle cx="18" cy="18" r="18" fill="#344"/><polyline points="10,22 18,14 26,22" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-    <div class="footer-copyright">
-      © Eurocommand GmbH | 2025
-    </div>
-    <div class="footer-links">
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
