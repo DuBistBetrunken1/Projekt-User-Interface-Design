@@ -419,8 +419,8 @@ body {
 
 /* ===== CTA Section ===== */
 .cta-section {
-  background-color: #000;
-  color: white;
+  background: #000;
+  color: #fff;
   padding: 4rem 2rem;
 }
 .cta-content {
@@ -430,30 +430,45 @@ body {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  gap: 2.5rem;
 }
 .cta-text {
-  flex: 1;
-  min-width: 280px;
+  flex: 1 1 320px;
+  min-width: 260px;
 }
-.cta-button {
-  margin-top: 1.5rem;
-  padding: 1rem 2rem;
-  background-color: #ffcc00;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.17s;
-}
-.cta-button:hover { background: #ffe380; }
 .cta-image {
-  flex: 1;
-  min-width: 280px;
-  text-align: center;
+  flex: 1 1 320px;
+  min-width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Kein grauer Hintergrund mehr */
 }
-.cta-image img {
-  max-width: 100%;
+.cta-anim {
+  max-width: 340px;
+  width: 100%;
+  height: auto;
+  border-radius: 26px;
+  background: rgba(40,44,54,0.2);
+  box-shadow: 0 6px 38px 0 rgba(10,12,20,0.19);
+  /* Frosted Glass Look leicht: */
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border: 1px solid rgba(255,255,255,0.14);
+  /* Fade-in Animation: */
+  opacity: 0;
+  transform: scale(0.97);
+  animation: ctaImageFadeIn .7s .18s cubic-bezier(.43,1.32,.51,1) forwards;
 }
+@keyframes ctaImageFadeIn {
+  to { opacity: 1; transform: scale(1);}
+}
+@media (max-width: 900px) {
+  .cta-content { flex-direction: column; gap: 2.2rem;}
+  .cta-image, .cta-text { min-width: 0; width: 100%;}
+  .cta-anim { max-width: 320px; margin: 0 auto;}
+}
+
 
 /* ===== Formular ===== */
 .form-section {
