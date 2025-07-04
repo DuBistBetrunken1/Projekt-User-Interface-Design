@@ -137,153 +137,71 @@
     </div>
   </div>
 
-<script>
-const chatbot = document.getElementById("chatbot");
-const chatMessages = document.getElementById("chatMessages");
-const chatOptions = document.getElementById("chatOptions");
-const userInput = document.getElementById("userInput");
-const darkToggle = document.getElementById("darkModeToggle");
+  <script>
+    const chatbot = document.getElementById("chatbot");
+    const chatMessages = document.getElementById("chatMessages");
+    const chatOptions = document.getElementById("chatOptions");
+    const userInput = document.getElementById("userInput");
+    const darkToggle = document.getElementById("darkModeToggle");
 
-function toggleChat() {
-  chatbot.classList.toggle("visible");
-}
+    function toggleChat() {
+      chatbot.classList.toggle("visible");
+    }
 
-const dialogFlows = {
-  software: [
-    { type: "bot", text: "Welches Produkt bereitet dir Probleme?", input: "buttons", options: ["AlertX", "CommandX", "CommandX.Mobile", "CommandX.WIS"] },
-    { type: "bot", text: "Danke für die Info. Könntest du das Problem bitte näher beschreiben?", input: "text" },
-    { type: "bot", text: "Tritt das Problem regelmäßig auf oder nur gelegentlich?", input: "buttons", options: ["Regelmäßig", "Gelegentlich"] },
-    { type: "bot", text: "Verstanden. Ein realer Supportmitarbeiter wird sich deinem Anliegen jetzt widmen und den Chat betreten." }
-  ],
-  bug: [
-    { type: "bot", text: "Bitte beschreibe den Fehler möglichst genau.", input: "text" },
-    { type: "bot", text: "Welches Produkt und welche Version nutzt du aktuell?", input: "text" },
-    { type: "bot", text: "Wie kritisch ist der Fehler?", input: "buttons", options: ["Blockiert Nutzung", "Beeinträchtigt Nutzung", "Nur kosmetisch"] },
-    { type: "bot", text: "Perfekt, ich leite die Information an unser Technikteam weiter." }
-  ],
-  interest: [
-    { type: "bot", text: "Für welches Produkt interessierst du dich?", input: "buttons", options: ["AlertX", "CommandX", "CommandX.Mobile", "CommandX.WIS"] },
-    { type: "bot", text: "Super Wahl! Was interessiert dich am meisten?", input: "buttons", options: ["Funktionsumfang", "Preise", "Live-Demo"] },
-    { type: "bot", text: "Möchtest du eine individuelle Beratung oder eine Online-Schulung buchen?", input: "buttons", options: ["Beratung buchen", "Online-Schulung"] },
-    { type: "bot", text: "Du kannst dir auch eine Online-Schulung durch unser geschultes Personal sichern." }
-  ],
-  other: [
-    { type: "bot", text: "Bitte schildere dein Anliegen.", input: "text" },
-    { type: "bot", text: "Danke. Geht es um eines unserer Produkte oder etwas anderes?", input: "buttons", options: ["Produktfrage", "Partnerschaft", "Technik", "Sonstiges"] },
-    { type: "bot", text: "Ein Supportmitarbeiter wird sich in Kürze melden." }
-  ]
-};
+    function handleChat(type) {
+      const responses = {
+        software: "Welches Produkt bereitet dir Probleme?",
+        bug: "Bitte beschreibe den Fehler möglichst genau.",
+        interest: "Für welches Produkt interessierst du dich?",
+        other: "Bitte schildere dein Anliegen.",
+      };
 
-let currentFlow = [];
-let currentStep = 0;
-
-function handleChat(type) {
-  chatMessages.innerHTML = "";
-  currentFlow = dialogFlows[type];
-  currentStep = 0;
-  const step = currentFlow[currentStep];
-  appendBotMessage(step.text);
-
-  if (step.input === "buttons") {
-    showOptions(step.options);
-  } else if (step.input === "text") {
-    showTextInput();
-  } else {
-    hideInput();
-  }
-  currentStep++;
-}
-
-function continueDialog(userReply = null) {
-  if (userReply) appendUserMessage(userReply);
-  if (currentStep >= currentFlow.length) return;
-
-  const step = currentFlow[currentStep];
-  appendBotMessage(step.text);
-
-  if (step.input === "buttons") {
-    showOptions(step.options);
-  } else if (step.input === "text") {
-    showTextInput();
-  } else {
-    hideInput();
-  }
-
-  currentStep++;
-}
-
-function showOptions(options) {
-  chatOptions.innerHTML = "";
-  chatOptions.style.display = "grid";
-  options.forEach(opt => {
-    const btn = document.createElement("button");
-    btn.textContent = opt;
-    btn.onclick = () => {
+      appendBotMessage(responses[type]);
       chatOptions.style.display = "none";
-      continueDialog(opt);
-    };
-    chatOptions.appendChild(btn);
-  });
-  userInput.disabled = true;
-  userInput.placeholder = "";
-}
+    }
 
-function showTextInput() {
-  chatOptions.innerHTML = "";
-  chatOptions.style.display = "none";
-  userInput.disabled = false;
-  userInput.placeholder = "Nachricht eingeben...";
-  userInput.focus();
-}
+    function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
+      appendUserMessage(message);
+      userInput.value = "";
+      setTimeout(() => {
+        appendBotMessage("Vielen Dank für deine Nachricht! Wir melden uns bald.");
+      }, 600);
+    }
 
-function hideInput() {
-  chatOptions.innerHTML = "";
-  chatOptions.style.display = "none";
-  userInput.disabled = true;
-  userInput.placeholder = "";
-}
+    function appendBotMessage(text) {
+      const msg = document.createElement("div");
+      msg.className = "bot-msg";
+      msg.textContent = text;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-function sendMessage() {
-  const message = userInput.value.trim();
-  if (!message) return;
-  userInput.value = "";
-  continueDialog(message);
-}
+    function appendUserMessage(text) {
+      const msg = document.createElement("div");
+      msg.className = "user-msg";
+      msg.textContent = text;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-function appendBotMessage(text) {
-  const msg = document.createElement("div");
-  msg.className = "bot-msg";
-  msg.textContent = text;
-  chatMessages.appendChild(msg);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+    function resetChat() {
+      chatMessages.innerHTML = `
+        <div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>
+        <div class="chatbot-options" id="chatOptions">
+          <button onclick="handleChat('software')">🛠 Softwareproblem</button>
+          <button onclick="handleChat('bug')">🐞 Fehler melden</button>
+          <button onclick="handleChat('interest')">📦 Interesse</button>
+          <button onclick="handleChat('other')">❓ Sonstiges</button>
+        </div>
+      `;
+    }
 
-function appendUserMessage(text) {
-  const msg = document.createElement("div");
-  msg.className = "user-msg";
-  msg.textContent = text;
-  chatMessages.appendChild(msg);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function resetChat() {
-  chatMessages.innerHTML = `<div class="bot-msg">Hallo! Wie kann ich dir helfen?</div>`;
-  chatOptions.style.display = "grid";
-  chatOptions.innerHTML = `
-    <button onclick="handleChat('software')">🛠 Softwareproblem</button>
-    <button onclick="handleChat('bug')">🐞 Fehler melden</button>
-    <button onclick="handleChat('interest')">📦 Interesse</button>
-    <button onclick="handleChat('other')">❓ Sonstiges</button>
-  `;
-  userInput.disabled = true;
-  userInput.placeholder = "";
-}
-
-darkToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-});
-
-resetChat();
-</script>
+    // Darkmode Umschalten
+    darkToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+    });
+  </script>
 </body>
 </html>
